@@ -3,52 +3,88 @@ import { Grid, Typography, Select, FormControl, MenuItem} from '@mui/material';
 // import { StylesProvider } from "@material-ui/core/styles";
 import './styles.css';
 
-const FingerBoard = () => {
-    const [position, setPosition] = useState(0);
+const AnswerForm = () => {
     const [noteName, setNoteName] = useState('');
+    const [fingering, setFingering] = useState('');
+    const [position, setPosition] = useState(0);
 
 
     const noteNameChange = (e) => setNoteName(e.target.value);
+    const fingeringChange = (e) => setFingering(e.target.value);
     
     const buttonSelected = (num) => {
         if(num === position) {
-            return '#008080';
+            return '#228B22';
         } 
     }
 
     
-    console.log(position);
-    console.log(noteName);
+    console.log('position',position);
+    console.log('note name',noteName);
+    console.log('fingering',fingering);
 
     return (
         <>
             <Grid container direction="column">
                 <Grid item>
-                    <Typography>Step 1: Select a name for this note</Typography>
+                    <Typography id="instructionText">Step 1: What's the name of this note?</Typography>
                     <FormControl fullWidth>
                         <Select
                             value={noteName}
                             onChange={noteNameChange}
+                            color='success'
                         >
-                        <MenuItem value={'A'}>A</MenuItem>
-                        <MenuItem value={'Ab'}>Ab</MenuItem>
-                        <MenuItem value={'B'}>B</MenuItem>
-                        <MenuItem value={'Bb'}>Bb</MenuItem>
-                        <MenuItem value={'C'}>C</MenuItem>
-                        <MenuItem value={'C#'}>C#</MenuItem>
-                        <MenuItem value={'D'}>D</MenuItem>
-                        <MenuItem value={'D#'}>D#</MenuItem>
-                        <MenuItem value={'Db'}>Db</MenuItem>
-                        <MenuItem value={'E'}>E</MenuItem>
-                        <MenuItem value={'Eb'}>Eb</MenuItem>
-                        <MenuItem value={'F'}>F</MenuItem>
-                        <MenuItem value={'F#'}>F#</MenuItem>
-                        <MenuItem value={'G'}>G</MenuItem>
-                        <MenuItem value={'G#'}>G#</MenuItem>
+                            <MenuItem value={'A'}>A</MenuItem>
+                            <MenuItem value={'Ab'}>Ab</MenuItem>
+                            <MenuItem value={'B'}>B</MenuItem>
+                            <MenuItem value={'Bb'}>Bb</MenuItem>
+                            <MenuItem value={'C'}>C</MenuItem>
+                            <MenuItem value={'C#'}>C#</MenuItem>
+                            <MenuItem value={'D'}>D</MenuItem>
+                            <MenuItem value={'D#'}>D#</MenuItem>
+                            <MenuItem value={'Db'}>Db</MenuItem>
+                            <MenuItem value={'E'}>E</MenuItem>
+                            <MenuItem value={'Eb'}>Eb</MenuItem>
+                            <MenuItem value={'F'}>F</MenuItem>
+                            <MenuItem value={'F#'}>F#</MenuItem>
+                            <MenuItem value={'G'}>G</MenuItem>
+                            <MenuItem value={'G#'}>G#</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
-                <Typography>Step 3: Select a spot to place your finger to play this note</Typography>
+                <Grid item>
+                    <Typography id="instructionText">Step 2: What's the fingering for this note?</Typography>
+                    <FormControl fullWidth>
+                        <Select
+                            value={fingering}
+                            onChange={fingeringChange}
+                            color='success'
+                        >
+                            <MenuItem value={'E0'}>E string open</MenuItem>
+                            <MenuItem value={'E1'}>E string 1</MenuItem>
+                            <MenuItem value={'E2'}>E string 2</MenuItem>
+                            <MenuItem value={'E3'}>E string 3</MenuItem>
+                            <MenuItem value={'E4'}>E string 4</MenuItem>
+                            <MenuItem value={'A0'}>A string open</MenuItem>
+                            <MenuItem value={'A1'}>A string 1</MenuItem>
+                            <MenuItem value={'A2'}>A string 2</MenuItem>
+                            <MenuItem value={'A3'}>A string 3</MenuItem>
+                            <MenuItem value={'A4'}>A string 4</MenuItem>    
+                            <MenuItem value={'D0'}>D string open</MenuItem>
+                            <MenuItem value={'D1'}>D string 1</MenuItem>
+                            <MenuItem value={'D2'}>D string 2</MenuItem>
+                            <MenuItem value={'D3'}>D string 3</MenuItem>
+                            <MenuItem value={'D4'}>D string 4</MenuItem>
+                            <MenuItem value={'G0'}>G string open</MenuItem>
+                            <MenuItem value={'G1'}>G string 1</MenuItem>
+                            <MenuItem value={'G2'}>G string 2</MenuItem>
+                            <MenuItem value={'G3'}>G string 3</MenuItem>
+                            <MenuItem value={'G4'}>G string 4</MenuItem>
+
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Typography id="instructionText">Step 3: Where is this note on your fingerboard?</Typography>
                 <Grid container item direction="row">
                     <button className="buttonOpen" style={{backgroundColor: buttonSelected(1)}} onClick={() => setPosition(1)}>G</button>
                     <button className="buttonOpen" style={{backgroundColor: buttonSelected(2)}} onClick={() => setPosition(2)}>D</button>
@@ -110,4 +146,4 @@ const FingerBoard = () => {
 
 }
 
-export default FingerBoard;
+export default AnswerForm;
