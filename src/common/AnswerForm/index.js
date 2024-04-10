@@ -19,9 +19,9 @@ const AnswerForm = () => {
     }
 
     
-    console.log('position',position);
     console.log('note name',noteName);
     console.log('fingering',fingering);
+    console.log('position',position);
 
     return (
         <>

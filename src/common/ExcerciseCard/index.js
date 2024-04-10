@@ -16,10 +16,8 @@ const ExcerciseCard = () => {
                     </Grid>
                     <Grid item>
                         <AnswerForm />
-
                     </Grid>
                 </Grid>
-
             </Paper>
         </>
     )
