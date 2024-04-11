@@ -12,7 +12,7 @@ const ExcerciseCard = () => {
             <Paper id="card" elevation={8}>
                 <Grid container direction='row'>
                     <Grid item>
-                        <img src={c1} style={{maxWidth: '1000px'}} />
+                        <img alt="note" src={c1} style={{maxWidth: '1000px'}} />
                     </Grid>
                     <Grid item>
                         <AnswerForm />
