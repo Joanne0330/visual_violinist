@@ -1,8 +1,20 @@
+.answerForm {
+  padding: 25px;
+  /* border-radius: 50px; */
+}
+
 #instructionText {
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
+#nextButton {
+  margin: 10px;
+}
+
+#myAnswer {
+  color: #9c27b0
+}
 
 .buttonOpen {
     color: black;
