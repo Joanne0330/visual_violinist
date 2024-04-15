@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
 import { Grid, Typography, Select, FormControl, MenuItem, Paper, Fab, Button } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
 // import { StylesProvider } from "@material-ui/core/styles";
 import './styles.css';
 
-const AnswerForm = () => {
+const AnswerForm = (props) => {
+  const { onSubmit } = props;
   const [noteBaseName, setNoteBaseName] = useState('');
   const [accidental, setAccidental] = useState('')
   const [chosenString, setChosenString] = useState('');
@@ -32,12 +33,17 @@ const AnswerForm = () => {
           return '#9c27b0';
       } 
   }
+
+  const handleOnSubmit = () => {
+    onSubmit(noteBaseName, accidental, chosenString, fingering, position);
+    onRefresh();
+  }
  
-  console.log('note base name: ',noteBaseName);
-  console.log('accidental name: ', accidental)
-  console.log('chosen string: ', chosenString)
-  console.log('fingering: ',fingering);
-  console.log('position: ',position);
+  // console.log('note base name: ',noteBaseName);
+  // console.log('accidental name: ', accidental)
+  // console.log('chosen string: ', chosenString)
+  // console.log('fingering: ',fingering);
+  // console.log('position: ',position);
 
   return (
     <>
@@ -206,7 +212,7 @@ const AnswerForm = () => {
                       <button className="button" style={{backgroundColor: buttonSelected()}} onClick={() => setPosition(32)}><div className='verticalLine'></div></button>
                   </Grid>
                   <Grid justifyContent="flex-end" direction="row" container>
-                    <Button csize='small' variant="contained" color="secondary" disabled={!noteBaseName || !chosenString || !fingering || !position}>
+                    <Button onClick={() => handleOnSubmit(noteBaseName, accidental, chosenString, fingering, position)} variant="contained" color="secondary" disabled={!noteBaseName || !chosenString || !fingering || !position}>
                       Submit
                     </Button>
                   </Grid>

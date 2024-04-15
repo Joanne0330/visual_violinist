@@ -1,10 +1,10 @@
-import ExcerciseCard from "./common/ExcerciseCard";
+import Excercises from "./common/Excercises";
 
 function App() {
   return (
     <div className="App">
       <h1>The Visual Violinist</h1>
-      <ExcerciseCard />
+      <Excercises/>
     </div>
   );
 }
