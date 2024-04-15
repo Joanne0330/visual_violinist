@@ -1,5 +1,5 @@
 import React from 'react';
-import {Paper, Grid} from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import AnswerForm from '../AnswerForm';
 import './styles.css';
 import c1 from '../../SVG/Cmaj/C1.svg';
@@ -7,20 +7,24 @@ import c1 from '../../SVG/Cmaj/C1.svg';
 
 const ExcerciseCard = () => {
 
-    return (
-        <>
-            <Paper id="card" elevation={8}>
-                <Grid container direction='row'>
-                    <Grid item>
-                        <img alt="note" src={c1} style={{maxWidth: '1000px'}} />
-                    </Grid>
-                    <Grid item>
-                        <AnswerForm />
-                    </Grid>
-                </Grid>
-            </Paper>
-        </>
-    )
+  return (
+    <>
+        <Grid container direction='row'>
+          <Grid item >
+            <img alt="note" src={c1} style={{maxWidth: '1000px'}} />
+          </Grid>
+          {/* <Grid container direction='column'> */}
+            <Grid item>
+              <Typography>Correct: 0/10</Typography>
+              <Typography>Incorrt: 0/10</Typography>
+            </Grid>
+            <Grid item>
+              <AnswerForm />
+            </Grid>
+          {/* </Grid> */}
+        </Grid>
+    </>
+  )
 
 }
 
