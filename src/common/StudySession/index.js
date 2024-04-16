@@ -2,30 +2,26 @@ import { useState } from 'react';
 import { Grid, Typography, Snackbar } from '@material-ui/core';
 import { Alert } from '@mui/material';
 import AnswerForm from '../AnswerForm';
+import EndSessionModal from '../EndSessionModal';
 import './styles.css';
 import c1 from '../../SVG/Cmaj/C1.svg';
 
+const mockData = [
+  {noteBaseName: 'A', accidental: '', chosenString: ['D', 'A'], fingering: ['4', '0'], position: [3, 30]}, 
+  {noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
+  {noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]}
+]
 
 const StudySession = () => {
   const [dataIndex, setDataIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState([]);
   const [wrongAnswers, setWrongAnswers] = useState([]);
   const [showSnackbar, setShowSnackbar] = useState(false);
-  const [isQuestionCorrect, setIsQuestionCorrect] = useState(false)
-  const mockData = [
-    {noteBaseName: 'A', accidental: '', chosenString: ['D', 'A'], fingering: ['4', '0'], position: [3, 30]}, 
-    {noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
-    {noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]}
-  ]
+  const [isQuestionCorrect, setIsQuestionCorrect] = useState(false);
+  const [isModalOpen, setIsModalOpen]= useState(false);
 
   console.log(mockData[dataIndex])
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
-    // console.log('HELLO!')
-    // console.log('note base name: ',noteBaseName);
-    // console.log('accidental name: ', accidental)
-    // console.log('chosen string: ', chosenString)
-    // console.log('fingering: ',fingering);
-    // console.log('position: ',position);
     // Step 1 first compare if the data is correct
     const question = mockData[dataIndex]
     const isCorrect = question.noteBaseName === noteBaseName &&
@@ -43,15 +39,28 @@ const StudySession = () => {
     }
     // Step 3 Snackbar that tells the user whether it's correct
     setShowSnackbar(true)
-    // setShowSnackbar(false)
 
     // Step 4 go to next question
-    setDataIndex(dataIndex + 1)
+    if(dataIndex === mockData.length -1) {
+      setIsModalOpen(true)
+    } else {
+      setDataIndex(dataIndex + 1)
+    }
   }
+
+  const closeModal = () => setIsModalOpen(false)
 
   return (
     <>
         <Grid container direction='row'>
+          <EndSessionModal 
+            isModalOpen={isModalOpen}
+            closeModal={closeModal}
+            correctAnswers={correctAnswers}
+            wrongAnswers={wrongAnswers}
+            totalQuestions={mockData.length}
+          
+          />
           <Snackbar
             anchorOrigin={{vertical: 'top', horizontal: 'right'}}
             open={showSnackbar}

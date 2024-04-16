@@ -47,7 +47,7 @@ const AnswerForm = (props) => {
 
   return (
     <>
-      <Paper elevation={8} className="answerForm" style={{borderRadius:'25px'}}>
+      <Paper elevation={8} className="answerForm" style={{borderRadius:'15px'}}>
           <Grid container direction="column">
               <Grid justifyContent="flex-end" direction="row" container>
                 <Fab color="extended" aria-label="refresh" size='small' onClick={onRefresh}>
