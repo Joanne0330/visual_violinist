@@ -1,4 +1,4 @@
-import { Typography, Modal, Card }from '@mui/material';
+import { Typography, Modal, Card, Button, Grid }from '@mui/material';
 import './styles.css';
 
 const EndSessionModal = (props) => {
@@ -25,8 +25,12 @@ const EndSessionModal = (props) => {
 						{`Your total score is ${(Math.ceil(correctAnswers.length/totalQuestions * 100))}%!`}
 					</Typography>
 					<Typography sx={{ mt: 2 }}>
-						{`You have answered ${wrongAnswers.length} incorrectly, would you like to try them again?`}
+						{`You have answered ${wrongAnswers.length} incorrectly, would you like to try ${wrongAnswers.length === 1 ? 'it' : 'them'} again?`}
 					</Typography>
+						<Grid justifyContent="flex-end" direction="row" container>
+							<Button id='modalButton' variant="contained" color="secondary">Yes</Button>
+							<Button id='modalButton' variant="contained" color="secondary">No</Button>
+						</Grid>
 				</>
 			}
 		</Card>

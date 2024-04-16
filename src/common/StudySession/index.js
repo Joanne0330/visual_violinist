@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Grid, Typography, Snackbar } from '@material-ui/core';
 import { Alert } from '@mui/material';
 import AnswerForm from '../AnswerForm';
@@ -13,6 +13,7 @@ const mockData = [
 ]
 
 const StudySession = () => {
+  const [dataArray, setDataArray] = useState([])
   const [dataIndex, setDataIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState([]);
   const [wrongAnswers, setWrongAnswers] = useState([]);
@@ -20,10 +21,27 @@ const StudySession = () => {
   const [isQuestionCorrect, setIsQuestionCorrect] = useState(false);
   const [isModalOpen, setIsModalOpen]= useState(false);
 
-  console.log(mockData[dataIndex])
+  const shuffle = (array) => { 
+    for (let i = array.length - 1; i > 0; i--) { 
+      const j = Math.floor(Math.random() * (i + 1)); 
+      [array[i], array[j]] = [array[j], array[i]]; 
+    } 
+    return array;
+  }; 
+
+  useEffect(() => {
+    //Step 1: TODO - find which key and which data to use
+
+    //Step 2: Randomise the data
+    const shuffledArray = shuffle(mockData); 
+    setDataArray(shuffledArray)
+
+  }, [dataArray])
+  console.log(dataArray)
+  console.log(dataArray[dataIndex])
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
     // Step 1 first compare if the data is correct
-    const question = mockData[dataIndex]
+    const question = dataArray[dataIndex]
     const isCorrect = question.noteBaseName === noteBaseName &&
       question.accidental === accidental &&
       question.chosenString.some(string => string === chosenString) &&
@@ -41,7 +59,7 @@ const StudySession = () => {
     setShowSnackbar(true)
 
     // Step 4 go to next question
-    if(dataIndex === mockData.length -1) {
+    if(dataIndex === dataArray.length -1) {
       setIsModalOpen(true)
     } else {
       setDataIndex(dataIndex + 1)
@@ -58,7 +76,7 @@ const StudySession = () => {
             closeModal={closeModal}
             correctAnswers={correctAnswers}
             wrongAnswers={wrongAnswers}
-            totalQuestions={mockData.length}
+            totalQuestions={dataArray.length}
           
           />
           <Snackbar
@@ -80,8 +98,8 @@ const StudySession = () => {
           </Grid>
           {/* <Grid container direction='column'> */}
             <Grid item>
-              <Typography>{`Correct: ${correctAnswers.length}/${mockData.length}`}</Typography>
-              <Typography>{`Incorrect: ${wrongAnswers.length}/${mockData.length}`}</Typography>
+              <Typography>{`Correct: ${correctAnswers.length}/${dataArray.length}`}</Typography>
+              <Typography>{`Incorrect: ${wrongAnswers.length}/${dataArray.length}`}</Typography>
             </Grid>
             <Grid item>
               <AnswerForm onSubmit={onSubmit}/>
