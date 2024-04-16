@@ -1,10 +1,10 @@
-import Excercises from "./common/Excercises";
+import StudySession from "./common/StudySession";
 
 function App() {
   return (
     <div className="App">
       <h1>The Visual Violinist</h1>
-      <Excercises/>
+      <StudySession/>
     </div>
   );
 }

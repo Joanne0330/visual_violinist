@@ -1,27 +1,31 @@
 import { useState } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Snackbar } from '@material-ui/core';
+import { Alert } from '@mui/material';
 import AnswerForm from '../AnswerForm';
 import './styles.css';
 import c1 from '../../SVG/Cmaj/C1.svg';
 
 
-const Excercises = () => {
+const StudySession = () => {
   const [dataIndex, setDataIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState([]);
   const [wrongAnswers, setWrongAnswers] = useState([]);
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [isQuestionCorrect, setIsQuestionCorrect] = useState(false)
   const mockData = [
     {noteBaseName: 'A', accidental: '', chosenString: ['D', 'A'], fingering: ['4', '0'], position: [3, 30]}, 
-    {noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}
+    {noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
+    {noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]}
   ]
 
   console.log(mockData[dataIndex])
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
-    console.log('HELLO!')
-    console.log('note base name: ',noteBaseName);
-    console.log('accidental name: ', accidental)
-    console.log('chosen string: ', chosenString)
-    console.log('fingering: ',fingering);
-    console.log('position: ',position);
+    // console.log('HELLO!')
+    // console.log('note base name: ',noteBaseName);
+    // console.log('accidental name: ', accidental)
+    // console.log('chosen string: ', chosenString)
+    // console.log('fingering: ',fingering);
+    // console.log('position: ',position);
     // Step 1 first compare if the data is correct
     const question = mockData[dataIndex]
     const isCorrect = question.noteBaseName === noteBaseName &&
@@ -29,21 +33,39 @@ const Excercises = () => {
       question.chosenString.some(string => string === chosenString) &&
       question.fingering.some(f => f === fingering) &&
       question.position.some(p => p === position)
-    console.log("AM I CORRECT?", isCorrect)
+
+    setIsQuestionCorrect(isCorrect)
     // Step 2 then push the correct and incorrect data in the designated array 
     if(isCorrect){
       setCorrectAnswers([...correctAnswers, question])
     } else {
       setWrongAnswers([...wrongAnswers, question])
     }
+    // Step 3 Snackbar that tells the user whether it's correct
+    setShowSnackbar(true)
+    // setShowSnackbar(false)
 
-    // Step 3 go to next question
+    // Step 4 go to next question
     setDataIndex(dataIndex + 1)
   }
 
   return (
     <>
         <Grid container direction='row'>
+          <Snackbar
+            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+            open={showSnackbar}
+            autoHideDuration={3000}
+            onClose={()=> setShowSnackbar(false)}
+          >
+            <Alert
+              severity={isQuestionCorrect ? 'success' : 'error'}
+              variant="filled"
+              sx={{ width: '100%' }}
+            >
+             {!isQuestionCorrect ? 'Sorry, not everything is correct...': 'Correct! Well done!'} 
+            </Alert>
+          </Snackbar>
           <Grid item >
             <img alt="note" src={c1} style={{maxWidth: '1000px'}} />
           </Grid>
@@ -62,4 +84,4 @@ const Excercises = () => {
 
 }
 
-export default Excercises; 
+export default StudySession; 
