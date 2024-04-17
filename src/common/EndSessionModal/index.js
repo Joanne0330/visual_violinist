@@ -2,7 +2,7 @@ import { Typography, Modal, Card, Button, Grid }from '@mui/material';
 import './styles.css';
 
 const EndSessionModal = (props) => {
-	const { isModalOpen, closeModal, correctAnswers, wrongAnswers, totalQuestions } = props;
+	const { isModalOpen, closeModal, correctAnswers, wrongAnswers, totalQuestions, handleUseWrongAnswersData } = props;
 
   return (
 		<Modal
@@ -28,7 +28,7 @@ const EndSessionModal = (props) => {
 						{`You have answered ${wrongAnswers.length} incorrectly, would you like to try ${wrongAnswers.length === 1 ? 'it' : 'them'} again?`}
 					</Typography>
 						<Grid justifyContent="flex-end" direction="row" container>
-							<Button id='modalButton' variant="contained" color="secondary">Yes</Button>
+							<Button onClick={handleUseWrongAnswersData} id='modalButton' variant="contained" color="secondary">Yes</Button>
 							<Button id='modalButton' variant="contained" color="secondary">No</Button>
 						</Grid>
 				</>

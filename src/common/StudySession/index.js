@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Grid, Typography, Snackbar } from '@material-ui/core';
 import { Alert } from '@mui/material';
 import AnswerForm from '../AnswerForm';
@@ -21,13 +21,13 @@ const StudySession = () => {
   const [isQuestionCorrect, setIsQuestionCorrect] = useState(false);
   const [isModalOpen, setIsModalOpen]= useState(false);
 
-  const shuffle = (array) => { 
+  const shuffle = useCallback((array) => { 
     for (let i = array.length - 1; i > 0; i--) { 
       const j = Math.floor(Math.random() * (i + 1)); 
       [array[i], array[j]] = [array[j], array[i]]; 
     } 
     return array;
-  }; 
+  }, []); 
 
   useEffect(() => {
     //Step 1: TODO - find which key and which data to use
@@ -36,9 +36,11 @@ const StudySession = () => {
     const shuffledArray = shuffle(mockData); 
     setDataArray(shuffledArray)
 
-  }, [dataArray])
+  }, [shuffle])
+
   console.log(dataArray)
   console.log(dataArray[dataIndex])
+
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
     // Step 1 first compare if the data is correct
     const question = dataArray[dataIndex]
@@ -66,6 +68,14 @@ const StudySession = () => {
     }
   }
 
+  const handleUseWrongAnswersData = () => {
+    setDataArray(wrongAnswers);
+    setDataIndex(0)
+    setIsModalOpen(false);
+    setWrongAnswers([]);
+    setCorrectAnswers([]);
+  }
+
   const closeModal = () => setIsModalOpen(false)
 
   return (
@@ -77,6 +87,7 @@ const StudySession = () => {
             correctAnswers={correctAnswers}
             wrongAnswers={wrongAnswers}
             totalQuestions={dataArray.length}
+            handleUseWrongAnswersData={handleUseWrongAnswersData}
           
           />
           <Snackbar
