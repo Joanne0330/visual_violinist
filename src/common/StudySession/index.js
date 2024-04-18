@@ -78,16 +78,16 @@ const StudySession = () => {
     setCorrectAnswers([]);
   }
 
-  const resetEntireExcercise = () => {
+  const resetEntireExcercise = useCallback(() => {
     // TODO - find which key and which data to use as in useEffect with useCallback function
-    const shuffledArray = shuffle(dataArray); 
+    const shuffledArray = shuffle(mockData); 
     setIsSecondAttemptQuestions(false);
     setDataArray(shuffledArray)
     setDataIndex(0);
     setIsModalOpen(false);
     setWrongAnswers([]);
     setCorrectAnswers([]);
-  }
+  },[shuffle])
 
   return (
     <>
