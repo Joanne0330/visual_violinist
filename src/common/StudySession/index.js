@@ -20,6 +20,7 @@ const StudySession = () => {
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [isQuestionCorrect, setIsQuestionCorrect] = useState(false);
   const [isModalOpen, setIsModalOpen]= useState(false);
+  const [isSecondAttemptQuestions, setIsSecondAttemptQuestions] = useState(false);
 
   const shuffle = useCallback((array) => { 
     for (let i = array.length - 1; i > 0; i--) { 
@@ -30,7 +31,7 @@ const StudySession = () => {
   }, []); 
 
   useEffect(() => {
-    //Step 1: TODO - find which key and which data to use
+    //Step 1: TODO - find which key and which data to use with useCallback function in order to reuse in resetEntireExcercise
 
     //Step 2: Randomise the data
     const shuffledArray = shuffle(mockData); 
@@ -69,6 +70,7 @@ const StudySession = () => {
   }
 
   const handleUseWrongAnswersData = () => {
+    setIsSecondAttemptQuestions(true);
     setDataArray(wrongAnswers);
     setDataIndex(0)
     setIsModalOpen(false);
@@ -76,18 +78,28 @@ const StudySession = () => {
     setCorrectAnswers([]);
   }
 
-  const closeModal = () => setIsModalOpen(false)
+  const resetEntireExcercise = () => {
+    // TODO - find which key and which data to use as in useEffect with useCallback function
+    const shuffledArray = shuffle(dataArray); 
+    setIsSecondAttemptQuestions(false);
+    setDataArray(shuffledArray)
+    setDataIndex(0);
+    setIsModalOpen(false);
+    setWrongAnswers([]);
+    setCorrectAnswers([]);
+  }
 
   return (
     <>
         <Grid container direction='row'>
           <EndSessionModal 
             isModalOpen={isModalOpen}
-            closeModal={closeModal}
             correctAnswers={correctAnswers}
             wrongAnswers={wrongAnswers}
             totalQuestions={dataArray.length}
             handleUseWrongAnswersData={handleUseWrongAnswersData}
+            resetEntireExcercise={resetEntireExcercise}
+            isSecondAttemptQuestions={isSecondAttemptQuestions}
           
           />
           <Snackbar

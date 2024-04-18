@@ -2,12 +2,21 @@ import { Typography, Modal, Card, Button, Grid }from '@mui/material';
 import './styles.css';
 
 const EndSessionModal = (props) => {
-	const { isModalOpen, closeModal, correctAnswers, wrongAnswers, totalQuestions, handleUseWrongAnswersData } = props;
-
+	const { 
+		isModalOpen, 
+		correctAnswers, 
+		wrongAnswers, 
+		totalQuestions, 
+		handleUseWrongAnswersData,
+		resetEntireExcercise,
+		isSecondAttemptQuestions
+	} = props;
+	console.log('SECOND ATTEMPT? ', isSecondAttemptQuestions)
   return (
 		<Modal
 			open={isModalOpen}
-			onClose={closeModal}
+			onClose={resetEntireExcercise}
+
 			// aria-labelledby="modal-modal-title"
 			// aria-describedby="modal-modal-description"
 		>
@@ -16,21 +25,26 @@ const EndSessionModal = (props) => {
 				End of study session
 			</Typography>
 			{correctAnswers.length === totalQuestions && !wrongAnswers.length ?
-				<Typography sx={{ mt: 2 }}>
-					{`Congratulation! You answered everything correctly!`}
-				</Typography>
+				<>
+					<Typography sx={{ mt: 2 }}>
+						{`Congratulation! You answered everything correctly!`}
+					</Typography>
+					<Grid justifyContent="flex-end" direction="row" container>
+						<Button onClick={resetEntireExcercise} id='modalButton' variant="contained" color="secondary">Close</Button>
+					</Grid>
+				</>
 				:
 				<>
 					<Typography sx={{ mt: 2 }}>
 						{`Your total score is ${(Math.ceil(correctAnswers.length/totalQuestions * 100))}%!`}
 					</Typography>
 					<Typography sx={{ mt: 2 }}>
-						{`You have answered ${wrongAnswers.length} incorrectly, would you like to try ${wrongAnswers.length === 1 ? 'it' : 'them'} again?`}
+						{`You have answered ${wrongAnswers.length} ${wrongAnswers.length === 1 ? 'question' : 'questions'} incorrectly, would you like to try ${wrongAnswers.length === 1 ? 'it' : 'them'} again?`}
 					</Typography>
-						<Grid justifyContent="flex-end" direction="row" container>
-							<Button onClick={handleUseWrongAnswersData} id='modalButton' variant="contained" color="secondary">Yes</Button>
-							<Button id='modalButton' variant="contained" color="secondary">No</Button>
-						</Grid>
+					<Grid justifyContent="flex-end" direction="row" container>
+						<Button onClick={handleUseWrongAnswersData} id='modalButton' variant="contained" color="secondary">Yes</Button>
+						<Button onClick={resetEntireExcercise} id='modalButton' variant="contained" color="secondary">No</Button>
+					</Grid>
 				</>
 			}
 		</Card>
