@@ -9,7 +9,8 @@ const EndSessionModal = (props) => {
 		totalQuestions, 
 		handleUseWrongAnswersData,
 		resetEntireExcercise,
-		isSecondAttemptQuestions
+		isSecondAttemptQuestions,
+		handleRevealAnswers
 	} = props;
 	console.log('SECOND ATTEMPT? ', isSecondAttemptQuestions)
   return (
@@ -42,7 +43,7 @@ const EndSessionModal = (props) => {
 						</Typography>
 						<Grid justifyContent="flex-end" direction="row" container>
 							{isSecondAttemptQuestions ? 
-								<Button id='modalButton' variant="contained" color="secondary">Yes, I want to see the answers</Button>
+								<Button onClick={handleRevealAnswers} id='modalButton' variant="contained" color="secondary">Yes, I want to see the answers</Button>
 								:
 								<Button onClick={handleUseWrongAnswersData} id='modalButton' variant="contained" color="secondary">Yes</Button>
 							}

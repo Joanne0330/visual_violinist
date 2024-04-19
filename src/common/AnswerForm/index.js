@@ -209,7 +209,7 @@ const AnswerForm = (props) => {
                       <button className="button" style={{backgroundColor: buttonSelected(29)}} onClick={() => setPosition(29)}><div className='verticalLine'></div></button>
                       <button className="button" style={{backgroundColor: buttonSelected(30)}} onClick={() => setPosition(30)}><div className='verticalLine'></div></button>
                       <button className="button" style={{backgroundColor: buttonSelected(31)}} onClick={() => setPosition(31)}><div className='verticalLine'></div></button>
-                      <button className="button" style={{backgroundColor: buttonSelected()}} onClick={() => setPosition(32)}><div className='verticalLine'></div></button>
+                      <button className="button" style={{backgroundColor: buttonSelected(32)}} onClick={() => setPosition(32)}><div className='verticalLine'></div></button>
                   </Grid>
                   <Grid justifyContent="flex-end" direction="row" container>
                     <Button onClick={() => handleOnSubmit(noteBaseName, accidental, chosenString, fingering, position)} variant="contained" color="secondary" disabled={!noteBaseName || !chosenString || !fingering || !position}>

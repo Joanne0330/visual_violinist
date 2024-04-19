@@ -2,12 +2,13 @@ import { useState, useEffect, useCallback } from 'react';
 import { Grid, Typography, Snackbar } from '@material-ui/core';
 import { Alert } from '@mui/material';
 import AnswerForm from '../AnswerForm';
+import RevealForm from '../RevealForm';
 import EndSessionModal from '../EndSessionModal';
 import './styles.css';
 import c1 from '../../SVG/Cmaj/C1.svg';
 
 const mockData = [
-  {noteBaseName: 'A', accidental: '', chosenString: ['D', 'A'], fingering: ['4', '0'], position: [3, 30]}, 
+  {noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
   {noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
   {noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]}
 ]
@@ -21,6 +22,7 @@ const StudySession = () => {
   const [isQuestionCorrect, setIsQuestionCorrect] = useState(false);
   const [isModalOpen, setIsModalOpen]= useState(false);
   const [isSecondAttemptQuestions, setIsSecondAttemptQuestions] = useState(false);
+  const [isReveal, setIsReveal] = useState(false);
 
   const shuffle = useCallback((array) => { 
     for (let i = array.length - 1; i > 0; i--) { 
@@ -78,6 +80,14 @@ const StudySession = () => {
     setCorrectAnswers([]);
   }
 
+  const handleRevealAnswers = () => {
+    setIsReveal(true);
+    handleUseWrongAnswersData();
+  }
+
+  const revealNextAnswer = () => setDataIndex(dataIndex + 1);
+  const revealPreviousAnswer = () => setDataIndex(dataIndex -1);
+
   const resetEntireExcercise = useCallback(() => {
     // TODO - find which key and which data to use as in useEffect with useCallback function
     const shuffledArray = shuffle(mockData); 
@@ -87,7 +97,11 @@ const StudySession = () => {
     setIsModalOpen(false);
     setWrongAnswers([]);
     setCorrectAnswers([]);
+    setIsReveal(false)
   },[shuffle])
+
+
+  console.log('is reveal', isReveal)
 
   return (
     <>
@@ -100,7 +114,7 @@ const StudySession = () => {
             handleUseWrongAnswersData={handleUseWrongAnswersData}
             resetEntireExcercise={resetEntireExcercise}
             isSecondAttemptQuestions={isSecondAttemptQuestions}
-          
+            handleRevealAnswers={handleRevealAnswers}
           />
           <Snackbar
             anchorOrigin={{vertical: 'top', horizontal: 'right'}}
@@ -125,7 +139,16 @@ const StudySession = () => {
               <Typography>{`Incorrect: ${wrongAnswers.length}/${dataArray.length}`}</Typography>
             </Grid>
             <Grid item>
-              <AnswerForm onSubmit={onSubmit}/>
+              {isReveal ?
+                <RevealForm 
+                  dataArray={dataArray} 
+                  dataIndex={dataIndex} 
+                  revealNextAnswer={revealNextAnswer}
+                  revealPreviousAnswer={revealPreviousAnswer}
+                  resetEntireExcercise={resetEntireExcercise}
+                /> 
+                :<AnswerForm onSubmit={onSubmit}/>
+              }
             </Grid>
           {/* </Grid> */}
         </Grid>
