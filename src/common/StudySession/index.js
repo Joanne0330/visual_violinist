@@ -5,12 +5,11 @@ import AnswerForm from '../AnswerForm';
 import RevealForm from '../RevealForm';
 import EndSessionModal from '../EndSessionModal';
 import './styles.css';
-import c1 from '../../SVG/Cmaj/C1.svg';
 
 const mockData = [
-  {noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
-  {noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
-  {noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]}
+  {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
+  {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
+  {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]}
 ]
 
 const StudySession = () => {
@@ -43,6 +42,7 @@ const StudySession = () => {
 
   console.log(dataArray)
   console.log(dataArray[dataIndex])
+  console.log(dataArray[dataIndex]?.noteImg)
 
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
     // Step 1 first compare if the data is correct
@@ -131,7 +131,10 @@ const StudySession = () => {
             </Alert>
           </Snackbar>
           <Grid item >
-            <img alt="note" src={c1} style={{maxWidth: '1000px'}} />
+            {!!dataArray && !!dataArray[dataIndex]?.noteImg &&
+              <img alt="note" src={dataArray[dataIndex]?.noteImg} style={{width: "100%"}} />
+              // <img alt="note" src={require("../../images/mid_A.png")} style={{width: "100%"}} />
+            }
           </Grid>
           {/* <Grid container direction='column'> */}
             <Grid item>
