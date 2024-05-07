@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Grid, Typography, Snackbar } from '@material-ui/core';
-import { Alert } from '@mui/material';
+import { Grid, Snackbar } from '@material-ui/core';
+import { Alert, Pagination, Card, CardContent, CardMedia } from '@mui/material';
 import AnswerForm from '../AnswerForm';
 import RevealForm from '../RevealForm';
 import EndSessionModal from '../EndSessionModal';
@@ -131,16 +131,23 @@ const StudySession = () => {
             </Alert>
           </Snackbar>
           <Grid item >
-            {!!dataArray && !!dataArray[dataIndex]?.noteImg &&
+            {/* {!!dataArray && !!dataArray[dataIndex]?.noteImg &&
               <img alt="note" src={dataArray[dataIndex]?.noteImg} style={{width: "100%"}} />
               // <img alt="note" src={require("../../images/mid_A.png")} style={{width: "100%"}} />
-            }
+            } */}
+            <Card raised sx={{ width: 345, borderRadius:'15px' }}>
+              <CardMedia
+                sx={{ height: 250 }}
+                image={dataArray[dataIndex]?.noteImg}
+                title="note"
+              />
+              <CardContent>
+                <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/>
+              </CardContent>
+
+            </Card>
+            {/* <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/> */}
           </Grid>
-          {/* <Grid container direction='column'> */}
-            <Grid item>
-              <Typography>{`Correct: ${correctAnswers.length}/${dataArray.length}`}</Typography>
-              <Typography>{`Incorrect: ${wrongAnswers.length}/${dataArray.length}`}</Typography>
-            </Grid>
             <Grid item>
               {isReveal ?
                 <RevealForm 
