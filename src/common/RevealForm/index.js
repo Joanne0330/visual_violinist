@@ -6,7 +6,7 @@ const RevealForm = (props) => {
   
   const buttonShownColour = (num) => {
       if(num === dataArray[dataIndex].position[0]) {
-          return '#9c27b0';
+          return '#0d6c0d';
       } 
   }
 
@@ -18,7 +18,7 @@ const RevealForm = (props) => {
           <Grid item>
             <Typography id="instructionText">The name of this note is:</Typography>
             <Grid justifyContent="center" direction="row" container>
-              <Typography id="myAnswer">{dataArray[dataIndex].noteBaseName}<em>{dataArray[dataIndex].accidental}</em></Typography>
+              <Typography className="answer">{dataArray[dataIndex].noteBaseName}<em>{dataArray[dataIndex].accidental}</em></Typography>
             </Grid>    
           </Grid>
 
@@ -31,7 +31,7 @@ const RevealForm = (props) => {
             }
               {/**TODO: you may need to iterate or assign index 0 */}
               <Grid justifyContent="center" direction="row" container>
-                <Typography id="myAnswer">{dataArray[dataIndex].chosenString[0]}{dataArray[dataIndex].fingering[0]}</Typography>
+                <Typography className="answer">{dataArray[dataIndex].chosenString[0]}{dataArray[dataIndex].fingering[0]}</Typography>
               </Grid>
           </Grid>
                  

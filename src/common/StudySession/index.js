@@ -9,7 +9,22 @@ import './styles.css';
 const mockData = [
   {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
   {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
-  {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]}
+  {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
+  // {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
+  // {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
+  // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
+  // {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
+  // {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
+  // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
+  // {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
+  // {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
+  // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
+  // {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
+  // {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
+  // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
+  // {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
+  // {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
+  // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]}
 ]
 
 const StudySession = () => {
@@ -131,36 +146,29 @@ const StudySession = () => {
             </Alert>
           </Snackbar>
           <Grid item >
-            {/* {!!dataArray && !!dataArray[dataIndex]?.noteImg &&
-              <img alt="note" src={dataArray[dataIndex]?.noteImg} style={{width: "100%"}} />
-              // <img alt="note" src={require("../../images/mid_A.png")} style={{width: "100%"}} />
-            } */}
-            <Card raised sx={{ width: 345, borderRadius:'15px' }}>
+            <Card raised sx={{ minWidth: 360, borderRadius:'15px' }}>
               <CardMedia
                 sx={{ height: 250 }}
                 image={dataArray[dataIndex]?.noteImg}
                 title="note"
               />
-              <CardContent>
+              <CardContent style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#DCDCDC'}}>
                 <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/>
               </CardContent>
-
             </Card>
-            {/* <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/> */}
           </Grid>
-            <Grid item>
-              {isReveal ?
-                <RevealForm 
-                  dataArray={dataArray} 
-                  dataIndex={dataIndex} 
-                  revealNextAnswer={revealNextAnswer}
-                  revealPreviousAnswer={revealPreviousAnswer}
-                  resetEntireExcercise={resetEntireExcercise}
-                /> 
-                :<AnswerForm onSubmit={onSubmit}/>
-              }
-            </Grid>
-          {/* </Grid> */}
+          <Grid item>
+            {isReveal ?
+              <RevealForm 
+                dataArray={dataArray} 
+                dataIndex={dataIndex} 
+                revealNextAnswer={revealNextAnswer}
+                revealPreviousAnswer={revealPreviousAnswer}
+                resetEntireExcercise={resetEntireExcercise}
+              /> 
+              :<AnswerForm onSubmit={onSubmit}/>
+            }
+          </Grid>
         </Grid>
     </>
   )

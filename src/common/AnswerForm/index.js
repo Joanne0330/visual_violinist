@@ -60,7 +60,7 @@ const AnswerForm = (props) => {
                   {showStep2 ?
                     <>
                       <Grid justifyContent="center" direction="row" container>
-                        <Typography id="myAnswer">{noteBaseName}<em>{accidental}</em></Typography>
+                        <Typography className="myAnswer">{noteBaseName}<em>{accidental}</em></Typography>
                       </Grid>
                     </>
                   :
@@ -110,7 +110,7 @@ const AnswerForm = (props) => {
                     {showStep3 ?
                       <>
                         <Grid justifyContent="center" direction="row" container>
-                          <Typography id="myAnswer">{chosenString}{fingering}</Typography>
+                          <Typography className="myAnswer">{chosenString}{fingering}</Typography>
                         </Grid>
                       </>
                     :
