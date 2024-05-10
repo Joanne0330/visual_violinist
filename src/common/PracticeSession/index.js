@@ -6,29 +6,8 @@ import RevealForm from '../RevealForm';
 import EndSessionModal from '../EndSessionModal';
 import './styles.css';
 
-const mockData = [
-  {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
-  {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
-  {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
-  // {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
-  // {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
-  // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
-  // {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
-  // {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
-  // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
-  // {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
-  // {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
-  // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
-  // {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
-  // {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
-  // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
-  // {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
-  // {noteImg: "/assets/images/high_G_sharp.png", noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]}, 
-  // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]}
-]
-
 const PracticeSession = (props) => {
-  const {isSmallScreen} = props;
+  const {isSmallScreen, selectedData} = props;
   const [dataArray, setDataArray] = useState([]);
   const [dataIndex, setDataIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState([]);
@@ -48,17 +27,13 @@ const PracticeSession = (props) => {
   }, []); 
 
   useEffect(() => {
-    //Step 1: TODO - find which key and which data to use with useCallback function in order to reuse in resetEntireExcercise
-
-    //Step 2: Randomise the data
-    const shuffledArray = shuffle(mockData); 
+    const shuffledArray = shuffle(selectedData); 
     setDataArray(shuffledArray)
-
-  }, [shuffle])
+  }, [shuffle, selectedData])
 
   console.log(dataArray)
-  console.log(dataArray[dataIndex])
-  console.log(dataArray[dataIndex]?.noteImg)
+  // console.log(dataArray[dataIndex])
+  // console.log(dataArray[dataIndex]?.noteImg)
 
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
     // Step 1 first compare if the data is correct
@@ -105,8 +80,7 @@ const PracticeSession = (props) => {
   const revealPreviousAnswer = () => setDataIndex(dataIndex -1);
 
   const resetEntireExcercise = useCallback(() => {
-    // TODO - find which key and which data to use as in useEffect with useCallback function
-    const shuffledArray = shuffle(mockData); 
+    const shuffledArray = shuffle(selectedData); 
     setIsSecondAttemptQuestions(false);
     setDataArray(shuffledArray)
     setDataIndex(0);
@@ -114,7 +88,7 @@ const PracticeSession = (props) => {
     setWrongAnswers([]);
     setCorrectAnswers([]);
     setIsReveal(false)
-  },[shuffle])
+  },[shuffle, selectedData])
 
   return (
     <>
@@ -145,18 +119,20 @@ const PracticeSession = (props) => {
              {!isQuestionCorrect ? 'Sorry, not everything is correct...': 'Correct! Well done!'} 
             </Alert>
           </Snackbar>
-          <Grid item >
-            <Card raised sx={{ minWidth: 360, borderRadius:'15px' }}>
-              <CardMedia
-                sx={{ height: 250 }}
-                image={dataArray[dataIndex]?.noteImg}
-                title="note"
-              />
-              <CardContent style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#DCDCDC'}}>
-                <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/>
-              </CardContent>
-            </Card>
-          </Grid>
+          {!!dataArray.length &&
+            <Grid item >
+              <Card raised sx={{ minWidth: 360, borderRadius:'15px' }}>
+                <CardMedia
+                  sx={{ height: 250 }}
+                  image={dataArray[dataIndex].noteImg}
+                  title={`note ${dataArray[dataIndex].noteBaseName}${dataArray[dataIndex].accidental}`}
+                />
+                <CardContent style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#DCDCDC'}}>
+                  <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/>
+                </CardContent>
+              </Card>
+            </Grid>
+          }
           <Grid item>
             {isReveal ?
               <RevealForm 
