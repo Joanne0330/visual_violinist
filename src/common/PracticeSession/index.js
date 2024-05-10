@@ -27,8 +27,9 @@ const mockData = [
   // {noteImg: "/assets/images/mid_E_flat.png", noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]}
 ]
 
-const StudySession = () => {
-  const [dataArray, setDataArray] = useState([])
+const PracticeSession = (props) => {
+  const {isSmallScreen} = props;
+  const [dataArray, setDataArray] = useState([]);
   const [dataIndex, setDataIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState([]);
   const [wrongAnswers, setWrongAnswers] = useState([]);
@@ -115,9 +116,6 @@ const StudySession = () => {
     setIsReveal(false)
   },[shuffle])
 
-
-  console.log('is reveal', isReveal)
-
   return (
     <>
         <Grid container direction='row'>
@@ -136,11 +134,13 @@ const StudySession = () => {
             open={showSnackbar}
             autoHideDuration={3000}
             onClose={()=> setShowSnackbar(false)}
-          >
+            
+            >
             <Alert
               severity={isQuestionCorrect ? 'success' : 'error'}
               variant="filled"
               sx={{ width: '100%' }}
+              style={{borderRadius: '10px'}}
             >
              {!isQuestionCorrect ? 'Sorry, not everything is correct...': 'Correct! Well done!'} 
             </Alert>
@@ -165,8 +165,10 @@ const StudySession = () => {
                 revealNextAnswer={revealNextAnswer}
                 revealPreviousAnswer={revealPreviousAnswer}
                 resetEntireExcercise={resetEntireExcercise}
+                isSmallScreen={isSmallScreen}
               /> 
-              :<AnswerForm onSubmit={onSubmit}/>
+              :
+              <AnswerForm onSubmit={onSubmit} isSmallScreen={isSmallScreen}/>
             }
           </Grid>
         </Grid>
@@ -175,4 +177,4 @@ const StudySession = () => {
 
 }
 
-export default StudySession; 
+export default PracticeSession; 

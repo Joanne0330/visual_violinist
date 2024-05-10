@@ -2,11 +2,11 @@ import { Grid, Typography, Paper, Button } from '@mui/material';
 import './styles.css';
 
 const RevealForm = (props) => {
-  const { dataArray, dataIndex, revealNextAnswer, revealPreviousAnswer, resetEntireExcercise } = props;
+  const { dataArray, dataIndex, revealNextAnswer, revealPreviousAnswer, resetEntireExcercise, isSmallScreen } = props;
   
   const buttonShownColour = (num) => {
       if(num === dataArray[dataIndex].position[0]) {
-          return '#0d6c0d';
+          return '#B22222';
       } 
   }
 
@@ -56,7 +56,7 @@ const RevealForm = (props) => {
               <button className="button" style={{backgroundColor: buttonShownColour(10)}}><div className='cross'></div></button>
               <button className="button" style={{backgroundColor: buttonShownColour(11)}}><div className='cross'></div></button>
               <button className="button" style={{backgroundColor: buttonShownColour(12)}}><div className='cross'></div></button>
-              <Typography> First finger line</Typography>
+              {!isSmallScreen ? <Typography> First finger line</Typography> : <Typography> 1st finger</Typography>}
 
           </Grid>
           <Grid container item direction="row">
@@ -76,7 +76,7 @@ const RevealForm = (props) => {
               <button className="button" style={{backgroundColor: buttonShownColour(22)}}><div className='cross'></div></button>
               <button className="button" style={{backgroundColor: buttonShownColour(23)}}><div className='cross'></div></button>
               <button className="button" style={{backgroundColor: buttonShownColour(24)}}><div className='cross'></div></button>
-              <Typography> Third finger line</Typography>
+              {!isSmallScreen ? <Typography> Third finger line</Typography> : <Typography> 3rd finger</Typography>}
       
           </Grid>
           <Grid container item direction="row">

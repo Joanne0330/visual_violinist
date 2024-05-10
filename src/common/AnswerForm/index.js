@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Grid, Typography, Select, FormControl, MenuItem, Paper, Fab, Button } from '@mui/material';
+import { Grid, Typography, Select, FormControl, MenuItem, Paper, Fab, Button, OutlinedInput, InputLabel } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
-// import { StylesProvider } from "@material-ui/core/styles";
 import './styles.css';
 
 const AnswerForm = (props) => {
-  const { onSubmit } = props;
+  const { onSubmit, isSmallScreen } = props;
   const [noteBaseName, setNoteBaseName] = useState('');
   const [accidental, setAccidental] = useState('')
   const [chosenString, setChosenString] = useState('');
@@ -38,12 +37,6 @@ const AnswerForm = (props) => {
     onSubmit(noteBaseName, accidental, chosenString, fingering, position);
     onRefresh();
   }
- 
-  // console.log('note base name: ',noteBaseName);
-  // console.log('accidental name: ', accidental)
-  // console.log('chosen string: ', chosenString)
-  // console.log('fingering: ',fingering);
-  // console.log('position: ',position);
 
   return (
     <>
@@ -66,11 +59,13 @@ const AnswerForm = (props) => {
                   :
                     <>
                       <FormControl size="small" fullWidth >
+                      <InputLabel color='secondary'>Name</InputLabel>
                           <Select
                               value={noteBaseName}
                               onChange={onNoteBaseNameChange}
-                              color='success'
+                              color='secondary'
                               style={{marginBottom: '10px'}}
+                              input={<OutlinedInput label="Name" color='secondary' />}
                           >
                             <MenuItem value={'A'}>A</MenuItem>
                             <MenuItem value={'B'}>B</MenuItem>
@@ -82,12 +77,14 @@ const AnswerForm = (props) => {
                           </Select>
                         </FormControl>
                         <FormControl size="small" fullWidth>
+                          <InputLabel color='secondary'>Natural, <em>b</em> or <em>#</em></InputLabel>
                           <Select
                               value={accidental}
                               onChange={onAccidentalChange}
-                              color='success'
+                              color='secondary'
+                              input={<OutlinedInput label="Natural, b or #" color='secondary' />}
                           >
-                            <MenuItem value={''}>natural</MenuItem>
+                            <MenuItem value={''} disabled>natural (default)</MenuItem>
                             <MenuItem value={'b'}><em>b</em></MenuItem>
                             <MenuItem value={'#'}><em>#</em></MenuItem>
                           </Select>
@@ -116,30 +113,34 @@ const AnswerForm = (props) => {
                     :
                       <>
                         <FormControl size="small" fullWidth>
-                            <Select
-                                value={chosenString}
-                                onChange={onStringChange}
-                                color='success'
-                                style={{marginBottom: '10px'}}
-                            >
-                                <MenuItem value={'G'}>G string</MenuItem>
-                                <MenuItem value={'D'}>D string </MenuItem>
-                                <MenuItem value={'A'}>A string</MenuItem>
-                                <MenuItem value={'E'}>E string</MenuItem>
-                            </Select>
+                          <InputLabel color='secondary'>String</InputLabel>
+                          <Select
+                              value={chosenString}
+                              onChange={onStringChange}
+                              color='secondary'
+                              style={{marginBottom: '10px'}}
+                              input={<OutlinedInput label="String" color='secondary' />}
+                          >
+                              <MenuItem value={'G'}>G string</MenuItem>
+                              <MenuItem value={'D'}>D string </MenuItem>
+                              <MenuItem value={'A'}>A string</MenuItem>
+                              <MenuItem value={'E'}>E string</MenuItem>
+                          </Select>
                         </FormControl>
                         <FormControl size="small" fullWidth>
-                            <Select
-                                value={fingering}
-                                onChange={onFingeringChange}
-                                color='success'
-                            >
-                                <MenuItem value={'0'}>0</MenuItem>
-                                <MenuItem value={'1'}>1</MenuItem>
-                                <MenuItem value={'2'}>2</MenuItem>
-                                <MenuItem value={'3'}>3</MenuItem>
-                                <MenuItem value={'4'}>4</MenuItem>
-                            </Select>
+                          <InputLabel color='secondary'>Finger</InputLabel>
+                          <Select
+                              value={fingering}
+                              onChange={onFingeringChange}
+                              color='secondary'
+                              input={<OutlinedInput label="Finger" color='secondary' />}
+                          >
+                              <MenuItem value={'0'}>0</MenuItem>
+                              <MenuItem value={'1'}>1</MenuItem>
+                              <MenuItem value={'2'}>2</MenuItem>
+                              <MenuItem value={'3'}>3</MenuItem>
+                              <MenuItem value={'4'}>4</MenuItem>
+                          </Select>
                         </FormControl>
                       </>
                     }
@@ -176,7 +177,7 @@ const AnswerForm = (props) => {
                       <button className="button" style={{backgroundColor: buttonSelected(10)}} onClick={() => setPosition(10)}><div className='cross'></div></button>
                       <button className="button" style={{backgroundColor: buttonSelected(11)}} onClick={() => setPosition(11)}><div className='cross'></div></button>
                       <button className="button" style={{backgroundColor: buttonSelected(12)}} onClick={() => setPosition(12)}><div className='cross'></div></button>
-                      <Typography> First finger line</Typography>
+                      {!isSmallScreen ? <Typography> First finger line</Typography> : <Typography> 1st finger</Typography> }
 
                   </Grid>
                   <Grid container item direction="row">
@@ -196,7 +197,7 @@ const AnswerForm = (props) => {
                       <button className="button" style={{backgroundColor: buttonSelected(22)}} onClick={() => setPosition(22)}><div className='cross'></div></button>
                       <button className="button" style={{backgroundColor: buttonSelected(23)}} onClick={() => setPosition(23)}><div className='cross'></div></button>
                       <button className="button" style={{backgroundColor: buttonSelected(24)}} onClick={() => setPosition(24)}><div className='cross'></div></button>
-                      <Typography> Third finger line</Typography>
+                      {!isSmallScreen ? <Typography> Third finger line</Typography> : <Typography> 3rd finger</Typography>}
               
                   </Grid>
                   <Grid container item direction="row">
