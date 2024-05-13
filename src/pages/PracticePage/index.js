@@ -44,7 +44,7 @@ const PracticePage = () => {
 
   return(
     <>
-      <h3>This is the Practice Page</h3>
+      <h3 style={{color: 'white', fontFamily: 'fantasy', display: 'flex', justifyContent: 'center'}}>This is the Practice Page Title</h3>
       <PracticeSession isSmallScreen={isSmallScreen} selectedData={selectedData}/>
     </>
   )
