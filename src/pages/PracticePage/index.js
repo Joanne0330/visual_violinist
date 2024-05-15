@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import PracticeSession from "../../common/PracticeSession";
+import './styles.css'
 
 const mockData = [
   {noteImg: "/assets/images/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]}, 
@@ -44,7 +45,7 @@ const PracticePage = () => {
 
   return(
     <>
-      <h3 style={{color: 'white', fontFamily: 'fantasy', display: 'flex', justifyContent: 'center'}}>This is the Practice Page Title</h3>
+      <h3 className='practicePageHeader'>This is the Practice Page Title</h3>
       <PracticeSession isSmallScreen={isSmallScreen} selectedData={selectedData}/>
     </>
   )

@@ -1,5 +1,5 @@
-/* #card {
-    padding: 10px;
-    border-radius: 10px;
-    background-color: "#F5F5F5";
-} */
+.notationCardContent {
+	display: flex; 
+	justify-content: center; 
+	background-color: #DCDCDC
+}

@@ -64,7 +64,7 @@ const AnswerForm = (props) => {
                               value={noteBaseName}
                               onChange={onNoteBaseNameChange}
                               color='secondary'
-                              style={{marginBottom: '10px'}}
+                              className='selectInput'
                               input={<OutlinedInput label="Name" color='secondary' />}
                           >
                             <MenuItem value={'A'}>A</MenuItem>
@@ -118,7 +118,7 @@ const AnswerForm = (props) => {
                               value={chosenString}
                               onChange={onStringChange}
                               color='secondary'
-                              style={{marginBottom: '10px'}}
+                              className='selectInput'
                               input={<OutlinedInput label="String" color='secondary' />}
                           >
                               <MenuItem value={'G'}>G string</MenuItem>

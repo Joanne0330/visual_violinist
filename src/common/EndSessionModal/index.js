@@ -12,13 +12,11 @@ const EndSessionModal = (props) => {
 		isSecondAttemptQuestions,
 		handleRevealAnswers
 	} = props;
-	console.log('SECOND ATTEMPT? ', isSecondAttemptQuestions)
+
   return (
 		<Modal
 			open={isModalOpen}
 			onClose={resetEntireExcercise}
-			// aria-labelledby="modal-modal-title"
-			// aria-describedby="modal-modal-description"
 		>
 			<Card className='modalCard' style={{borderRadius: '15px'}}>
 				<Typography id="modal-modal-title" variant="h6" component="h2">
@@ -39,7 +37,7 @@ const EndSessionModal = (props) => {
 							{isSecondAttemptQuestions ? `You have answered ${wrongAnswers.length} ${wrongAnswers.length === 1 ? 'question' : 'questions'} incorrectly this time round!` : `Your total score is ${(Math.ceil(correctAnswers.length/totalQuestions * 100))}%!`}
 						</Typography>
 						<Typography sx={{ mt: 2 }}>
-							{isSecondAttemptQuestions ? `Would you like to see the answers to those you have answered incorrectly?` : `You have answered ${wrongAnswers.length} ${wrongAnswers.length === 1 ? 'question' : 'questions'} incorrectly, would you like to try ${wrongAnswers.length === 1 ? 'it' : 'them'} again?`}
+							{isSecondAttemptQuestions ? `Would you like to see the answers to those you have answered incorrectly?` : `You have answered ${wrongAnswers.length} ${wrongAnswers.length === 1 ? 'question' : 'questions'} incorrectly, would you like to try ${wrongAnswers.length === 1 ? 'this question' : 'those questions'} again?`}
 						</Typography>
 						<Grid justifyContent="flex-end" direction="row" container>
 							{isSecondAttemptQuestions ? 

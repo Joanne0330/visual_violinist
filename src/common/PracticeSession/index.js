@@ -31,7 +31,7 @@ const PracticeSession = (props) => {
     setDataArray(shuffledArray)
   }, [shuffle, selectedData])
 
-  console.log(dataArray)
+  // console.log(dataArray)
   // console.log(dataArray[dataIndex])
   // console.log(dataArray[dataIndex]?.noteImg)
 
@@ -127,7 +127,7 @@ const PracticeSession = (props) => {
                   image={dataArray[dataIndex].noteImg}
                   title={`note ${dataArray[dataIndex].noteBaseName}${dataArray[dataIndex].accidental}`}
                 />
-                <CardContent style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#DCDCDC'}}>
+                <CardContent className="notationCardContent" >
                   <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/>
                 </CardContent>
               </Card>

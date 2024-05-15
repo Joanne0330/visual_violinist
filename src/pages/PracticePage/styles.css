@@ -1,0 +1,6 @@
+.practicePageHeader {
+	color: white;
+	font-family: fantasy;
+	display: flex; 
+	justify-content: center;
+}
