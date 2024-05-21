@@ -17,18 +17,20 @@
 }
 
 .appFooter {
+	position: relative; 
+	color: white;
+	font-family: fantasy;
+	display: flex;
+	justify-content: center;
 	padding: 10px; 
 	margin-bottom: 0;
 	background-color: pink; 
 	position: fixed; 
 	bottom: 0;
 	width: 100%;
-	color: white;
-	font-family: fantasy;
-	display: flex;
-	justify-content: center;
 }
 
 .contentContainer {
 	padding: 15px;
+	margin-bottom: 35px;
 }

@@ -27,7 +27,7 @@ const PracticePage = () => {
   const [selectedData, setSelectedData] = useState([]);
   useEffect(() => {
     const handleResize = () => {
-      window.innerWidth < 450 ? setIsSmallScreen(true) : setIsSmallScreen(false)
+      window.innerWidth < 850 ? setIsSmallScreen(true) : setIsSmallScreen(false)
 
     };
 
@@ -42,6 +42,8 @@ const PracticePage = () => {
     //TODO: this is the place to decide which key / data to use depending on the URL 
     setSelectedData(mockData)
   }, [setSelectedData])
+
+  console.log(isSmallScreen)
 
   return(
     <>

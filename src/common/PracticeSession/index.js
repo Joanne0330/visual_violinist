@@ -92,7 +92,7 @@ const PracticeSession = (props) => {
 
   return (
     <>
-        <Grid container direction='row'>
+        <Grid container direction='row' spacing={3} justifyContent="space-around">
           <EndSessionModal 
             isModalOpen={isModalOpen}
             correctAnswers={correctAnswers}
@@ -120,10 +120,10 @@ const PracticeSession = (props) => {
             </Alert>
           </Snackbar>
           {!!dataArray.length &&
-            <Grid item >
-              <Card raised sx={{ minWidth: 360, borderRadius:'15px' }}>
+            <Grid item xs={12} sm={6} md={5}>
+              <Card raised sx={{ minWidth: '100%',  borderRadius:'15px' }}>
                 <CardMedia
-                  sx={{ height: 250 }}
+                  sx={{ minHeight: 300}}
                   image={dataArray[dataIndex].noteImg}
                   title={`note ${dataArray[dataIndex].noteBaseName}${dataArray[dataIndex].accidental}`}
                 />
@@ -133,7 +133,7 @@ const PracticeSession = (props) => {
               </Card>
             </Grid>
           }
-          <Grid item>
+          <Grid item xs={12} sm={6} md={7}>
             {isReveal ?
               <RevealForm 
                 dataArray={dataArray} 
