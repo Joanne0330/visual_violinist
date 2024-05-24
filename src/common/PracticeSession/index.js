@@ -120,7 +120,7 @@ const PracticeSession = (props) => {
             </Alert>
           </Snackbar>
           {!!dataArray.length &&
-            <Grid item xs={12} sm={6} md={5}>
+            <Grid item xs={12} sm={6} md={5} lg={4}>
               <Card raised sx={{ minWidth: '100%',  borderRadius:'15px' }}>
                 <CardMedia
                   sx={{ minHeight: 300}}
@@ -133,7 +133,7 @@ const PracticeSession = (props) => {
               </Card>
             </Grid>
           }
-          <Grid item xs={12} sm={6} md={7}>
+          <Grid item xs={12} sm={6} md={5}>
             {isReveal ?
               <RevealForm 
                 dataArray={dataArray} 
