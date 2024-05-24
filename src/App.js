@@ -1,4 +1,4 @@
-import { Grid, Tooltip, IconButton, Avatar } from '@material-ui/core';
+import { Grid, Tooltip, IconButton } from '@material-ui/core';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
