@@ -1,10 +1,10 @@
-import { Grid, Tooltip, IconButton, Menu, MenuItem } from '@material-ui/core';
+import { Grid, Tooltip, IconButton, Menu, MenuItem, Typography } from '@material-ui/core';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 import './styles.css';
 import PracticePage from "./pages/PracticePage";
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import useIsSmallScreen from './hooks/useIsSmallScreen';
 
 const studyList = ['study 1', 'study 2', 'study 3']
@@ -57,7 +57,11 @@ function App() {
           <Grid item >
             {pageIconButtons.map((item, i) => (
               <span key={i}>
-                <Tooltip title={item.pageTitle} key={`menu-tooltip-${i}`}>
+                <Tooltip 
+                  title={<Fragment><Typography color="inherit">{item.pageTitle} </Typography></Fragment>} 
+                  key={`menu-tooltip-${i}`} 
+                  arrow
+                >
                   <IconButton
                     // tabIndex={i}
                     key={`menu-button-${i}`}
