@@ -5,6 +5,10 @@ import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 import './styles.css';
 import PracticePage from "./pages/PracticePage";
 import { useState } from 'react';
+import useIsSmallScreen from './hooks/useIsSmallScreen';
+
+const studyList = ['study 1', 'study 2', 'study 3']
+const practiseList = ['practice 1', 'practice 2', 'practice 3']
 
 const pageIconButtons = [
   {pageTitle: 'Home', buttonIcon: <HomeOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Home'},
@@ -12,14 +16,13 @@ const pageIconButtons = [
   {pageTitle: 'Play and practise', buttonIcon: <MusicNoteOutlinedIcon style={{color: 'white'}} fontSize='large' />, pageControl: 'Practice'},
 ]
 
-const studyList = ['study 1', 'study 2', 'study 3']
-const practiseList = ['practice 1', 'practice 2', 'practice 3']
 
 function App() {
+  const isSmallScreen = useIsSmallScreen();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedMenuButton, setSelectedMenuButton] = useState('')
   const [menuList, setMenuList] = useState([])
   const open = Boolean(anchorEl);
-
 
   const handleRedirect = (page) => {
     console.log('go to page', page)
@@ -30,6 +33,7 @@ function App() {
       const findMenuList = pageControl === 'Study' ? studyList : practiseList
       setMenuList(findMenuList)
       setAnchorEl(event.currentTarget);
+      setSelectedMenuButton(pageControl)
     } else {
       handleRedirect(pageControl)
       setMenuList([])
@@ -37,20 +41,27 @@ function App() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setSelectedMenuButton('')
   };
   return (
     <>
       <div className="appHeader"> 
         <Grid container direction='row' justifyContent='space-between'>
           <Grid item>
-            <h2 className='appTitle'>The Visual Violinist</h2>
+            {isSmallScreen ?
+              <h3 className='appTitle' style={{marginTop: 5}}>The Visual Violinist</h3>
+              :
+              <h1 className='appTitle'>The Visual Violinist</h1>
+            }
           </Grid>
           <Grid item >
             {pageIconButtons.map((item, i) => (
-              <>
+              <span key={i}>
                 <Tooltip title={item.pageTitle} key={`menu-tooltip-${i}`}>
                   <IconButton
+                    // tabIndex={i}
                     key={`menu-button-${i}`}
+                    style={{backgroundColor: selectedMenuButton === item.pageControl ? '#ffb3bf': '', margin: isSmallScreen ? 0 : 5,}}
                     onClick={ e => handleClick(e, item.pageControl)}
                     size="medium"
                     sx={{ ml: 2 }}
@@ -62,7 +73,7 @@ function App() {
                   </IconButton>
                 </Tooltip>
                 <Menu
-                  key={`menu-drawer-${i}`}
+                  key={`menu-list-${i}`}
                   getContentAnchorEl={null}
                   anchorEl={anchorEl}
                   id={item.pageControl}
@@ -104,13 +115,13 @@ function App() {
                     horizontal: 'left',
                   }}
                 >
-                  {menuList.map(course => (
-                    <MenuItem onClick={handleClose} key={`menulist-${course}`}>
+                  {menuList.map((course, index) => (
+                    <MenuItem onClick={handleClose} key={`menu-list-item-${index}`}>
                       {course}
                     </MenuItem>
                   ))}
                 </Menu>
-              </>              
+              </span>              
             ))}
           </Grid>
         </Grid>
