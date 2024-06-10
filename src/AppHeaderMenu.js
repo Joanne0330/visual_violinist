@@ -5,6 +5,7 @@ import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 import { useState, Fragment } from 'react';
 import useIsSmallScreen from './hooks/useIsSmallScreen';
+import { useNavigate } from 'react-router-dom';
 
 
 const studyList = ['study 1', 'study 2', 'study 3']
@@ -16,15 +17,21 @@ const pageIconButtons = [
   {pageTitle: 'Play and practice', buttonIcon: <MusicNoteOutlinedIcon style={{color: 'white'}} fontSize='large' />, pageControl: 'Practice'},
 ]
 
-const AppHeaderMenu = () => {
+function AppHeaderMenu() {
   const isSmallScreen = useIsSmallScreen();
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedMenuButton, setSelectedMenuButton] = useState('')
   const [menuList, setMenuList] = useState([])
   const open = Boolean(anchorEl);
+  // let location = useLocation();
+  let navigate = useNavigate();
 
   const handleRedirect = (page) => {
     console.log('go to page', page)
+    if(page === 'Home') {
+      navigate('')
+
+    }
   }
 
   const handleClick = (event, pageControl) => {
