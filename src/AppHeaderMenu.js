@@ -8,8 +8,18 @@ import useIsSmallScreen from './hooks/useIsSmallScreen';
 import { useNavigate } from 'react-router-dom';
 
 
-const studyList = ['study 1', 'study 2', 'study 3']
-const practiseList = ['practice 1', 'practice 2', 'practice 3']
+const studyList = [
+  {name: 'Learn: C Major - all natural', url: '/learn/c_major'},
+  {name: 'Learn: G Major - 1 sharp', url: '/learn/g_major'},
+  {name: 'Learn: F Major - 1 flat', url: '/learn/f_major'},
+  {name: 'Learn: D Major - 2 sharps', url: '/learn/d_major'},
+];
+const practiseList = [
+  {name: 'Practice: C Major - all natural', url: '/practice/c_major'},
+  {name: 'Practice: G Major - 1 sharp', url: '/practice/g_major'},
+  {name: 'Practice: F Major - 1 flat', url: '/practice/f_major'},
+  {name: 'Practice: D Major - 2 sharps', url: '/practice/d_major'},
+];
 
 const pageIconButtons = [
   {pageTitle: 'Home', buttonIcon: <HomeOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Home'},
@@ -23,16 +33,10 @@ function AppHeaderMenu() {
   const [selectedMenuButton, setSelectedMenuButton] = useState('')
   const [menuList, setMenuList] = useState([])
   const open = Boolean(anchorEl);
-  // let location = useLocation();
   let navigate = useNavigate();
 
-  const handleRedirect = (page) => {
-    console.log('go to page', page)
-    if(page === 'Home') {
-      navigate('')
 
-    }
-  }
+  const handleRedirect = (redirectURL) => navigate(redirectURL)
 
   const handleClick = (event, pageControl) => {
     if(pageControl === 'Study' || pageControl === 'Practice') {
@@ -41,7 +45,7 @@ function AppHeaderMenu() {
       setAnchorEl(event.currentTarget);
       setSelectedMenuButton(pageControl)
     } else {
-      handleRedirect(pageControl)
+      handleRedirect('')
       setMenuList([])
     }
   };
@@ -126,8 +130,8 @@ function AppHeaderMenu() {
                 }}
               >
                 {menuList.map((course, index) => (
-                  <MenuItem onClick={handleClose} key={`menu-list-item-${index}`}>
-                    {course}
+                  <MenuItem onClick={() => handleRedirect(course.url)} key={`menu-list-item-${index}`}>
+                    {course.name}
                   </MenuItem>
                 ))}
               </Menu>
