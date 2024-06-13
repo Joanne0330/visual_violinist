@@ -32,8 +32,14 @@ const PracticePage = () => {
   // console.log(mockData)
   return(
     <>
-      <h3 className='practicePageHeader'>{practiceData[location.pathname].practiceTitle}</h3>
-      <PracticeSession isSmallScreen={isSmallScreen} selectedData={practiceData[location.pathname].practiceData} path={location.pathname}/>
+      {!practiceData[location.pathname] ?
+        <h1 style={{color: 'white'}}>Future Error Template</h1>
+        :
+        <>
+          <h3 className='practicePageHeader'>{practiceData[location.pathname].practiceTitle}</h3>
+          <PracticeSession isSmallScreen={isSmallScreen} selectedData={practiceData[location.pathname].practiceData} path={location.pathname}/>
+        </>
+      }
     </>
   )
 }
