@@ -20,6 +20,10 @@ const practiseList = [
   {name: 'Practice: F Major - 1 flat', url: '/practice/f_major'},
   {name: 'Practice: D Major - 2 sharps', url: '/practice/d_major'},
   {name: 'Practice: Bb Major - 2 flats', url: '/practice/b_flat_major'},
+  {name: 'Practice: A Major - 3 sharps', url: '/practice/a_major'},
+  {name: 'Practice: Eb Major - 3 flats', url: '/practice/e_flat_major'},
+  {name: 'Practice: E Major - 4 sharps', url: '/practice/e_major'},
+  {name: 'Practice: Ab Major - 4 flats', url: '/practice/a_flat_major'},
 ];
 
 const pageIconButtons = [
@@ -96,7 +100,7 @@ function AppHeaderMenu() {
                 onClose={handleClose}
                 onClick={handleClose}
                 PaperProps={{
-                  elevation: 0,
+                  elevation: 4,
                   sx: {
                     overflow: 'visible',
                     filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',

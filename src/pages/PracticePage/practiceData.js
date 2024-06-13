@@ -74,7 +74,7 @@ const practiceData = {
 	"/practice/d_major": {
 		isPractice: true,
 		practiceTitle: "Let's practice D Major",
-		subText: 'When there are sharps: F# and C#',
+		subText: 'When there are 2 sharps: F# and C#',
 		practiceData: [
 			{noteImg: "/assets/images/singleNotes/low_G.png" , noteBaseName: 'G', accidental: '', chosenString: ['G'], fingering: ['0'], position: [1]},
 			{noteImg: "/assets/images/singleNotes/low_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['G'], fingering: ['1'], position: [9]},
@@ -119,7 +119,102 @@ const practiceData = {
 			{noteImg: "/assets/images/singleNotes/high_B_flat.png" , noteBaseName: 'B', accidental: 'b', chosenString: ['E'], fingering: ['4'], position: [28]}
 		]
 	},
-
+	"/practice/a_major": {
+		isPractice: true,
+		practiceTitle: "Let's practice A Major",
+		subText: 'When there are 3 sharps: F#, C# and G#',
+		practiceData: [
+			{noteImg: "/assets/images/singleNotes/low_G_sharp.png" , noteBaseName: 'G', accidental: '#', chosenString: ['G'], fingering: ['1'], position: [5]},
+			{noteImg: "/assets/images/singleNotes/low_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['G'], fingering: ['1'], position: [9]},
+			{noteImg: "/assets/images/singleNotes/low_B.png" , noteBaseName: 'B', accidental: '', chosenString: ['G'], fingering: ['2'], position: [17]},
+			{noteImg: "/assets/images/singleNotes/low_C_sharp.png" , noteBaseName: 'C', accidental: '#', chosenString: ['G'], fingering: ['3'], position: [25]},
+			{noteImg: "/assets/images/singleNotes/low_D.png" , noteBaseName: 'D', accidental: '', chosenString: ['D', 'G'], fingering: ['0', '4'], position: [2, 29]},
+			{noteImg: "/assets/images/singleNotes/mid_E.png" , noteBaseName: 'E', accidental: '', chosenString: ['D'], fingering: ['1'], position: [10]},
+			{noteImg: "/assets/images/singleNotes/mid_F_sharp.png" , noteBaseName: 'F', accidental: '#', chosenString: ['D'], fingering: ['2'], position: [18]},
+			{noteImg: "/assets/images/singleNotes/mid_G_sharp.png" , noteBaseName: 'G', accidental: '#', chosenString: ['D'], fingering: ['3'], position: [26]},
+			{noteImg: "/assets/images/singleNotes/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]},
+			{noteImg: "/assets/images/singleNotes/mid_B.png" , noteBaseName: 'B', accidental: '', chosenString: ['A'], fingering: ['1'], position: [11]},
+			{noteImg: "/assets/images/singleNotes/mid_C_sharp.png" , noteBaseName: 'C', accidental: '#', chosenString: ['A'], fingering: ['2'], position: [19]},
+			{noteImg: "/assets/images/singleNotes/mid_D.png" , noteBaseName: 'D', accidental: '', chosenString: ['A'], fingering: ['3'], position: [23]},
+			{noteImg: "/assets/images/singleNotes/high_E.png" , noteBaseName: 'E', accidental: '', chosenString: ['E', 'A'], fingering: ['0', '4'], position: [4, 31]},
+			{noteImg: "/assets/images/singleNotes/high_F_sharp.png" , noteBaseName: 'F', accidental: '#', chosenString: ['E'], fingering: ['1'], position: [12]},
+			{noteImg: "/assets/images/singleNotes/high_G_sharp.png" , noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]},
+			{noteImg: "/assets/images/singleNotes/high_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['E'], fingering: ['3'], position: [24]},
+			{noteImg: "/assets/images/singleNotes/high_B.png" , noteBaseName: 'B', accidental: '', chosenString: ['E'], fingering: ['4'], position: [32]}
+		]
+	},
+	"/practice/e_flat_major": {
+		isPractice: true,
+		practiceTitle: "Let's practice Eb Major",
+		subText: 'When there are 3 flats: Bb, Eb and Ab',
+		practiceData: [
+			{noteImg: "/assets/images/singleNotes/low_G.png" , noteBaseName: 'G', accidental: '', chosenString: ['G'], fingering: ['0'], position: [1]},
+			{noteImg: "/assets/images/singleNotes/low_A_flat.png" , noteBaseName: 'A', accidental: 'b', chosenString: ['G'], fingering: ['1'], position: [5]},
+			{noteImg: "/assets/images/singleNotes/low_B_flat.png" , noteBaseName: 'B', accidental: 'b', chosenString: ['G'], fingering: ['2'], position: [13]},
+			{noteImg: "/assets/images/singleNotes/low_C.png" , noteBaseName: 'C', accidental: '', chosenString: ['G'], fingering: ['3'], position: [21]},
+			{noteImg: "/assets/images/singleNotes/low_D.png" , noteBaseName: 'D', accidental: '', chosenString: ['D', 'G'], fingering: ['0', '4'], position: [2, 29]},
+			{noteImg: "/assets/images/singleNotes/mid_E_flat.png" , noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
+			{noteImg: "/assets/images/singleNotes/mid_F.png" , noteBaseName: 'F', accidental: '', chosenString: ['D'], fingering: ['2'], position: [14]},
+			{noteImg: "/assets/images/singleNotes/mid_G.png" , noteBaseName: 'G', accidental: '', chosenString: ['D'], fingering: ['3'], position: [22]},
+			{noteImg: "/assets/images/singleNotes/mid_A_flat.png" , noteBaseName: 'A', accidental: 'b', chosenString: ['D'], fingering: ['4'], position: [26]},
+			{noteImg: "/assets/images/singleNotes/mid_B_flat.png" , noteBaseName: 'B', accidental: 'b', chosenString: ['A'], fingering: ['1'], position: [7]},
+			{noteImg: "/assets/images/singleNotes/mid_C.png" , noteBaseName: 'C', accidental: '', chosenString: ['A'], fingering: ['2'], position: [15]},
+			{noteImg: "/assets/images/singleNotes/mid_D.png" , noteBaseName: 'D', accidental: '', chosenString: ['A'], fingering: ['3'], position: [23]},
+			{noteImg: "/assets/images/singleNotes/high_E_flat.png" , noteBaseName: 'E', accidental: 'b', chosenString: ['A'], fingering: ['4'], position: [27]},
+			{noteImg: "/assets/images/singleNotes/high_F.png" , noteBaseName: 'F', accidental: '', chosenString: ['E'], fingering: ['1'], position: [8]},
+			{noteImg: "/assets/images/singleNotes/high_G.png" , noteBaseName: 'G', accidental: '', chosenString: ['E'], fingering: ['2'], position: [16]},
+			{noteImg: "/assets/images/singleNotes/high_A_flat.png" , noteBaseName: 'A', accidental: 'b', chosenString: ['E'], fingering: ['3'], position: [20]},
+			{noteImg: "/assets/images/singleNotes/high_B_flat.png" , noteBaseName: 'B', accidental: 'b', chosenString: ['E'], fingering: ['4'], position: [28]}
+		]
+	},
+	"/practice/e_major": {
+		isPractice: true,
+		practiceTitle: "Let's practice E Major",
+		subText: 'When there are 4 sharps: F#, C#, G# and D#',
+		practiceData: [
+			{noteImg: "/assets/images/singleNotes/low_G_sharp.png" , noteBaseName: 'G', accidental: '#', chosenString: ['G'], fingering: ['1'], position: [5]},
+			{noteImg: "/assets/images/singleNotes/low_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['G'], fingering: ['1'], position: [9]},
+			{noteImg: "/assets/images/singleNotes/low_B.png" , noteBaseName: 'B', accidental: '', chosenString: ['G'], fingering: ['2'], position: [17]},
+			{noteImg: "/assets/images/singleNotes/low_C_sharp.png" , noteBaseName: 'C', accidental: '#', chosenString: ['G'], fingering: ['3'], position: [25]},
+			{noteImg: "/assets/images/singleNotes/low_D_sharp.png" , noteBaseName: 'D', accidental: '#', chosenString: ['D'], fingering: ['1'], position: [6]},
+			{noteImg: "/assets/images/singleNotes/mid_E.png" , noteBaseName: 'E', accidental: '', chosenString: ['D'], fingering: ['1'], position: [10]},
+			{noteImg: "/assets/images/singleNotes/mid_F_sharp.png" , noteBaseName: 'F', accidental: '#', chosenString: ['D'], fingering: ['2'], position: [18]},
+			{noteImg: "/assets/images/singleNotes/mid_G_sharp.png" , noteBaseName: 'G', accidental: '#', chosenString: ['D'], fingering: ['3'], position: [26]},
+			{noteImg: "/assets/images/singleNotes/mid_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['A', 'D'], fingering: ['0', '4'], position: [3, 30]},
+			{noteImg: "/assets/images/singleNotes/mid_B.png" , noteBaseName: 'B', accidental: '', chosenString: ['A'], fingering: ['1'], position: [11]},
+			{noteImg: "/assets/images/singleNotes/mid_C_sharp.png" , noteBaseName: 'C', accidental: '#', chosenString: ['A'], fingering: ['2'], position: [19]},
+			{noteImg: "/assets/images/singleNotes/mid_D_sharp.png" , noteBaseName: 'D', accidental: '#', chosenString: ['A'], fingering: ['3'], position: [27]},
+			{noteImg: "/assets/images/singleNotes/high_E.png" , noteBaseName: 'E', accidental: '', chosenString: ['E', 'A'], fingering: ['0', '4'], position: [4, 31]},
+			{noteImg: "/assets/images/singleNotes/high_F_sharp.png" , noteBaseName: 'F', accidental: '#', chosenString: ['E'], fingering: ['1'], position: [12]},
+			{noteImg: "/assets/images/singleNotes/high_G_sharp.png" , noteBaseName: 'G', accidental: '#', chosenString: ['E'], fingering: ['2'], position: [20]},
+			{noteImg: "/assets/images/singleNotes/high_A.png" , noteBaseName: 'A', accidental: '', chosenString: ['E'], fingering: ['3'], position: [24]},
+			{noteImg: "/assets/images/singleNotes/high_B.png" , noteBaseName: 'B', accidental: '', chosenString: ['E'], fingering: ['4'], position: [32]}
+		]
+	},
+	"/practice/a_flat_major": {
+		isPractice: true,
+		practiceTitle: "Let's practice Ab Major",
+		subText: 'When there are 4 flats: Bb, Eb, Ab and Db',
+		practiceData: [
+			{noteImg: "/assets/images/singleNotes/low_G.png" , noteBaseName: 'G', accidental: '', chosenString: ['G'], fingering: ['0'], position: [1]},
+			{noteImg: "/assets/images/singleNotes/low_A_flat.png" , noteBaseName: 'A', accidental: 'b', chosenString: ['G'], fingering: ['1'], position: [5]},
+			{noteImg: "/assets/images/singleNotes/low_B_flat.png" , noteBaseName: 'B', accidental: 'b', chosenString: ['G'], fingering: ['2'], position: [13]},
+			{noteImg: "/assets/images/singleNotes/low_C.png" , noteBaseName: 'C', accidental: '', chosenString: ['G'], fingering: ['3'], position: [21]},
+			{noteImg: "/assets/images/singleNotes/low_D_flat.png" , noteBaseName: 'D', accidental: 'b', chosenString: ['G'], fingering: ['4'], position: [25]},
+			{noteImg: "/assets/images/singleNotes/mid_E_flat.png" , noteBaseName: 'E', accidental: 'b', chosenString: ['D'], fingering: ['1'], position: [6]},
+			{noteImg: "/assets/images/singleNotes/mid_F.png" , noteBaseName: 'F', accidental: '', chosenString: ['D'], fingering: ['2'], position: [14]},
+			{noteImg: "/assets/images/singleNotes/mid_G.png" , noteBaseName: 'G', accidental: '', chosenString: ['D'], fingering: ['3'], position: [22]},
+			{noteImg: "/assets/images/singleNotes/mid_A_flat.png" , noteBaseName: 'A', accidental: 'b', chosenString: ['D'], fingering: ['4'], position: [26]},
+			{noteImg: "/assets/images/singleNotes/mid_B_flat.png" , noteBaseName: 'B', accidental: 'b', chosenString: ['A'], fingering: ['1'], position: [7]},
+			{noteImg: "/assets/images/singleNotes/mid_C.png" , noteBaseName: 'C', accidental: '', chosenString: ['A'], fingering: ['2'], position: [15]},
+			{noteImg: "/assets/images/singleNotes/mid_D_flat.png" , noteBaseName: 'D', accidental: 'b', chosenString: ['A'], fingering: ['3'], position: [19]},
+			{noteImg: "/assets/images/singleNotes/high_E_flat.png" , noteBaseName: 'E', accidental: 'b', chosenString: ['A'], fingering: ['4'], position: [27]},
+			{noteImg: "/assets/images/singleNotes/high_F.png" , noteBaseName: 'F', accidental: '', chosenString: ['E'], fingering: ['1'], position: [8]},
+			{noteImg: "/assets/images/singleNotes/high_G.png" , noteBaseName: 'G', accidental: '', chosenString: ['E'], fingering: ['2'], position: [16]},
+			{noteImg: "/assets/images/singleNotes/high_A_flat.png" , noteBaseName: 'A', accidental: 'b', chosenString: ['E'], fingering: ['3'], position: [20]},
+			{noteImg: "/assets/images/singleNotes/high_B_flat.png" , noteBaseName: 'B', accidental: 'b', chosenString: ['E'], fingering: ['4'], position: [28]}
+		]
+	},
 
 }
 

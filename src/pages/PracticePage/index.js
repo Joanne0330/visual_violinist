@@ -15,8 +15,8 @@ const PracticePage = () => {
         <h1 style={{color: 'white'}}>Future Error Template</h1>
         :
         <>
-          <h2 className='practicePageHeader'>{practiceData[location.pathname].practiceTitle}</h2>
-          <h4 className='practicePageHeader'>{practiceData[location.pathname].subText}</h4>
+          <h2 className='practicePageText'>{practiceData[location.pathname].practiceTitle}</h2>
+          <h4 className='practicePageText'>{practiceData[location.pathname].subText}</h4>
           <PracticeSession isSmallScreen={isSmallScreen} selectedData={practiceData[location.pathname].practiceData} path={location.pathname}/>
         </>
       }

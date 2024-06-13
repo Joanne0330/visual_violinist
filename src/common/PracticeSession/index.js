@@ -32,10 +32,6 @@ const PracticeSession = (props) => {
     setDataArray(shuffledArray)
   }, [shuffle, selectedData, path])
 
-  // console.log(dataArray)
-  // console.log(dataArray[dataIndex])
-  // console.log(dataArray[dataIndex]?.noteImg)
-
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
     // Step 1 first compare if the data is correct
     const question = dataArray[dataIndex]
