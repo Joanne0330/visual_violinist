@@ -19,6 +19,7 @@ const practiseList = [
   {name: 'Practice: G Major - 1 sharp', url: '/practice/g_major'},
   {name: 'Practice: F Major - 1 flat', url: '/practice/f_major'},
   {name: 'Practice: D Major - 2 sharps', url: '/practice/d_major'},
+  {name: 'Practice: Bb Major - 2 flats', url: '/practice/b_flat_major'},
 ];
 
 const pageIconButtons = [

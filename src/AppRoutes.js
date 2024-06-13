@@ -1,5 +1,4 @@
 import {
-  // BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
@@ -7,13 +6,11 @@ import PracticePage from "./pages/PracticePage";
 
 const AppRoutes = () => {
 	return (
-		// <Router>
-			<Routes>
-				<Route exact path="/" element={<Home/>}/>
-				<Route path="/learn/:id" element={<Learn/>}/>
-				<Route path="/practice/:id" element={<PracticePage />} />
-			</Routes>
-		// </Router>
+		<Routes>
+			<Route exact path="/" element={<Home/>}/>
+			<Route path="/learn/:id" element={<Learn/>}/>
+			<Route path="/practice/:id" element={<PracticePage />} />
+		</Routes>
 	);
 }
 
