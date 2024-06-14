@@ -56,7 +56,7 @@ const RevealForm = (props) => {
               <button className="button" style={{backgroundColor: buttonShownColour(10)}}><div className='cross'></div></button>
               <button className="button" style={{backgroundColor: buttonShownColour(11)}}><div className='cross'></div></button>
               <button className="button" style={{backgroundColor: buttonShownColour(12)}}><div className='cross'></div></button>
-              {!isSmallScreen ? <Typography> First finger line</Typography> : <Typography> 1st finger</Typography>}
+              {!isSmallScreen ? <Typography> First finger line</Typography> : <Typography> 1st</Typography>}
 
           </Grid>
           <Grid container item direction="row">
@@ -76,7 +76,7 @@ const RevealForm = (props) => {
               <button className="button" style={{backgroundColor: buttonShownColour(22)}}><div className='cross'></div></button>
               <button className="button" style={{backgroundColor: buttonShownColour(23)}}><div className='cross'></div></button>
               <button className="button" style={{backgroundColor: buttonShownColour(24)}}><div className='cross'></div></button>
-              {!isSmallScreen ? <Typography> Third finger line</Typography> : <Typography> 3rd finger</Typography>}
+              {!isSmallScreen ? <Typography> Third finger line</Typography> : <Typography> 3rd</Typography>}
       
           </Grid>
           <Grid container item direction="row">

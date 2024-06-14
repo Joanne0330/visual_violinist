@@ -1,0 +1,26 @@
+.pageNotFoundContainer {
+	display: flex;
+	justify-content: center;
+	margin-top: 10%;
+}
+
+.pageNotFoundCard {
+	max-width: 60%;
+	padding: 30px;
+}
+
+.pageNotFoundIconContainer {
+	padding-top: 20px;
+	display: flex; 
+	justify-content: center;
+}
+
+.pageNotFoundText {
+	display: flex; 
+	justify-content: center;
+}
+
+.pageNotFoundSubTextContainer {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

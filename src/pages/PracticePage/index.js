@@ -2,17 +2,17 @@ import './styles.css';
 import PracticeSession from "../../common/PracticeSession";
 import useIsSmallScreen from '../../hooks/useIsSmallScreen';
 import { useLocation } from 'react-router-dom';
-import  practiceData from './practiceData'
+import  practiceData from './practiceData';
+import PageNotFound from '../../common/PageNotFound';
 
 const PracticePage = () => {
   const isSmallScreen = useIsSmallScreen();
   const location = useLocation();
-  // TODO: In case url manually installed incorrectly, need to put an error page, consider putting in loading as well
-  // console.log(mockData)
+
   return(
     <>
       {!practiceData[location.pathname] ?
-        <h1 style={{color: 'white'}}>Future Error Template</h1>
+        <PageNotFound />
         :
         <>
           <h2 className='practicePageText'>{practiceData[location.pathname].practiceTitle}</h2>

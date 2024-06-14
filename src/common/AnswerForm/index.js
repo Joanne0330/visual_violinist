@@ -177,7 +177,7 @@ const AnswerForm = (props) => {
                       <button className="button" style={{backgroundColor: buttonSelected(10)}} onClick={() => setPosition(10)}><div className='cross'></div></button>
                       <button className="button" style={{backgroundColor: buttonSelected(11)}} onClick={() => setPosition(11)}><div className='cross'></div></button>
                       <button className="button" style={{backgroundColor: buttonSelected(12)}} onClick={() => setPosition(12)}><div className='cross'></div></button>
-                      {!isSmallScreen ? <Typography> First finger line</Typography> : <Typography> 1st finger</Typography> }
+                      {!isSmallScreen ? <Typography> First finger line</Typography> : <Typography style={{wordBreak: 'break-all'}}> 1st </Typography> }
 
                   </Grid>
                   <Grid container item direction="row">
@@ -197,7 +197,7 @@ const AnswerForm = (props) => {
                       <button className="button" style={{backgroundColor: buttonSelected(22)}} onClick={() => setPosition(22)}><div className='cross'></div></button>
                       <button className="button" style={{backgroundColor: buttonSelected(23)}} onClick={() => setPosition(23)}><div className='cross'></div></button>
                       <button className="button" style={{backgroundColor: buttonSelected(24)}} onClick={() => setPosition(24)}><div className='cross'></div></button>
-                      {!isSmallScreen ? <Typography> Third finger line</Typography> : <Typography> 3rd finger</Typography>}
+                      {!isSmallScreen ? <Typography> Third finger line</Typography> : <Typography> 3rd </Typography>}
               
                   </Grid>
                   <Grid container item direction="row">
