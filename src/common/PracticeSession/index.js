@@ -86,6 +86,7 @@ const PracticeSession = (props) => {
     setCorrectAnswers([]);
     setIsReveal(false)
   },[shuffle, selectedData])
+  console.log(isSmallScreen)
 
   return (
     <>
@@ -120,7 +121,7 @@ const PracticeSession = (props) => {
             <Grid item xs={12} sm={6} md={5} lg={4}>
               <Card raised sx={{ minWidth: '100%',  borderRadius:'15px' }}>
                 <CardMedia
-                  sx={{ minHeight: 300}}
+                  sx={{ minHeight: isSmallScreen ? 300 : 400}}
                   image={dataArray[dataIndex].noteImg}
                   title={`note ${dataArray[dataIndex].noteBaseName}${dataArray[dataIndex].accidental}`}
                 />

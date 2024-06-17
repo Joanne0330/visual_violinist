@@ -12,7 +12,7 @@ function App() {
           <AppRoutes />
         </div>
       </div>
-      <h5 className="appFooter">© 2024 Joanne Chen. All rights reserved.</h5>
+      <h5 className="appFooter">Copyright © 2024 Joanne Chen. All rights reserved.</h5>
     </>
   );
 }
