@@ -15,7 +15,7 @@ function App() {
           <p style={{marginRight: 15}}>Wallpaper Credit: Freepik</p>
         </div> */}
       </div>
-      <h5 className="appFooter">Copyright © 2024 Joanne Chen. All rights reserved.</h5>
+      <h5 className="appFooter">© 2024 Joanne Chen. All rights reserved.</h5>
     </>
   );
 }
