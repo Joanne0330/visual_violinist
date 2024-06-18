@@ -1,15 +1,10 @@
 import { Grid, Typography, Paper, Button } from '@mui/material';
 import './styles.css';
+import FirstPositionFingerboard from '../FirstPositionFingerboard';
 
 const RevealForm = (props) => {
   const { dataArray, dataIndex, revealNextAnswer, revealPreviousAnswer, resetEntireExcercise, isSmallScreen } = props;
   
-  const buttonShownColour = (num) => {
-      if(num === dataArray[dataIndex].position[0]) {
-          return '#B22222';
-      } 
-  }
-
   return (
     <>
       <Paper elevation={8} className="answerForm" style={{borderRadius:'15px'}}>
@@ -36,61 +31,12 @@ const RevealForm = (props) => {
           </Grid>
                  
           {/**Position area */}
-          <Typography id="instructionText">You can find this note here on the fingerboard:</Typography>
-          <Grid container item direction="row">
-              <button className="buttonOpen" style={{backgroundColor: buttonShownColour(1)}}>G</button>
-              <button className="buttonOpen" style={{backgroundColor: buttonShownColour(2)}}>D</button>
-              <button className="buttonOpen" style={{backgroundColor: buttonShownColour(3)}}>A</button>
-              <button className="buttonOpen" style={{backgroundColor: buttonShownColour(4)}}>E</button>
-          
-          </Grid>
-          <Grid container item direction="row">
-              <button className="button" style={{backgroundColor: buttonShownColour(5)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(6)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(7)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(8)}}><div className='verticalLine'></div></button>
-          
-          </Grid>
-          <Grid container item direction="row">
-              <button className="button" style={{backgroundColor: buttonShownColour(9)}}><div className='cross'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(10)}}><div className='cross'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(11)}}><div className='cross'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(12)}}><div className='cross'></div></button>
-              {!isSmallScreen ? <Typography> First finger line</Typography> : <Typography> 1st</Typography>}
-
-          </Grid>
-          <Grid container item direction="row">
-              <button className="button" style={{backgroundColor: buttonShownColour(13)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(14)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(15)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(16)}}><div className='verticalLine'></div></button>
-          </Grid>           
-          <Grid container item direction="row">
-              <button className="button" style={{backgroundColor: buttonShownColour(17)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(18)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(19)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(20)}}><div className='verticalLine'></div></button>
-          </Grid>
-          <Grid container item direction="row">
-              <button className="button" style={{backgroundColor: buttonShownColour(21)}}><div className='cross'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(22)}}><div className='cross'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(23)}}><div className='cross'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(24)}}><div className='cross'></div></button>
-              {!isSmallScreen ? <Typography> Third finger line</Typography> : <Typography> 3rd</Typography>}
-      
-          </Grid>
-          <Grid container item direction="row">
-              <button className="button" style={{backgroundColor: buttonShownColour(25)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(26)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(27)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(28)}}><div className='verticalLine'></div></button>
-          </Grid>
-          <Grid container item direction="row">
-              <button className="button" style={{backgroundColor: buttonShownColour(29)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(30)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(31)}}><div className='verticalLine'></div></button>
-              <button className="button" style={{backgroundColor: buttonShownColour(32)}}><div className='verticalLine'></div></button>
-          </Grid>
+          <FirstPositionFingerboard 
+            position={dataArray[dataIndex].position[0]}
+            setPosition={null}
+            isSmallScreen={isSmallScreen}
+            isReveal={true}
+          />
           <Grid justifyContent="space-between" direction="row" container>
             <Button  id='nextButton' variant="contained" color="secondary" disabled={dataIndex === 0} onClick={revealPreviousAnswer}>
               Back
