@@ -16,6 +16,13 @@
   min-height: 100vh;
 }
 
+/* .wallPaperCredit {
+	color: white; 
+	font-family: fantasy;
+	width: 100%;
+	text-align: right;
+} */
+
 .appFooter {
 	position: relative; 
 	color: white;

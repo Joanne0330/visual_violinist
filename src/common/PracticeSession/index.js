@@ -27,9 +27,13 @@ const PracticeSession = (props) => {
   }, []); 
 
   useEffect(() => {
+    setDataArray([])
     const shuffledArray = shuffle(selectedData); 
-    setDataIndex(0)
-    setDataArray(shuffledArray)
+    setDataIndex(0);
+    setIsSecondAttemptQuestions(false);
+    setIsReveal(false);
+    setDataArray(shuffledArray);
+
   }, [shuffle, selectedData, path])
 
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
@@ -86,7 +90,6 @@ const PracticeSession = (props) => {
     setCorrectAnswers([]);
     setIsReveal(false)
   },[shuffle, selectedData])
-  console.log(isSmallScreen)
 
   return (
     <>
