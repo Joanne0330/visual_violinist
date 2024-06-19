@@ -18,7 +18,7 @@ const EndSessionModal = (props) => {
 			open={isModalOpen}
 			onClose={resetEntireExcercise}
 		>
-			<Card className='modalCard' style={{borderRadius: '15px'}}>
+			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px'}}>
 				<Typography id="modal-modal-title" variant="h6" component="h2">
 					End of study session
 				</Typography>
@@ -39,7 +39,7 @@ const EndSessionModal = (props) => {
 						<Typography sx={{ mt: 2 }}>
 							{isSecondAttemptQuestions ? `Would you like to see the answers to those you have answered incorrectly?` : `You have answered ${wrongAnswers.length} ${wrongAnswers.length === 1 ? 'question' : 'questions'} incorrectly, would you like to try ${wrongAnswers.length === 1 ? 'this question' : 'those questions'} again?`}
 						</Typography>
-						<Grid justifyContent="flex-end" direction="row" container>
+						<Grid justifyContent="flex-end" direction="row" container style={{marginTop: '10px'}}>
 							{isSecondAttemptQuestions ? 
 								<Button onClick={handleRevealAnswers} id='modalButton' variant="contained" color="secondary">Yes, I want to see the answers</Button>
 								:

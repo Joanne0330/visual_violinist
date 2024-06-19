@@ -37,7 +37,7 @@ const RevealForm = (props) => {
             isSmallScreen={isSmallScreen}
             isReveal={true}
           />
-          <Grid justifyContent="space-between" direction="row" container>
+          <Grid justifyContent="space-between" direction="row" container style={{marginTop: '10px'}}>
             <Button  id='nextButton' variant="contained" color="secondary" disabled={dataIndex === 0} onClick={revealPreviousAnswer}>
               Back
             </Button>
