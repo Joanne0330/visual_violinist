@@ -1,5 +1,6 @@
 import { Typography, Modal, Card, Button, Grid }from '@mui/material';
 import './styles.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const EndSessionModal = (props) => {
 	const { 
@@ -10,8 +11,12 @@ const EndSessionModal = (props) => {
 		handleUseWrongAnswersData,
 		resetEntireExcercise,
 		isSecondAttemptQuestions,
-		handleRevealAnswers
+		handleRevealAnswers,
+		keyName
 	} = props;
+
+	let navigate = useNavigate();
+	const location = useLocation();
 
   return (
 		<Modal
@@ -45,7 +50,10 @@ const EndSessionModal = (props) => {
 								:
 								<Button onClick={handleUseWrongAnswersData} id='modalButton' variant="contained" color="secondary">Yes</Button>
 							}
-							<Button onClick={resetEntireExcercise} id='modalButton' variant="contained" color="secondary">No</Button>
+							<Button onClick={resetEntireExcercise} id='modalButton' variant="contained" color="secondary">No, play again</Button>
+							{wrongAnswers.length > 5 &&	
+							 <Button onClick={() => navigate(location.pathname.replace('practice', 'learn'))} id='modalButton' variant="contained" color="secondary">{`Take me to learn ${keyName} pattern instead`}</Button>
+							 }
 						</Grid>
 					</>
 				}

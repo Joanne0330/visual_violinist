@@ -17,7 +17,12 @@ const PracticePage = () => {
         <>
           <h2 className='practicePageText'>{practiceData[location.pathname].practiceTitle}</h2>
           <h4 className='practicePageText'>{practiceData[location.pathname].subText}</h4>
-          <PracticeSession isSmallScreen={isSmallScreen} selectedData={practiceData[location.pathname].practiceData} path={location.pathname}/>
+          <PracticeSession  
+            isSmallScreen={isSmallScreen} 
+            selectedData={practiceData[location.pathname].practiceData} 
+            path={location.pathname} 
+            keyName={practiceData[location.pathname].practiceTitle.replace("Let's practice ", '')}
+          />
         </>
       }
     </>

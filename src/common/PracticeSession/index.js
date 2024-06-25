@@ -7,7 +7,7 @@ import EndSessionModal from '../EndSessionModal';
 import './styles.css';
 
 const PracticeSession = (props) => {
-  const {isSmallScreen, selectedData, path} = props;
+  const {isSmallScreen, selectedData, path, keyName} = props;
   const [dataArray, setDataArray] = useState([]);
   const [dataIndex, setDataIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState([]);
@@ -103,6 +103,7 @@ const PracticeSession = (props) => {
             resetEntireExcercise={resetEntireExcercise}
             isSecondAttemptQuestions={isSecondAttemptQuestions}
             handleRevealAnswers={handleRevealAnswers}
+            keyName={keyName}
           />
           <Snackbar
             anchorOrigin={{vertical: 'top', horizontal: 'right'}}

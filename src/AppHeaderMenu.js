@@ -5,7 +5,7 @@ import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 import { useState, Fragment } from 'react';
 import useIsSmallScreen from './hooks/useIsSmallScreen';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 
 const studyList = [
@@ -39,6 +39,7 @@ function AppHeaderMenu() {
   const [menuList, setMenuList] = useState([])
   const open = Boolean(anchorEl);
   let navigate = useNavigate();
+  const location = useLocation();
 
 
   const handleRedirect = (redirectURL) => navigate(redirectURL)
@@ -135,7 +136,7 @@ function AppHeaderMenu() {
                 }}
               >
                 {menuList.map((course, index) => (
-                  <MenuItem onClick={() => handleRedirect(course.url)} key={`menu-list-item-${index}`}>
+                  <MenuItem onClick={() => handleRedirect(course.url)} key={`menu-list-item-${index}`} style={{color: course.url === location.pathname ? '#9c27b0' : '' }}>
                     {course.name}
                   </MenuItem>
                 ))}
