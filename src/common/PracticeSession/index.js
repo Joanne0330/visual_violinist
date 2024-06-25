@@ -17,6 +17,9 @@ const PracticeSession = (props) => {
   const [isModalOpen, setIsModalOpen]= useState(false);
   const [isSecondAttemptQuestions, setIsSecondAttemptQuestions] = useState(false);
   const [isReveal, setIsReveal] = useState(false);
+  const [incorrectAnswerMessage, setIncorrectAnswerMessage] = useState('');
+
+  const correctAnswersResponse = ["Correct! Well done!", "Hooray!! You've got this!", "Correct answer! You are on a roll!", "Great answers!" ]
 
   const shuffle = useCallback((array) => { 
     for (let i = array.length - 1; i > 0; i--) { 
@@ -36,21 +39,53 @@ const PracticeSession = (props) => {
 
   }, [shuffle, selectedData, path])
 
+  const getIncorrectAnswersMessage = (noteNameCorrect, fingeringCorrect, positionCorrect) => {
+    let incorrectItems = []
+    if(!noteNameCorrect) {
+      incorrectItems.push(' Name')
+    }
+    if(!fingeringCorrect) {
+      incorrectItems.push(' Fingering')
+    }
+    if(!positionCorrect) {
+      incorrectItems.push(' Finger Placement')
+    }
+
+    let message = '';
+
+    if(incorrectItems.length === 1) {
+      message = `Sorry, the${incorrectItems[0]} was incorrect!`
+    } else {
+     message = 'Sorry, the following were incorrect:'
+     for (let i = 0; i < incorrectItems.length; i++) {
+       if(i === incorrectItems.length - 1) {
+         message += ' and' + incorrectItems[i]
+       } else {
+         message += incorrectItems[i] + ",";
+       }
+     }
+     message += '!'
+    }
+    setIncorrectAnswerMessage(message)
+  }
+
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
     // Step 1 first compare if the data is correct
-    const question = dataArray[dataIndex]
-    const isCorrect = question.noteBaseName === noteBaseName &&
-      question.accidental === accidental &&
-      question.chosenString.some(string => string === chosenString) &&
-      question.fingering.some(f => f === fingering) &&
-      question.position.some(p => p === position)
+    const question = dataArray[dataIndex];
 
-    setIsQuestionCorrect(isCorrect)
+    const noteNameCorrect = question.noteBaseName === noteBaseName && question.accidental === accidental;
+    const fingeringCorrect = question.chosenString.some(string => string === chosenString) && question.fingering.some(f => f === fingering);
+    const positionCorrect = question.position.some(p => p === position)
+
+    const isEverythingCorrect = noteNameCorrect && fingeringCorrect && positionCorrect;
+
+    setIsQuestionCorrect(isEverythingCorrect)
     // Step 2 then push the correct and incorrect data in the designated array 
-    if(isCorrect){
+    if(isEverythingCorrect){
       setCorrectAnswers([...correctAnswers, question])
     } else {
       setWrongAnswers([...wrongAnswers, question])
+      getIncorrectAnswersMessage(noteNameCorrect, fingeringCorrect, positionCorrect)
     }
     // Step 3 Snackbar that tells the user whether it's correct
     setShowSnackbar(true)
@@ -108,7 +143,7 @@ const PracticeSession = (props) => {
           <Snackbar
             anchorOrigin={{vertical: 'top', horizontal: 'right'}}
             open={showSnackbar}
-            autoHideDuration={3000}
+            autoHideDuration={isQuestionCorrect ? 3000 : 5000}
             onClose={()=> setShowSnackbar(false)}
             
             >
@@ -118,7 +153,7 @@ const PracticeSession = (props) => {
               sx={{ width: '100%' }}
               style={{borderRadius: '10px'}}
             >
-             {!isQuestionCorrect ? 'Sorry, not everything is correct...': 'Correct! Well done!'} 
+             {!isQuestionCorrect ? incorrectAnswerMessage : correctAnswersResponse[Math.floor(Math.random() * correctAnswersResponse.length)]} 
             </Alert>
           </Snackbar>
           {!!dataArray.length &&
