@@ -8,13 +8,14 @@ import useIsSmallScreen from './hooks/useIsSmallScreen';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 
-const studyList = [
+export const learnList = [
   {name: 'Learn: C Major - all natural', url: '/learn/c_major'},
   {name: 'Learn: G Major - 1 sharp', url: '/learn/g_major'},
   {name: 'Learn: F Major - 1 flat', url: '/learn/f_major'},
   {name: 'Learn: D Major - 2 sharps', url: '/learn/d_major'},
 ];
-const practiseList = [
+
+export const practiseList = [
   {name: 'Practice: C Major - all natural', url: '/practice/c_major'},
   {name: 'Practice: G Major - 1 sharp', url: '/practice/g_major'},
   {name: 'Practice: F Major - 1 flat', url: '/practice/f_major'},
@@ -28,7 +29,7 @@ const practiseList = [
 
 const pageIconButtons = [
   {pageTitle: 'Home', buttonIcon: <HomeOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Home'},
-  {pageTitle: 'Learn and study', buttonIcon: <MenuBookOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Study'},
+  {pageTitle: 'Learn', buttonIcon: <MenuBookOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Learn'},
   {pageTitle: 'Play and practice', buttonIcon: <MusicNoteOutlinedIcon style={{color: 'white'}} fontSize='large' />, pageControl: 'Practice'},
 ]
 
@@ -45,8 +46,8 @@ function AppHeaderMenu() {
   const handleRedirect = (redirectURL) => navigate(redirectURL)
 
   const handleClick = (event, pageControl) => {
-    if(pageControl === 'Study' || pageControl === 'Practice') {
-      const findMenuList = pageControl === 'Study' ? studyList : practiseList
+    if(pageControl === 'Learn' || pageControl === 'Practice') {
+      const findMenuList = pageControl === 'Learn' ? learnList : practiseList
       setMenuList(findMenuList)
       setAnchorEl(event.currentTarget);
       setSelectedMenuButton(pageControl)

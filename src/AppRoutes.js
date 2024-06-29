@@ -3,19 +3,17 @@ import {
   Route,
 } from "react-router-dom";
 import PracticePage from "./pages/PracticePage";
+import HomePage from "./pages/HomePage"
+
 
 const AppRoutes = () => {
 	return (
 		<Routes>
-			<Route exact path="/" element={<Home/>}/>
+			<Route exact path="/" element={<HomePage/>}/>
 			<Route path="/learn/:id" element={<Learn/>}/>
 			<Route path="/practice/:id" element={<PracticePage />} />
 		</Routes>
 	);
-}
-
-function Home() {
-  return <h2 style={{color: 'white'}}>Home</h2>;
 }
 
 function Learn() {
