@@ -45,7 +45,7 @@ const HomePage = () => {
 					<Grid container spacing={2} style={{padding: 10}}>
 						{course.courseList.map(item => (
 							<Grid item xs={12} md={6} key={item.name}> 
-							 <Button className="courseButtons" color='secondary' variant='contained'  onClick={() => navigate(item.url)}>{item.name}</Button>
+							 <Button className="courseButtons" style={{	textTransform: 'none'}} color='secondary' variant='contained'  onClick={() => navigate(item.url)}>{item.name}</Button>
 							</Grid>
 						))}
 					</Grid>
