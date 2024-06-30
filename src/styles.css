@@ -1,5 +1,6 @@
 .appHeader {
 	background-color: pink;
+	/* background-color: #9c27b0; */
 }
 
 .appTitle {
@@ -32,6 +33,7 @@
 	padding: 10px; 
 	margin-bottom: 0;
 	background-color: pink; 
+	/* background-color: #9c27b0;  */
 	position: fixed; 
 	bottom: 0;
 	width: 100%;

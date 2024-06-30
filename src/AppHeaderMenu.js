@@ -137,7 +137,11 @@ function AppHeaderMenu() {
                 }}
               >
                 {menuList.map((course, index) => (
-                  <MenuItem onClick={() => handleRedirect(course.url)} key={`menu-list-item-${index}`} style={{color: course.url === location.pathname ? '#9c27b0' : '' }}>
+                  <MenuItem 
+                    onClick={() => handleRedirect(course.url)} 
+                    key={`menu-list-item-${index}`} 
+                    disabled={course.url === location.pathname}
+                  >
                     {course.name}
                   </MenuItem>
                 ))}
