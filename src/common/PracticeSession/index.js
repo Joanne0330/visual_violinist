@@ -30,7 +30,9 @@ const PracticeSession = (props) => {
   }, []); 
 
   useEffect(() => {
-    setDataArray([])
+    setDataArray([]);
+    setCorrectAnswers([]);
+    setWrongAnswers([]);
     const shuffledArray = shuffle(selectedData); 
     setDataIndex(0);
     setIsSecondAttemptQuestions(false);
@@ -125,6 +127,8 @@ const PracticeSession = (props) => {
     setCorrectAnswers([]);
     setIsReveal(false)
   },[shuffle, selectedData])
+  console.log('correct answer', correctAnswers)
+  console.log('wrong answer', wrongAnswers)
 
   return (
     <>
