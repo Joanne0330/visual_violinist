@@ -127,8 +127,6 @@ const PracticeSession = (props) => {
     setCorrectAnswers([]);
     setIsReveal(false)
   },[shuffle, selectedData])
-  console.log('correct answer', correctAnswers)
-  console.log('wrong answer', wrongAnswers)
 
   return (
     <>
