@@ -4,6 +4,7 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import {useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
+import useIsSmallScreen from '../../hooks/useIsSmallScreen';
 
 // learn data which should be moved later
 
@@ -11,9 +12,15 @@ import { useLocation } from 'react-router-dom';
 const LearnPage = () => {
 	const [dataIndex,setDataIndex ] = useState(0);
 	const location = useLocation();
+	const isSmallScreen = useIsSmallScreen();
 	const dataArray = [
 		{learnImg: '/assets/images/learn/piano_keyboard.png', texts: ['this is a piano keyboard111', 'weirdd infor here', 'more weidrd info']},
-		{learnImg: '/assets/images/learn/piano_keyboard2.png', texts: ['this is a piano keyboard', 'let us learn about semitone']}
+		{learnImg: '/assets/images/learn/piano_keyboard2.png', texts: ['this is a piano keyboard', 'let us learn about semitone']},
+		{learnImg: '/assets/images/learn/narrower_photo.png', texts: ['lksjlkjlkjlksj lkjdlkjslkjlkj fslkjlkjlkj', 'soiuso iusoiu fsoisufoiusdf', 'siuyfsiuy siuyiuysi suyisuyi suysiuysiuy siuys iuysiuysiuysf']},
+		{learnImg: '/assets/images/learn/smaller_photo.png', texts: ['lksjlkjlkjlksj lkjdlkjslkjlkj fslkjlkjlkj', 'soiuso iusoiu fsoisufoiusdf', 'siuyfsiuy siuyiuysi suyisuyi suysiuysiuy siuys iuysiuysiuysf']},
+		{learnImg: '/assets/images/learn/small_circles.png', texts: ['lksjlkjlkjlksj lkjdlkjslkjlkj fslkjlkjlkj', 'soiuso iusoiu fsoisufoiusdf', 'siuyfsiuy siuyiuysi suyisuyi suysiuysiuy siuys iuysiuysiuysf']},
+		{learnImg: '/assets/images/learn/big_circles_400.png', texts: ['lksjlkjlkjlksj lkjdlkjslkjlkj fslkjlkjlkj', 'soiuso iusoiu fsoisufoiusdf', 'siuyfsiuy siuyiuysi suyisuyi suysiuysiuy siuys iuysiuysiuysf']},
+		{learnImg: '/assets/images/learn/super_small_circles_100.png', texts: ['lksjlkjlkjlksj lkjdlkjslkjlkj fslkjlkjlkj', 'soiuso iusoiu fsoisufoiusdf', 'siuyfsiuy siuyiuysi suyisuyi suysiuysiuy siuys iuysiuysiuysf']},
 	]
 
 	// TODO: make sure everytime url changes, the data change and set data and index back to zero to prevent error
@@ -27,9 +34,9 @@ const LearnPage = () => {
 	return (
 		// TODO: inplement error page if data not found
 		<div style={{padding: 20, display: 'flex', justifyContent: 'center'}}>
-			<Card raised sx={{ width: '70%',  borderRadius:'15px' }}>
+			<Card sx={{ width: isSmallScreen ? '100%' : '60%',  borderRadius:'15px' }}>
 				<CardMedia
-					sx={{ minHeight: 400, width: '100%'}}
+					sx={{ minHeight: isSmallScreen ? 250 : 350}}
 					image={dataArray[dataIndex].learnImg}
 					title='lalal'
 				/>
