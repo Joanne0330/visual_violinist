@@ -21,19 +21,27 @@ const LearnPage = () => {
 			learnImg: '/assets/images/learn/piano_keyboard_even_more_space.png', 
 			texts: [
 				'To learn about spacing or distance between 2 fingers on a violin, we must first learn about whole-tone and semitone intervals.',
-				'Please take a look at this is piano keyboard, you will notice that most notes have a black note in between itself and another note. Take D and E for example, there is a note between them and that note is called D# or Eb.',
+				'Please take a look at this is piano keyboard, you will notice that most keys have a black key in between itself and the adjacent key. Take D and E for example, there is a black key between them and that key plays the note D# or Eb.',
 				'When 2 notes have another note in between them, this interval is called whole-tone. D and E together form a whole-tone.',
 				'However, E and F do not have a black key in between them, nor do B and C!',
 				'When 2 notes do not have another note in between them, this interval is called semitone (or half-step). Semitone is the smallest interval in our western musical world!',
-				'Therefore, E and F form a semitone, so do B and C!'
+				'Therefore we must remember, E and F naturally form a semitone, so do B and C!'
 			]
 		},
 		{
 			learnImg: '/assets/images/learn/D_string_example_natural.png', 
 			texts: [
-				'This is the reason why on the violin, sometimes there is a space between 2 fingers, and sometimes there is no space and the fingers are right next to each other!', 
-				'Look at this example of notes on the D string. There is space between third finger G and fourth finger A. This is because the interval of G and A is whole-tone and you can fit another note in between them.', 
-				'However, there is no space between first finger E and second finger F, as the interval is a semitone. The fingers are right next to each other and we cannot fit another note between them.'
+				'This is the reason why on the violin, sometimes there is a space between the two adjacent fingers, and sometimes there is no space which means those fingers are positioned right next to each other!', 
+				'Look at this example of notes on the D string: There is a space for an extra note between the second finger F and the third finger G, this is because F and G form a whole-tone.', 
+				'However, there is no space between the first finger E and the second finger F since they form a semitone. The fingers are right next to each other and we cannot fit another note between them.'
+			]
+		},
+		{
+			learnImg: '/assets/images/learn/D_string_example_F_sharp.png', 
+			texts: [
+				"But now look at the F on the same string, it has now become sharp (#)! When a note is sharp it means it is a semitone higher than its natural self, therefore we have to move it closer to G!", 
+				'So now the distance between the first, second and third fingers have changed!', 
+				'The first finger E is now whole-tone to F# and has a space in between them, and the second finger F# to the third finger G has no space between them as they form a semitone!'
 			]
 		},
 	// 	{learnImg: '/assets/images/learn/piano_keyboard_horizontal_centered.png', texts: ['this is a piano keyboard', 'let us learn about semitone']},
@@ -66,8 +74,8 @@ const LearnPage = () => {
 				<CardContent className="learnCardContent" >
 						<Grid container  direction="column" spacing={2} justifyContent='center' alignItems='center'>
 							{dataArray[dataIndex].texts.map(text => (
-								<Grid item xs={12}> 
-									<Typography variant="body1" style={{marginLeft: 20, marginRight: 20}} >{text}</Typography>
+								<Grid item xs={12} > 
+									<Typography variant="body1" style={{marginLeft: 20, marginRight: 20, textAlign: 'center'}} >{text}</Typography>
 								</Grid>
 							))}
 							<Grid container direction="row" justifyContent='space-between'>
