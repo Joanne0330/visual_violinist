@@ -19,6 +19,7 @@ const LearnPage = () => {
 		// 	texts: ['The spacing between 2 fingers next to each other on a violin depends on whether those 2 notes form a whole-tone or semitone', 'But what does that mean?']},
 		{
 			learnImg: '/assets/images/learn/piano_keyboard_even_more_space.png', 
+			imgTitle: 'Piano keyboard showing whole-tones and semitones',
 			texts: [
 				'To learn about spacing or distance between 2 fingers on a violin, we must first learn about whole-tone and semitone intervals.',
 				'Please take a look at this is piano keyboard, you will notice that most keys have a black key in between itself and the adjacent key. Take D and E for example, there is a black key between them and that key plays the note D# or Eb.',
@@ -30,6 +31,7 @@ const LearnPage = () => {
 		},
 		{
 			learnImg: '/assets/images/learn/D_string_example_natural.png', 
+			imgTitle: 'D string example - all natural',
 			texts: [
 				'This is the reason why on the violin, sometimes there is a space between the two adjacent fingers, and sometimes there is no space which means those fingers are positioned right next to each other!', 
 				'Look at this example of notes on the D string: There is a space for an extra note between the second finger F and the third finger G, this is because F and G form a whole-tone.', 
@@ -38,6 +40,7 @@ const LearnPage = () => {
 		},
 		{
 			learnImg: '/assets/images/learn/D_string_example_F_sharp.png', 
+			imgTitle: 'D string example - F#',
 			texts: [
 				"But now look at the F on the same string, it has now become sharp (#)! When a note is sharp it means it is a semitone higher than its natural self, therefore we have to move it closer to G!", 
 				'So now the distance between the first, second and third fingers have changed!', 
@@ -68,13 +71,13 @@ const LearnPage = () => {
 					<CardMedia
 						sx={{ minHeight: isSmallScreen ? 250 : 450}}
 						image={dataArray[dataIndex].learnImg}
-						title='lalal'
+						title={dataArray[dataIndex].imgTitle}
 					/>
 				}
 				<CardContent className="learnCardContent" >
 						<Grid container  direction="column" spacing={2} justifyContent='center' alignItems='center'>
-							{dataArray[dataIndex].texts.map(text => (
-								<Grid item xs={12} > 
+							{dataArray[dataIndex].texts.map((text, id) => (
+								<Grid item xs={12} key={id}> 
 									<Typography variant="body1" className="contentText" >{text}</Typography>
 								</Grid>
 							))}
