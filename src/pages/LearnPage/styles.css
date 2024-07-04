@@ -1,3 +1,9 @@
 .learnCardContent {
 	background-color: #DCDCDC
 }
+
+.contentText {
+	margin-left: 20; 
+	margin-right: 20; 
+	text-align: center;
+}

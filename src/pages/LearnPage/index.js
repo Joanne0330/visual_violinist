@@ -66,7 +66,7 @@ const LearnPage = () => {
 			<Card sx={{ width: isSmallScreen ? '100%' : '60%',  borderRadius:'15px' }}>
 				{!!dataArray[dataIndex].learnImg &&
 					<CardMedia
-						sx={{ minHeight: isSmallScreen ? 250 : 350}}
+						sx={{ minHeight: isSmallScreen ? 250 : 450}}
 						image={dataArray[dataIndex].learnImg}
 						title='lalal'
 					/>
@@ -75,7 +75,7 @@ const LearnPage = () => {
 						<Grid container  direction="column" spacing={2} justifyContent='center' alignItems='center'>
 							{dataArray[dataIndex].texts.map(text => (
 								<Grid item xs={12} > 
-									<Typography variant="body1" style={{marginLeft: 20, marginRight: 20, textAlign: 'center'}} >{text}</Typography>
+									<Typography variant="body1" className="contentText" >{text}</Typography>
 								</Grid>
 							))}
 							<Grid container direction="row" justifyContent='space-between'>
