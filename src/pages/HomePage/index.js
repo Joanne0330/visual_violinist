@@ -31,7 +31,8 @@ const HomePage = () => {
 			<Grid container direction="row" spacing={4}>
 			{homePageData.map(course => (
 				<Grid item xs={12} md={6} key={course.courseCategory}>
-					<Paper className="homePageWidgetPaper" style={{borderRadius: 10, background: 'rgba(33,38,43,0.8)', padding: 10}}>
+					<Paper className="homePageWidgetPaper" style={{borderRadius: 10, backgroundImage:'linear-gradient(75deg, #1c0a5c, #d1d1e0)', padding: 10}}>
+					{/* <Paper className="homePageWidgetPaper" style={{borderRadius: 10, background: 'rgba(33,38,43,0.8)', padding: 10}}> */}
 					<IconButton
 						size="medium"
 						sx={{ ml: 2 }}

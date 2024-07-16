@@ -14,18 +14,15 @@ const LearnPage = () => {
 	const location = useLocation();
 	const isSmallScreen = useIsSmallScreen();
 	const dataArray = [
-		// {
-		// 	learnImg: '/assets/images/learn/piano_keyboard_horizontal_more_space.png', 
-		// 	texts: ['The spacing between 2 fingers next to each other on a violin depends on whether those 2 notes form a whole-tone or semitone', 'But what does that mean?']},
 		{
 			learnImg: '/assets/images/learn/piano_keyboard_even_more_space.png', 
 			imgTitle: 'Piano keyboard showing whole-tones and semitones',
 			texts: [
 				'To learn about spacing or distance between 2 fingers on a violin, we must first learn about whole-tone and semitone intervals.',
-				'Please take a look at this piano keyboard, you will notice that most 2 white keys next to each other have a black key in between them. Take D and E for example, there is a black key between them and that black key is D# or Eb.',
+				'If you observe this piano keyboard carefully, you will notice that most 2 adjacent white keys have a black key in between them. Take D and E for example, there is a black key between them and that black key is D# or Eb.',
 				'When 2 notes have another note in between them, this interval is called whole-tone. D and E together form a whole-tone.',
 				'However, E and F do not have a black key in between them, nor do B and C!',
-				'When 2 notes do not have another note in between them, this interval is called semitone (or half-step). Semitone is the smallest interval in the western music!',
+				'When 2 notes do not have another note in between them, this interval is called semitone (or half-step). Semitone is the smallest interval possible in music in our western world!',
 				'Therefore we must remember, E and F naturally form a semitone, so do B and C!'
 			]
 		},
@@ -63,12 +60,31 @@ const LearnPage = () => {
 				'The spacing of the 2nd finger to the 3rd finger is also changed. B flat forms a whole-tone interval with the 3rd finger C. They now have a space between them.', 
 			]
 		},
-	// 	{learnImg: '/assets/images/learn/piano_keyboard_horizontal_centered.png', texts: ['this is a piano keyboard', 'let us learn about semitone']},
-	// 	{learnImg: '/assets/images/learn/piano_keyboard_horizontal.png', texts: ['lksjlkjlkjlksj lkjdlkjslkjlkj fslkjlkjlkj', 'soiuso iusoiu fsoisufoiusdf', 'siuyfsiuy siuyiuysi suyisuyi suysiuysiuy siuys iuysiuysiuysf']},
-	// 	{learnImg: '/assets/images/learn/piano_keyboard_horizontal_centered.png', texts: ['lksjlkjlkjlksj lkjdlkjslkjlkj fslkjlkjlkj', 'soiuso iusoiu fsoisufoiusdf', 'siuyfsiuy siuyiuysi suyisuyi suysiuysiuy siuys iuysiuysiuysf']},
-	// 	{learnImg: '/assets/images/learn/small_circles.png', texts: ['lksjlkjlkjlksj lkjdlkjslkjlkj fslkjlkjlkj', 'soiuso iusoiu fsoisufoiusdf', 'siuyfsiuy siuyiuysi suyisuyi suysiuysiuy siuys iuysiuysiuysf']},
-	// 	{learnImg: '/assets/images/learn/big_circles_400.png', texts: ['lksjlkjlkjlksj lkjdlkjslkjlkj fslkjlkjlkj', 'soiuso iusoiu fsoisufoiusdf', 'siuyfsiuy siuyiuysi suyisuyi suysiuysiuy siuys iuysiuysiuysf']},
-	// 	{learnImg: '/assets/images/learn/super_small_circles_100.png', texts: ['lksjlkjlkjlksj lkjdlkjslkjlkj fslkjlkjlkj', 'soiuso iusoiu fsoisufoiusdf', 'siuyfsiuy siuyiuysi suyisuyi suysiuysiuy siuys iuysiuysiuysf']},
+		{
+			learnImg: '/assets/images/learn/E_string_example_natural.png', 
+			imgTitle: 'E string example - all natural',
+			texts: [
+				"However, we have a different situation here on the E string! The semitone lies between open E and the 1st finger F!", 
+				"So there is no space between the open string and the 1st finger? How do we do that?",
+				'You can simply move the first finger lower (away from you)!',
+				'If you go back and compare the previous example on G string, you will notice the placement of the 1st finger note on the G string is different. There is a gap between the open G and the 1st finger A, unlike this E string example!' 
+			]
+		},
+		{
+			learnImg: '/assets/images/learn/E_string_example_F_sharp.png', 
+			imgTitle: 'E string example - F#',
+			texts: [
+				"And if F is sharp, the position of the 1st finger would then be at the usual place", 
+				"It would also form a semitone with the 2nd finger G!"
+			]
+		},
+		{
+			learnImg: '/assets/images/learn/C_major_all_strings.png', 
+			imgTitle: 'C Major notes and finger pattern',
+			texts: [
+				"In short, when there is no sharp nor flat in your music, this shows all the notes across all your strings in the first position in relations to where the semitones are, and what the finger pattern looks like!", 
+			]
+		},
 	]
 
 	// TODO: make sure everytime url changes, the data change and set data and index back to zero to prevent error
@@ -110,6 +126,7 @@ const LearnPage = () => {
 									disabled={dataIndex === dataArray.length - 1} 
 									color={dataIndex === dataArray.length - 1 ? 'default' : 'secondary'}
 									onClick={() => setDataIndex(dataIndex + 1)}
+									style={{margin: '12px'}}
 								>
 									<KeyboardDoubleArrowRightIcon  fontSize="large"/>
 								</IconButton>
