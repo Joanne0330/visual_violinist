@@ -1,143 +1,38 @@
-import { Pagination, Card, CardContent, CardMedia, Typography, Grid, IconButton } from '@mui/material';
 import './styles.css';
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import LearnSession from "../../common/LearnSession";
 import {useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import useIsSmallScreen from '../../hooks/useIsSmallScreen';
-
-// learn data which should be moved later
-
+import  learnData from './learnData';
+import PageNotFound from '../../common/PageNotFound';
 
 const LearnPage = () => {
 	const [dataIndex,setDataIndex ] = useState(0);
 	const location = useLocation();
 	const isSmallScreen = useIsSmallScreen();
-	const dataArray = [
-		{
-			learnImg: '/assets/images/learn/piano_keyboard_even_more_space.png', 
-			imgTitle: 'Piano keyboard showing whole-tones and semitones',
-			texts: [
-				'To learn about spacing or distance between 2 fingers on a violin, we must first learn about whole-tone and semitone intervals.',
-				'If you observe this piano keyboard carefully, you will notice that most 2 adjacent white keys have a black key in between them. Take D and E for example, there is a black key between them and that black key is D# or Eb.',
-				'When 2 notes have another note in between them, this interval is called whole-tone. D and E together form a whole-tone.',
-				'However, E and F do not have a black key in between them, nor do B and C!',
-				'When 2 notes do not have another note in between them, this interval is called semitone (or half-step). Semitone is the smallest interval possible in music in our western world!',
-				'Therefore we must remember, E and F naturally form a semitone, so do B and C!'
-			]
-		},
-		{
-			learnImg: '/assets/images/learn/D_string_example_natural.png', 
-			imgTitle: 'D string example - all natural',
-			texts: [
-				'This is the reason why on the violin, sometimes there is a space between the two adjacent fingers, and sometimes there is no space and those fingers are positioned right next to each other without any gap!', 
-				'Look at this example above - they are notes on the D string. Take a look at the 2nd finger F and the 3rd finger G, there is a gap between them and that is because F and G form a whole-tone.', 
-				'However, if you look at the 1st finger E and the 2nd finger F, they are right next to each other without any gap. This is because they form a semitone.'
-			]
-		},
-		{
-			learnImg: '/assets/images/learn/D_string_example_F_sharp.png', 
-			imgTitle: 'D string example - F#',
-			texts: [
-				"But now look at the F on the same string, it has now become sharp (#)! When a note is sharp it means it is a semitone higher than its natural self, therefore we have to move it closer to G!", 
-				'So now the distance between the first, second and third fingers have changed!', 
-				'The 1st finger E is now whole-tone to F# and has a space in between them, and there is no space between the 2nd finger F# and the 3rd finger G!'
-			]
-		},
-		{
-			learnImg: '/assets/images/learn/G_string_example_natural.png', 
-			imgTitle: 'G string example - all natural',
-			texts: [
-				"Let's take a look at another example! We are nowing having a look at the notes on our lowest string - the G string.", 
-				'The 2nd finger B is a semitone to the 3rd finger C therefore they do not have a gap between them. The rest of the notes however, are all whole-tones to their next door neighbours so we must leave a gap betwween.'
-			]
-		},
-		{
-			learnImg: '/assets/images/learn/G_string_example_B_flat.png', 
-			imgTitle: 'G string example - Bb',
-			texts: [
-				"But now we are making the B flat (b) therefore we will have to move it a semitone lower. It is now right next to the 1st finger A and together they form a semitone instead of a whole-tone!", 
-				'The spacing of the 2nd finger to the 3rd finger is also changed. B flat forms a whole-tone interval with the 3rd finger C. They now have a space between them.', 
-			]
-		},
-		{
-			learnImg: '/assets/images/learn/E_string_example_natural.png', 
-			imgTitle: 'E string example - all natural',
-			texts: [
-				"However, we have a different situation here on the E string! The semitone lies between open E and the 1st finger F!", 
-				"So there is no space between the open string and the 1st finger? How do we do that?",
-				'You can simply move the first finger lower (away from you)!',
-				'If you go back and compare the previous example on G string, you will notice the placement of the 1st finger note on the G string is different. There is a gap between the open G and the 1st finger A, unlike this E string example!' 
-			]
-		},
-		{
-			learnImg: '/assets/images/learn/E_string_example_F_sharp.png', 
-			imgTitle: 'E string example - F#',
-			texts: [
-				"And if F is sharp, the position of the 1st finger would then be at the usual place", 
-				"It would also form a semitone with the 2nd finger G!"
-			]
-		},
-		{
-			learnImg: '/assets/images/learn/C_major_all_strings.png', 
-			imgTitle: 'C Major notes and finger pattern',
-			texts: [
-				"In short, when there is no sharp nor flat in your music, this shows all the notes across all your strings in the first position in relations to where the semitones are, and what the finger pattern looks like!", 
-			]
-		},
-	]
 
-	// TODO: make sure everytime url changes, the data change and set data and index back to zero to prevent error
 	useEffect(() => {
-    // setDataArray([]);
     setDataIndex(0);
   }, [ 
-		// selectedData, 
 		location.pathname])
 
 	return (
-		// TODO: inplement error page if data not found
-		<div style={{padding: 20, display: 'flex', justifyContent: 'center'}}>
-			<Card sx={{ width: isSmallScreen ? '100%' : '60%',  borderRadius:'15px' }}>
-				{!!dataArray[dataIndex].learnImg &&
-					<CardMedia
-						sx={{ minHeight: isSmallScreen ? 250 : 450}}
-						image={dataArray[dataIndex].learnImg}
-						title={dataArray[dataIndex].imgTitle}
-					/>
-				}
-				<CardContent className="learnCardContent" >
-						<Grid container  direction="column" spacing={2} justifyContent='center' alignItems='center'>
-							{dataArray[dataIndex].texts.map((text, id) => (
-								<Grid item xs={12} key={id}> 
-									<Typography variant="body1" className="contentText" >{text}</Typography>
-								</Grid>
-							))}
-							<Grid container direction="row" justifyContent='space-between'>
-								<IconButton 
-									disabled={dataIndex === 0} 
-									color={dataIndex === 0 ? 'default' : 'secondary'} 
-									onClick={() => setDataIndex(dataIndex - 1)} 
-									style={{margin: '12px'}}
-								>
-									<KeyboardDoubleArrowLeftIcon  fontSize="large"/>
-								</IconButton>
-								<IconButton 
-									disabled={dataIndex === dataArray.length - 1} 
-									color={dataIndex === dataArray.length - 1 ? 'default' : 'secondary'}
-									onClick={() => setDataIndex(dataIndex + 1)}
-									style={{margin: '12px'}}
-								>
-									<KeyboardDoubleArrowRightIcon  fontSize="large"/>
-								</IconButton>
-							</Grid>
-							<Grid item xs={12}>
-								<Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/>
-							</Grid>
-						</Grid>
-				</CardContent>
-			</Card>
-		</div>
+		<>
+			{!learnData[location.pathname] ?
+				<PageNotFound />
+				:
+				<>
+					<h2 className='learnPageText'>{learnData[location.pathname].learnTitle}</h2>
+					<h4 className='learnPageText'>{learnData[location.pathname].subText}</h4>
+						<LearnSession 
+							dataArray={learnData[location.pathname].learnData}
+							dataIndex={dataIndex}
+							setDataIndex={setDataIndex}
+							isSmallScreen={isSmallScreen}
+						/>
+				</>		
+			}
+		</>
 	)
 }
 

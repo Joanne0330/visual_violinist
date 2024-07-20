@@ -9,10 +9,16 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 
 export const learnList = [
+  {name: 'Learn: Introduction', url: '/learn/introduction'},
   {name: 'Learn: C Major - all natural', url: '/learn/c_major'},
   {name: 'Learn: G Major - 1 sharp', url: '/learn/g_major'},
   {name: 'Learn: F Major - 1 flat', url: '/learn/f_major'},
   {name: 'Learn: D Major - 2 sharps', url: '/learn/d_major'},
+  {name: 'Learn: Bb Major - 2 flats', url: '/learn/b_flat_major'},
+  {name: 'Learn: A Major - 3 sharps', url: '/learn/a_major'},
+  {name: 'Learn: Eb Major - 3 flats', url: '/learn/e_flat_major'},
+  {name: 'Learn: E Major - 4 sharps', url: '/learn/e_major'},
+  {name: 'Learn: Ab Major - 4 flats', url: '/learn/a_flat_major'},
 ];
 
 export const practiseList = [

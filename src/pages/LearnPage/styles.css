@@ -1,9 +1,6 @@
-.learnCardContent {
-	background-image: linear-gradient(75deg, grey, white );
-}
-
-.contentText {
-	margin-left: 20; 
-	/* margin-right: 10;  */
-	text-align: center;
+.learnPageText {
+	color: white;
+	font-family: comic sans ms, "Roboto", "Helvetica", "Arial", sans-serif;
+	display: flex; 
+	justify-content: center;
 }
