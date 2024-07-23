@@ -145,7 +145,7 @@ const PracticeSession = (props) => {
           <Snackbar
             anchorOrigin={{vertical: 'top', horizontal: 'right'}}
             open={showSnackbar}
-            autoHideDuration={isQuestionCorrect ? 3000 : 5000}
+            autoHideDuration={isQuestionCorrect ? 3000 : 4000}
             onClose={()=> setShowSnackbar(false)}
             
             >

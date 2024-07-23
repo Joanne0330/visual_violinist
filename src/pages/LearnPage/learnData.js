@@ -79,7 +79,7 @@ const learnData = {
 	},
   "/learn/c_major": {
     isPractice: false,
-    learnTitle: "Learn: C major",
+    learnTitle: "Learn: C Major",
     subText: "When everything is natural! There is no sharp nor flat!",
     learnData: [
       {
@@ -89,6 +89,118 @@ const learnData = {
           'C Major is the key where there is no sharp nor flat on any note!',
           'This this case, we must remember where the semitones are! They are between E and F, and also B and C!',
           'To play these intervals, you must put those fingers together!'
+        ]
+      },
+    ]
+  },
+  "/learn/g_major": {
+    isPractice: false,
+    learnTitle: "Learn: G Major",
+    subText: "When we have one sharp, F!",
+    learnData: [
+      {
+        learnImg: '/assets/images/learn/G_major_all_strings.png', 
+        imgTitle: 'G Major notes and finger pattern',
+        texts: [
+          'We do not have text yet',
+        ]
+      },
+    ]
+  },
+  "/learn/f_major": {
+    isPractice: false,
+    learnTitle: "Learn: F Major",
+    subText: "When we have one flat, B!",
+    learnData: [
+      {
+        learnImg: '/assets/images/learn/F_major_all_strings.png', 
+        imgTitle: 'F Major notes and finger pattern',
+        texts: [
+          'We do not have text yet',
+        ]
+      },
+    ]
+  },
+  "/learn/d_major": {
+    isPractice: false,
+    learnTitle: "Learn: D Major",
+    subText: "When we have two sharps, F and C!",
+    learnData: [
+      {
+        learnImg: '/assets/images/learn/D_major_all_strings.png', 
+        imgTitle: 'D Major notes and finger pattern',
+        texts: [
+          'We do not have text yet',
+        ]
+      },
+    ]
+  },
+  "/learn/b_flat_major": {
+    isPractice: false,
+    learnTitle: "Learn: Bb Major",
+    subText: "When we have two flats, B and E are flat!",
+    learnData: [
+      {
+        learnImg: '/assets/images/learn/B_flat_major_all_strings.png', 
+        imgTitle: 'Bb Major notes and finger pattern',
+        texts: [
+          'We do not have text yet',
+        ]
+      },
+    ]
+  },
+  "/learn/a_major": {
+    isPractice: false,
+    learnTitle: "Learn: A Major",
+    subText: "When we have three sharps, F, C, and G!",
+    learnData: [
+      {
+        learnImg: '/assets/images/learn/A_major_all_strings.png', 
+        imgTitle: 'A Major notes and finger pattern',
+        texts: [
+          'We do not have text yet',
+        ]
+      },
+    ]
+  },
+  "/learn/e_flat_major": {
+    isPractice: false,
+    learnTitle: "Learn: Eb Major",
+    subText: "When we have three flats, B, E, and A are flat!",
+    learnData: [
+      {
+        learnImg: '/assets/images/learn/E_flat_major_all_strings.png', 
+        imgTitle: 'Eb Major notes and finger pattern',
+        texts: [
+          'We do not have text yet',
+        ]
+      },
+    ]
+  },
+  "/learn/e_major": {
+    isPractice: false,
+    learnTitle: "Learn: E Major",
+    subText: "When we have four sharps, F, C, G, and D!",
+    learnData: [
+      {
+        learnImg: '/assets/images/learn/E_major_all_strings.png', 
+        imgTitle: 'E Major notes and finger pattern',
+        texts: [
+          'We do not have text yet',
+        ]
+      },
+    ]
+  },
+  "/learn/a_flat_major": {
+    isPractice: false,
+    learnTitle: "Learn: Ab Major",
+    subText: "When we have four flats, B, E, A, and D are all flat",
+    learnData: [
+      {
+        learnImg: '/assets/images/learn/A_flat_major_all_strings.png', 
+        imgTitle: 'Ab Major notes and finger pattern',
+        texts: [
+          'We do not have text yet',
         ]
       },
     ]
