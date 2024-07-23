@@ -4,13 +4,14 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 const LearnSession = (props) => {
-	const {dataArray, dataIndex, setDataIndex, isSmallScreen} = props;
+	const {dataArray, dataIndex, setDataIndex, isSmallScreen, isMediumScreen} = props;
+
 	return (
 		<div style={{padding: 20, display: 'flex', justifyContent: 'center'}}>
-			<Card sx={{ width: isSmallScreen ? '100%' : '60%',  borderRadius:'15px' }}>
+			<Card sx={{ width: isSmallScreen && !isMediumScreen ? '100%' : isMediumScreen ? '80%' : '60%',  borderRadius:'15px' }}>
 				{!!dataArray[dataIndex].learnImg &&
 					<CardMedia
-					sx={{ minHeight: isSmallScreen ? 250 : 450}}
+					sx={{ minHeight: isSmallScreen && !isMediumScreen ? 250 : isMediumScreen ? 350 : 450}}
 					image={dataArray[dataIndex].learnImg}
 					title={dataArray[dataIndex].imgTitle}
 					/>

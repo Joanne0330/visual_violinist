@@ -2,7 +2,7 @@ import './styles.css';
 import LearnSession from "../../common/LearnSession";
 import {useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
-import useIsSmallScreen from '../../hooks/useIsSmallScreen';
+import {useIsSmallScreen, useIsMediumScreen} from '../../hooks/screenSizeHooks';
 import  learnData from './learnData';
 import PageNotFound from '../../common/PageNotFound';
 
@@ -11,6 +11,7 @@ const LearnPage = () => {
 	const [dataArray, setDataArray] = useState(undefined)
 	const location = useLocation();
 	const isSmallScreen = useIsSmallScreen();
+	const isMediumScreen = useIsMediumScreen();
 
 	useEffect(() => {
     setDataIndex(0);
@@ -31,6 +32,7 @@ const LearnPage = () => {
 							dataIndex={dataIndex}
 							setDataIndex={setDataIndex}
 							isSmallScreen={isSmallScreen}
+							isMediumScreen={isMediumScreen}
 						/>
 				</>		
 			}

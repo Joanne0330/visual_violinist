@@ -1,6 +1,6 @@
 import './styles.css';
 import PracticeSession from "../../common/PracticeSession";
-import useIsSmallScreen from '../../hooks/useIsSmallScreen';
+import {useIsSmallScreen}from '../../hooks/screenSizeHooks';
 import { useLocation } from 'react-router-dom';
 import  practiceData from './practiceData';
 import PageNotFound from '../../common/PageNotFound';

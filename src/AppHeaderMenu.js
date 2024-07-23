@@ -4,7 +4,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 import { useState, Fragment } from 'react';
-import useIsSmallScreen from './hooks/useIsSmallScreen';
+import {useIsSmallScreen} from './hooks/screenSizeHooks';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 
