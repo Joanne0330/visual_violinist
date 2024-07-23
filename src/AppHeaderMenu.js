@@ -88,7 +88,7 @@ function AppHeaderMenu() {
                 <IconButton
                   // tabIndex={i}
                   key={`menu-button-${i}`}
-                  style={{backgroundColor: selectedMenuButton === item.pageControl ? '#ffb3bf': '', margin: isSmallScreen ? 0 : 5,}}
+                  style={{backgroundColor: selectedMenuButton === item.pageControl ? '#ff99aa': '', margin: isSmallScreen ? 0 : 5,}}
                   onClick={ e => handleClick(e, item.pageControl)}
                   size="medium"
                   sx={{ ml: 2 }}

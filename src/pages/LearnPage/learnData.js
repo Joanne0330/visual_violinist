@@ -77,6 +77,22 @@ const learnData = {
 			},
 		]
 	},
+  "/learn/c_major": {
+    isPractice: false,
+    learnTitle: "Learn: C major",
+    subText: "When everything is natural! There is no sharp nor flat!",
+    learnData: [
+      {
+        learnImg: '/assets/images/learn/C_major_all_strings.png', 
+        imgTitle: 'C Major notes and finger pattern',
+        texts: [
+          'C Major is the key where there is no sharp nor flat on any note!',
+          'This this case, we must remember where the semitones are! They are between E and F, and also B and C!',
+          'To play these intervals, you must put those fingers together!'
+        ]
+      },
+    ]
+  },
 }
 
 export default learnData;
