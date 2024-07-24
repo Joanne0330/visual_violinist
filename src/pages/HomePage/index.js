@@ -27,10 +27,10 @@ const HomePage = () => {
 	let navigate = useNavigate();
 
 	return (
-		<>
-			<Grid container direction="row" spacing={4}>
+		<div style={{marginTop: '25px', marginBottom: '25px'} }>
+			<Grid container direction="row" spacing={4} justifyContent='space-around'>
 			{homePageData.map(course => (
-				<Grid item xs={12} md={6} key={course.courseCategory}>
+				<Grid item xs={12} sm={10} md={6} lg={5} key={course.courseCategory}>
 					<Paper className="homePageWidgetPaper" style={{borderRadius: 10, backgroundImage:'linear-gradient(170deg, #08445e, #d1d1e0)', padding: 10}}>
 					{/* <Paper className="homePageWidgetPaper" style={{borderRadius: 10, background: 'rgba(33,38,43,0.8)', padding: 10}}> */}
 					<IconButton
@@ -55,7 +55,7 @@ const HomePage = () => {
 
 			))}
 			</Grid>
-		</>
+		</div>
 	)
 }
 

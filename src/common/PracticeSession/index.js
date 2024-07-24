@@ -159,10 +159,10 @@ const PracticeSession = (props) => {
             </Alert>
           </Snackbar>
           {!!dataArray.length &&
-            <Grid item xs={12} sm={6} md={5} lg={4}>
+            <Grid item xs={12} sm={8} md={5} >
               <Card raised sx={{ minWidth: '100%',  borderRadius:'15px' }}>
                 <CardMedia
-                  sx={{ minHeight: isSmallScreen ? 300 : 400}}
+                  sx={{ minHeight: isSmallScreen ? 300 : 450}}
                   image={dataArray[dataIndex].noteImg}
                   title={`note ${dataArray[dataIndex].noteBaseName}${dataArray[dataIndex].accidental}`}
                 />
@@ -172,7 +172,8 @@ const PracticeSession = (props) => {
               </Card>
             </Grid>
           }
-          <Grid item xs={12} sm={6} md={5}>
+          <Grid item xs={12} sm={8} md={5} lg={6}>
+          {/* <Grid item xs={12} sm={6} md={5}> */}
             {isReveal ?
               <RevealForm 
                 dataArray={dataArray} 
