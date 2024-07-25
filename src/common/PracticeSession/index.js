@@ -162,7 +162,7 @@ const PracticeSession = (props) => {
             <Grid item xs={12} sm={8} md={5} >
               <Card raised sx={{ minWidth: '100%',  borderRadius:'15px' }}>
                 <CardMedia
-                  sx={{ minHeight: isSmallScreen ? 300 : 450}}
+                  sx={{ minHeight: isSmallScreen ? 350 : 450}}
                   image={dataArray[dataIndex].noteImg}
                   title={`note ${dataArray[dataIndex].noteBaseName}${dataArray[dataIndex].accidental}`}
                 />

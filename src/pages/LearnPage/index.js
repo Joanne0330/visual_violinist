@@ -33,6 +33,7 @@ const LearnPage = () => {
 							setDataIndex={setDataIndex}
 							isSmallScreen={isSmallScreen}
 							isMediumScreen={isMediumScreen}
+							pathname={location.pathname}
 						/>
 				</>		
 			}
