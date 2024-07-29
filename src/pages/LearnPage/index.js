@@ -26,7 +26,7 @@ const LearnPage = () => {
 				:
 				<>
 					<h2 className='learnPageText'>{learnData[location.pathname].learnTitle}</h2>
-					<h4 className='learnPageText'>{learnData[location.pathname].subText}</h4>
+					<h3 className='learnPageText'>{learnData[location.pathname].subText}</h3>
 						<LearnSession 
 							dataArray={dataArray}
 							dataIndex={dataIndex}

@@ -39,7 +39,7 @@ const LearnSession = (props) => {
 								</IconButton>
 								{pathname !== '/learn/introduction' && dataIndex === dataArray.length - 1 ?
 									<Tooltip 
-										title={<Fragment><Typography color="inherit">Practise this key</Typography></Fragment>} 
+										title={<Fragment><Typography color="inherit">Practice this key</Typography></Fragment>} 
 										arrow
 									>
 										<IconButton color='secondary' style={{margin: '12px'}} onClick={() => navigate(pathname.replace('learn', 'practice'))}>

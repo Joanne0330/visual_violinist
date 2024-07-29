@@ -75,6 +75,15 @@ const learnData = {
 					"In short, when there is no sharp nor flat in your music, this shows all the notes across all your strings in the first position in relations to where the semitones are, and what the finger pattern looks like!", 
 				]
 			},
+			{
+				learnImg: '', 
+				imgTitle: '',
+				texts: [
+					"Lastly, you can find more notes and finger patterns grouped by keys up to 4 sharps and 4 flats in the Learn section from the Main Menu.",
+					"But please remember, it is far more beneficial to always know what notes you are playing and where to find them on the fingerboard, and their spatial relationship to each other instead of just memorising patterns. This will help learning new music in different variation of keys, sightread, and play better in tune.", 
+					"You can also practice this in the Play & Practice section! Check them out in the Main Menu"
+				]
+			},
 		]
 	},
   "/learn/c_major": {
@@ -91,36 +100,36 @@ const learnData = {
           'To play these intervals, you must put those fingers together!'
         ]
       },
-      {
-        learnImg: '/assets/images/learn/C_major_all_strings.png', 
-        imgTitle: 'C Major notes and finger pattern',
-        texts: [
-          'C Major is the key where there is no sharp nor flat on any note!',
-          'This this case, we must remember where the semitones are! They are between E and F, and also B and C!',
-          'To play these intervals, you must put those fingers together!'
-        ]
-      },
-      {
-        learnImg: '/assets/images/learn/C_major_all_strings.png', 
-        imgTitle: 'C Major notes and finger pattern',
-        texts: [
-          'C Major is the key where there is no sharp nor flat on any note!',
-          'This this case, we must remember where the semitones are! They are between E and F, and also B and C!',
-          'To play these intervals, you must put those fingers together!'
-        ]
-      },
     ]
   },
   "/learn/g_major": {
     isPractice: false,
     learnTitle: "Learn: G Major",
-    subText: "When we have one sharp, F!",
+    subText: "When we have one sharp, F#",
     learnData: [
+			{
+        learnImg: '/assets/images/learnKeys/G_major_with_key.png', 
+        imgTitle: 'G Major with key signature',
+        texts: [
+          "There is an order to what notes are made sharp. The first note to be made sharp is quite often F!", 
+					"This means all the Fs in your music are sharp! You will find 2 F# notes in the first position on your violin.",
+					"If all the Fs are sharp, this key is called G Major. You can find the key signature in the beginning of your music, one # sign sitting on the high F position!"
+        ]
+      },
+			{
+        learnImg: '/assets/images/learnKeys/G_major_without_key.png', 
+        imgTitle: 'G Major without key signature',
+        texts: [
+          "If there is no key signature (no # sign sitting high F position), you will then see the sharp signs next to these notes!", 
+        ]
+      },
       {
         learnImg: '/assets/images/learn/G_major_all_strings.png', 
         imgTitle: 'G Major notes and finger pattern',
         texts: [
-          'We do not have text yet',
+          'This all the notes for G Major in the first position on your violin.',
+					"You can find F# on D string and E string.",
+					"Remember, F is now sharp so it is no longer a semitone to E. It is now semitone to G!"
         ]
       },
     ]
@@ -128,7 +137,7 @@ const learnData = {
   "/learn/f_major": {
     isPractice: false,
     learnTitle: "Learn: F Major",
-    subText: "When we have one flat, B!",
+    subText: "When we have one flat, Bb",
     learnData: [
       {
         learnImg: '/assets/images/learn/F_major_all_strings.png', 
@@ -142,13 +151,32 @@ const learnData = {
   "/learn/d_major": {
     isPractice: false,
     learnTitle: "Learn: D Major",
-    subText: "When we have two sharps, F and C!",
+    subText: "When we have two sharps, F# and C#",
     learnData: [
+			{
+        learnImg: '/assets/images/learnKeys/D_major_with_key.png', 
+        imgTitle: 'D Major with key signature',
+        texts: [
+          "If your music has 2 sharps, the first one is F, and the second one is C!", 
+					"This means all the Fs and Cs in your music are sharp! You will find 2 F# and 2 C# notes in the first position on your violin.",
+					"If all the Fs and Cs are sharp, this key is called D Major. You can find the key signature in the beginning of your music, two # signs sitting on the high F and C positions!"
+        ]
+      },
+			{
+        learnImg: '/assets/images/learnKeys/D_major_without_key.png', 
+        imgTitle: 'G Major without key signature',
+        texts: [
+          "If there is no key signature (no # signs), you will then see the sharp signs next to these notes!", 
+        ]
+      },
       {
         learnImg: '/assets/images/learn/D_major_all_strings.png', 
         imgTitle: 'D Major notes and finger pattern',
         texts: [
-          'We do not have text yet',
+					'This all the notes for D Major in the first position on your violin.',
+					"You can find F# notes on D and E strings, and C# notes on G and A strings.",
+					"Remember, F is now sharp so it is no longer a semitone to E. It is now semitone to G! C is also sharp so they are semitone to D!",
+					"Take a look at the C# on the G string, it is now moved higher, position right next to the 4th finger D!"
         ]
       },
     ]
@@ -156,7 +184,7 @@ const learnData = {
   "/learn/b_flat_major": {
     isPractice: false,
     learnTitle: "Learn: Bb Major",
-    subText: "When we have two flats, B and E are flat!",
+    subText: "When we have two flats, Bb and Eb!",
     learnData: [
       {
         learnImg: '/assets/images/learn/B_flat_major_all_strings.png', 
@@ -170,13 +198,32 @@ const learnData = {
   "/learn/a_major": {
     isPractice: false,
     learnTitle: "Learn: A Major",
-    subText: "When we have three sharps, F, C, and G!",
+    subText: "When we have three sharps, F#, C#, and G#",
     learnData: [
+			{
+        learnImg: '/assets/images/learnKeys/A_major_with_key.png', 
+        imgTitle: 'A Major with key signature',
+        texts: [
+          "If your music has 3 C sharps, it will be F, C and G!", 
+					"This means all the Fs, Cs, and Gs in your music are sharp! You will find 2 F#, 2 C# and 3 G# notes in the first position on your violin.",
+					"If all the Fs, Cs, and Gs are sharp, this key is called A Major. You can find the key signature in the beginning of your music, 3 # signs sitting on the high F, C and G positions!"
+        ]
+      },
+			{
+        learnImg: '/assets/images/learnKeys/A_major_without_key.png', 
+        imgTitle: 'A Major without key signature',
+        texts: [
+          "If there is no key signature (no # signs), you will then see the sharp signs next to these notes!", 
+        ]
+      },
       {
         learnImg: '/assets/images/learn/A_major_all_strings.png', 
         imgTitle: 'A Major notes and finger pattern',
         texts: [
-          'We do not have text yet',
+					'This all the notes for A Major in the first position on your violin.',
+					"You can find F# notes on D string E strings, and C# notes on G and A strings, and G# notes on G, D and E strings.",
+					"Take a look at the C# on the G string and G# on the D string, they are now moved higher, position right next to the 4th finger note!",
+					"The low G is sharp therefore you can no longer use the open G string which can only play G natural. Instead, you can use first finger to play G# which is placed right below low A!"
         ]
       },
     ]
@@ -184,7 +231,7 @@ const learnData = {
   "/learn/e_flat_major": {
     isPractice: false,
     learnTitle: "Learn: Eb Major",
-    subText: "When we have three flats, B, E, and A are flat!",
+    subText: "When we have three flats, Bb, Eb, and Ab!",
     learnData: [
       {
         learnImg: '/assets/images/learn/E_flat_major_all_strings.png', 
@@ -198,7 +245,7 @@ const learnData = {
   "/learn/e_major": {
     isPractice: false,
     learnTitle: "Learn: E Major",
-    subText: "When we have four sharps, F, C, G, and D!",
+    subText: "When we have four sharps, F#, C#, G#, and D#",
     learnData: [
       {
         learnImg: '/assets/images/learn/E_major_all_strings.png', 
@@ -212,7 +259,7 @@ const learnData = {
   "/learn/a_flat_major": {
     isPractice: false,
     learnTitle: "Learn: Ab Major",
-    subText: "When we have four flats, B, E, A, and D are all flat",
+    subText: "When we have four flats, Bb, Eb, Ab, and Db!",
     learnData: [
       {
         learnImg: '/assets/images/learn/A_flat_major_all_strings.png', 
