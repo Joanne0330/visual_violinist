@@ -8,7 +8,7 @@ import { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LearnSession = (props) => {
-	const {dataArray, dataIndex, setDataIndex, isSmallScreen, isMediumScreen, pathname} = props;
+	const {dataArray, dataIndex, setDataIndex, isSmallScreen, isMediumScreen, pathname, keyName} = props;
 	let navigate = useNavigate();
 
 	return (
@@ -39,7 +39,7 @@ const LearnSession = (props) => {
 								</IconButton>
 								{pathname !== '/learn/introduction' && dataIndex === dataArray.length - 1 ?
 									<Tooltip 
-										title={<Fragment><Typography color="inherit">Practice this key</Typography></Fragment>} 
+										title={<Fragment><Typography color="inherit">{`Practice ${keyName}`}</Typography></Fragment>} 
 										arrow
 									>
 										<IconButton color='secondary' style={{margin: '12px'}} onClick={() => navigate(pathname.replace('learn', 'practice'))}>
