@@ -177,7 +177,7 @@ const learnData = {
         texts: [
           "If your music has 2 sharps, the first one is F, and the second one is C!", 
 					"This means all the Fs and Cs in your music are sharp! You will find 2 F# and 2 C# notes in the first position on your violin.",
-					"If all the Fs and Cs are sharp, this key is called D Major. You can find the key signature in the beginning of your music, two # signs sitting on the high F and C positions!"
+					"If all the Fs and Cs are sharp, this key is called D Major. You can find the key signature in the beginning of your music, two # signs sitting on the F and C positions!"
         ]
       },
 			{
@@ -242,7 +242,7 @@ const learnData = {
         texts: [
           "If your music has 3 sharps, it will be F, C and G!", 
 					"This means all the Fs, Cs, and Gs in your music are sharp! You will find 2 F#, 2 C# and 3 G# notes in the first position on your violin.",
-					"If all the Fs, Cs, and Gs are sharp, this key is called A Major. You can find the key signature in the beginning of your music, 3 # signs sitting on the high F, C and G positions!"
+					"If all the Fs, Cs, and Gs are sharp, this key is called A Major. You can find the key signature in the beginning of your music, 3 # signs sitting on the F, C and G positions!"
         ]
       },
 			{
@@ -284,7 +284,7 @@ const learnData = {
         learnImg: '/assets/images/learnKeys/Eb_major_without_key.png', 
         imgTitle: 'Eb Major without key signature',
         texts: [
-          "If there is no key signature (no b signs), you will then see the sharp signs next to these notes!", 
+          "If there is no key signature (no b signs), you will then see the flat signs next to these notes!", 
         ]
       },
       {
@@ -293,7 +293,7 @@ const learnData = {
         texts: [
           'This all the notes for Eb Major in the first position on your violin and where they are located.',
 					'A is now flat, therefore you will not be able to use open A to play this note. Instead, you can use the 4th finger on a lower string (D string), and position the finger close to the 3rd finger G.',
-					"Please take a look, all first finger notes (Ab, Eb, Bb, and F) across all and strings are positions low, and most 4th finger notes (Ab, Eb, and Bb) are close to the 3rd finger positions! "
+					"Please take a look, all first finger notes (Ab, Eb, Bb, and F) across all and strings are positioned low, and most 4th finger notes (Ab, Eb, and Bb) are close to the 3rd finger positions! "
         ]
       },
     ]
@@ -310,7 +310,7 @@ const learnData = {
 					"Wow, it's starting to get rather crowded and complicated!",
           "If your music has 4 sharps, it will be F, C, G and D!", 
 					"This means all the Fs, Cs, Gs, and Ds in your music are sharp! You will find these sharp notes in the first position.",
-					"If all the Fs, Cs, Gs and Ds are sharp, this key is called E Major. You can find the key signature in the beginning of your music, 4 # signs sitting on the high F, C, G and D positions!"
+					"If all the Fs, Cs, Gs and Ds are sharp, this key is called E Major. You can find the key signature in the beginning of your music, 4 # signs sitting on the F, C, G and D positions!"
         ]
       },
 			{
@@ -342,8 +342,8 @@ const learnData = {
         learnImg: '/assets/images/learnKeys/Ab_major_with_key.png', 
         imgTitle: 'Ab Major with key signature',
         texts: [
-					"We have now 4 flats! There are now 10 flat notes can be played on the first position!",
-          "If your music has 4 flats, it will be B, E, A and D!", 
+					"We have now 4 flats! There are now 10 flat notes can be played in the first position!",
+          "And the 4 flats are B, E, A and D!", 
 					"This means all the Bs, Es, As and Ds in your music are flat!",
 					"If all the Bs, Es, As and Ds are flat, this key is called Ab Major. You can find the key signature in the beginning of your music, 4 flat (b) signs sitting on B, E, A and D positions!"
         ]
@@ -352,7 +352,7 @@ const learnData = {
         learnImg: '/assets/images/learnKeys/Ab_major_without_key.png', 
         imgTitle: 'Ab Major without key signature',
         texts: [
-          "If there is no key signature (no b signs), you will then see the sharp signs next to these notes!", 
+          "If there is no key signature (no b signs), you will then see the flat signs next to these notes!", 
         ]
       },
       {
@@ -360,7 +360,7 @@ const learnData = {
         imgTitle: 'Ab Major notes and finger pattern',
         texts: [
 					'This all the notes for Ab Major in the first position on your violin and where they are located.',
-					"The only open string you can use to play this key is open G string, D, A, and E are now flat therefore you will have to use 4th finger from the string below itself and position them low.",
+					"The only open string you can use to play in this key is the open G. Since D, A, and E are all flat, you will have go to a string lower (than the note itself) and use the 4th finger and position it lower.",
 					"We now have all 1st finger notes in low positions, and all 4th finger notes in low positions as well!"
         ]
       },
