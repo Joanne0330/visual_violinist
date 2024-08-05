@@ -3,6 +3,7 @@ import { Grid, Tooltip, IconButton, Menu, MenuItem, Typography } from '@material
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { useState, Fragment } from 'react';
 import {useIsSmallScreen} from './hooks/screenSizeHooks';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -37,6 +38,7 @@ const pageIconButtons = [
   {pageTitle: 'Home', buttonIcon: <HomeOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Home'},
   {pageTitle: 'Learn', buttonIcon: <MenuBookOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Learn'},
   {pageTitle: 'Play & Practice', buttonIcon: <MusicNoteOutlinedIcon style={{color: 'white'}} fontSize='large' />, pageControl: 'Practice'},
+  {pageTitle: 'Flash Card', buttonIcon: <LibraryMusicIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Flash Card'},
 ]
 
 function AppHeaderMenu() {
@@ -58,7 +60,7 @@ function AppHeaderMenu() {
       setAnchorEl(event.currentTarget);
       setSelectedMenuButton(pageControl)
     } else {
-      handleRedirect('')
+      pageControl === "Flash Card" ? handleRedirect('/flash_card') : handleRedirect('')
       setMenuList([])
     }
   };
