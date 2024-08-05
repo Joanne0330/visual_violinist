@@ -4,7 +4,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useRef } from 'react';
 import {useIsSmallScreen} from './hooks/screenSizeHooks';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -49,6 +49,8 @@ function AppHeaderMenu() {
   const open = Boolean(anchorEl);
   let navigate = useNavigate();
   const location = useLocation();
+  const buttonRef = useRef(null)
+  // const tooltipRef = useRef(null)
 
 
   const handleRedirect = (redirectURL) => navigate(redirectURL)
@@ -81,7 +83,7 @@ function AppHeaderMenu() {
         </Grid>
         <Grid item >
           {pageIconButtons.map((item, i) => (
-            <span key={i}>
+            <span key={i} ref={buttonRef}>
               <Tooltip 
                 title={<Fragment><Typography color="inherit">{item.pageTitle} </Typography></Fragment>} 
                 key={`menu-tooltip-${i}`} 

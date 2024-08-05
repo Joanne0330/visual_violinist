@@ -53,14 +53,15 @@ const AnswerForm = (props) => {
                     </>
                   :
                     <>
-                      <FormControl size="small" fullWidth >
-                      <InputLabel color='secondary'>Name</InputLabel>
+                      <FormControl size="small" fullWidth>
+                      <InputLabel htmlFor='note-name-input' color='secondary'>Name</InputLabel>
                           <Select
+                              name='note-name-select'
                               value={noteBaseName}
                               onChange={onNoteBaseNameChange}
                               color='secondary'
                               className='selectInput'
-                              input={<OutlinedInput label="Name" color='secondary' />}
+                              input={<OutlinedInput label="Name" id='note-name-input'  color='secondary' />}
                           >
                             <MenuItem value={'A'}>A</MenuItem>
                             <MenuItem value={'B'}>B</MenuItem>
@@ -72,12 +73,13 @@ const AnswerForm = (props) => {
                           </Select>
                         </FormControl>
                         <FormControl size="small" fullWidth>
-                          <InputLabel color='secondary'>Natural, <em>b</em> or <em>#</em></InputLabel>
+                          <InputLabel htmlFor='accidental-input' color='secondary'>Natural, <em>b</em> or <em>#</em></InputLabel>
                           <Select
+                              name='accidental-select'
                               value={accidental}
                               onChange={onAccidentalChange}
                               color='secondary'
-                              input={<OutlinedInput label="Natural, b or #" color='secondary' />}
+                              input={<OutlinedInput id='accidental-input' label="Natural, b or #" color='secondary' />}
                           >
                             <MenuItem value={''} disabled>natural (default)</MenuItem>
                             <MenuItem value={'b'}><em>b</em></MenuItem>
@@ -108,13 +110,14 @@ const AnswerForm = (props) => {
                     :
                       <>
                         <FormControl size="small" fullWidth>
-                          <InputLabel color='secondary'>String</InputLabel>
+                          <InputLabel htmlFor='string-input' color='secondary'>String</InputLabel>
                           <Select
+                              name='string-select'
                               value={chosenString}
                               onChange={onStringChange}
                               color='secondary'
                               className='selectInput'
-                              input={<OutlinedInput label="String" color='secondary' />}
+                              input={<OutlinedInput id='string-input' label="String" color='secondary' />}
                           >
                               <MenuItem value={'G'}>G string</MenuItem>
                               <MenuItem value={'D'}>D string </MenuItem>
@@ -123,12 +126,13 @@ const AnswerForm = (props) => {
                           </Select>
                         </FormControl>
                         <FormControl size="small" fullWidth>
-                          <InputLabel color='secondary'>Finger</InputLabel>
+                          <InputLabel htmlFor='fingering-input' color='secondary'>Finger</InputLabel>
                           <Select
+                              name='fingering-select'
                               value={fingering}
                               onChange={onFingeringChange}
                               color='secondary'
-                              input={<OutlinedInput label="Finger" color='secondary' />}
+                              input={<OutlinedInput id='fingering-input' label="Finger" color='secondary' />}
                           >
                               <MenuItem value={'0'}>0</MenuItem>
                               <MenuItem value={'1'}>1</MenuItem>
