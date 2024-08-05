@@ -5,6 +5,7 @@ import AnswerForm from '../AnswerForm';
 import RevealForm from '../RevealForm';
 import EndSessionModal from '../EndSessionModal';
 import './styles.css';
+import { shuffleDataArray } from '../../hooks/dataHooks';
 
 const PracticeSession = (props) => {
   const {isSmallScreen, selectedData, path, keyName} = props;
@@ -21,25 +22,18 @@ const PracticeSession = (props) => {
 
   const correctAnswersResponse = ["Correct! Well done!", "Hooray!! You've got this!", "Correct answer! You are on a roll!", "Great answers!" ]
 
-  const shuffle = useCallback((array) => { 
-    for (let i = array.length - 1; i > 0; i--) { 
-      const j = Math.floor(Math.random() * (i + 1)); 
-      [array[i], array[j]] = [array[j], array[i]]; 
-    } 
-    return array;
-  }, []); 
 
   useEffect(() => {
     setDataArray([]);
     setCorrectAnswers([]);
     setWrongAnswers([]);
-    const shuffledArray = shuffle(selectedData); 
+    const shuffledArray = shuffleDataArray(selectedData); 
     setDataIndex(0);
     setIsSecondAttemptQuestions(false);
     setIsReveal(false);
     setDataArray(shuffledArray);
 
-  }, [shuffle, selectedData, path])
+  }, [selectedData, path])
 
   const getIncorrectAnswersMessage = (noteNameCorrect, fingeringCorrect, positionCorrect) => {
     let incorrectItems = []
@@ -118,7 +112,7 @@ const PracticeSession = (props) => {
   const revealPreviousAnswer = () => setDataIndex(dataIndex -1);
 
   const resetEntireExcercise = useCallback(() => {
-    const shuffledArray = shuffle(selectedData); 
+    const shuffledArray = shuffleDataArray(selectedData); 
     setIsSecondAttemptQuestions(false);
     setDataArray(shuffledArray)
     setDataIndex(0);
@@ -126,7 +120,7 @@ const PracticeSession = (props) => {
     setWrongAnswers([]);
     setCorrectAnswers([]);
     setIsReveal(false)
-  },[shuffle, selectedData])
+  },[selectedData])
 
   return (
     <>
