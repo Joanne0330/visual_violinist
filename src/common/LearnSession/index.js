@@ -48,7 +48,7 @@ const LearnSession = (props) => {
 								<Grid container  direction="column" spacing={2} justifyContent='center' alignItems='center'>
 									{dataArray[dataIndex].texts.map((text, id) => (
 										<Grid item xs={12} key={id}> 
-											<Typography variant="body1" className="contentText" >{text}</Typography>
+											<Typography style={{color: 'white'}}variant="body1" className="contentText" >{text}</Typography>
 										</Grid>
 									))}
 									<Grid container direction="row" justifyContent='space-between'>
@@ -81,7 +81,7 @@ const LearnSession = (props) => {
 										}
 									</Grid>
 									<Grid item xs={12}>
-										<Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/>
+										<Pagination  size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/>
 									</Grid>
 								</Grid>
 						</CardContent>
