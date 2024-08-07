@@ -37,10 +37,10 @@ const stackOptions = [
 ];
 
 const FlashCardBeginModal = (props) => {
-	const {isModalOpen} = props;
+	const {isModalOpen, convertChosenStackToData} = props;
 	const [chosenStackArr, setChosenStackArr] = useState([]);
+	const [isStep2, setIsStep2] = useState(false);
 
-	console.log('chosen Stack', chosenStackArr)
 	const handlStackButtonClick = (id) => {
 		if(!chosenStackArr.includes(id)) {
 			setChosenStackArr([...chosenStackArr, id])
@@ -49,6 +49,14 @@ const FlashCardBeginModal = (props) => {
 			setChosenStackArr(newArr)
 		}
 	}
+	
+	const handleNextStep = (chosenStackArr) => {
+		convertChosenStackToData(chosenStackArr)
+		setIsStep2(true)
+	}
+	
+	console.log('chosen Stack', chosenStackArr);
+	console.log('2nd step', isStep2);
 
   return (
 		<Modal
@@ -94,6 +102,7 @@ const FlashCardBeginModal = (props) => {
 								variant="contained" 
 								color="secondary"
 								disabled={chosenStackArr.length === 0}
+								onClick={() => handleNextStep(chosenStackArr)}
 							>Next</Button>
 						</Grid>
 				</Grid>
