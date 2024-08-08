@@ -1,7 +1,6 @@
 import { Typography, Modal, Card, Button, Grid }from '@mui/material';
 import './styles.css';
 import { useState } from 'react';
-// import { useLocation, useNavigate } from 'react-router-dom';
 
 const stackOptions = [
 	{
@@ -37,7 +36,7 @@ const stackOptions = [
 ];
 
 const FlashCardBeginModal = (props) => {
-	const {isModalOpen, convertChosenStackToData} = props;
+	const {isModalOpen, convertChosenStackToData, chosenFlashCardsData} = props;
 	const [chosenStackArr, setChosenStackArr] = useState([]);
 	const [isStep2, setIsStep2] = useState(false);
 
@@ -57,6 +56,7 @@ const FlashCardBeginModal = (props) => {
 	
 	console.log('chosen Stack', chosenStackArr);
 	console.log('2nd step', isStep2);
+	console.log(chosenFlashCardsData)
 
   return (
 		<Modal
@@ -64,47 +64,83 @@ const FlashCardBeginModal = (props) => {
 			// onClose={resetEntireExcercise}
 		>
 			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px'}}>
+				
 				<Grid container direction="column" spacing={2}>
-					<Grid item>
-						<Typography  variant="h6" >
-							Set up your own stack of flash cards!
-						</Typography>
-					</Grid>
-					<Grid item>
-						<Typography variant="body1">
-							Please pick what you want to include in your stash of cards. You can choose more than one!
-						</Typography>
-					</Grid>
-					<Grid item container spacing={2}>
-						<Grid item xs={12} md={6}>
-							<Button 
-								fullWidth 
-								variant="contained" 
-								color={chosenStackArr.length === 5 ? 'secondary' : 'inherit'} 
-								onClick={() => setChosenStackArr(['g_string', 'd_string', 'a_string', 'e_string', 'e_string_high'])}
-							>All notes</Button>
+				{!isStep2 ? 
+					<>
+						<Grid item>
+							<Typography  variant="h6" >
+								Set up your own stack of Flash Cards!
+							</Typography>
 						</Grid>
-						{stackOptions.map(stack => (
-							<Grid item xs={12} md={6} key={stack.stackId}>
+						<Grid item>
+							<Typography variant="body1">
+								Please pick what you want to include in your stack of cards. You can choose more than one!
+							</Typography>
+						</Grid>
+						<Grid item container spacing={2}>
+							<Grid item xs={12} md={6}>
 								<Button 
 									fullWidth 
-									key={stack.stackId} 
 									variant="contained" 
-									color={!!chosenStackArr.includes(stack.stackId) ? 'secondary' : 'inherit'}  
-									onClick={() => handlStackButtonClick(stack.stackId)} 
-								>{stack.stackName}</Button>
+									color={chosenStackArr.length === 5 ? 'secondary' : 'inherit'} 
+									onClick={() => setChosenStackArr(['g_string', 'd_string', 'a_string', 'e_string', 'e_string_high'])}
+								>All notes</Button>
 							</Grid>
-						))}
-					</Grid>
+							{stackOptions.map(stack => (
+								<Grid item xs={12} md={6} key={stack.stackId}>
+									<Button 
+										fullWidth 
+										key={stack.stackId} 
+										variant="contained" 
+										color={!!chosenStackArr.includes(stack.stackId) ? 'secondary' : 'inherit'}  
+										onClick={() => handlStackButtonClick(stack.stackId)} 
+									>{stack.stackName}</Button>
+								</Grid>
+							))}
+						</Grid>
+							<Grid item container justifyContent='flex-end'>
+								<Button 
+									id="modalButton" 
+									variant="contained" 
+									color="secondary"
+									disabled={chosenStackArr.length === 0}
+									onClick={() => handleNextStep(chosenStackArr)}
+								>Next</Button>
+							</Grid>				
+					</>
+					:
+					<>
+						<Grid item>
+							<Typography  variant="h6" >
+								You have chosen your stack of Flash Cards!
+							</Typography>
+						</Grid>
+						<Grid item>
+							<Typography variant="body1">
+								{`Your stack has ${chosenFlashCardsData.length/2} notes which will appear twice, that makes up total of ${chosenFlashCardsData.length} questions. Please try to answer them as quickly as possible as you will be timed.`}
+							</Typography>
+						</Grid>
+						<Grid item>
+							<Typography variant="body1">
+								Any wrong answer may delay you, so be careful!
+							</Typography>
+						</Grid>
+						<Grid item>
+							<Typography variant="body1">
+								The timer will start when you click the START button. Are you ready? 
+							</Typography>
+						</Grid>
 						<Grid item container justifyContent='flex-end'>
 							<Button 
 								id="modalButton" 
 								variant="contained" 
 								color="secondary"
-								disabled={chosenStackArr.length === 0}
-								onClick={() => handleNextStep(chosenStackArr)}
-							>Next</Button>
+								onClick={() => null}
+							>Start</Button>
 						</Grid>
+					</>
+				}
 				</Grid>
 			</Card>
 		</Modal>
