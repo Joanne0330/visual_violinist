@@ -30,10 +30,10 @@ export const flashCardData = {
 	"e_string_high": [
 		{noteImg: "/assets/images/singleNotes/high_A.png" , noteBaseName: 'A'},
 		{noteImg: "/assets/images/singleNotes/high_B.png" , noteBaseName: 'B'},
-		{noteImg: "" , noteBaseName: 'C'},
-		{noteImg: "" , noteBaseName: 'D'},
-		{noteImg: "" , noteBaseName: 'E'},
-		{noteImg: "" , noteBaseName: 'F'}
+		{noteImg: "/assets/images/singleNotes/high_C.png" , noteBaseName: 'C'},
+		{noteImg: "/assets/images/singleNotes/high_D.png" , noteBaseName: 'D'},
+		{noteImg: "/assets/images/singleNotes/very_high_E.png" , noteBaseName: 'E'},
+		{noteImg: "/assets/images/singleNotes/very_high_F.png" , noteBaseName: 'F'}
 	]
 
 }
