@@ -1,4 +1,5 @@
-import { Typography, Modal, Card, Button, Grid }from '@mui/material';
+import { Typography, Modal, Card, Button, Grid, Fab }from '@mui/material';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import './styles.css';
 import { useState } from 'react';
 
@@ -36,7 +37,7 @@ const stackOptions = [
 ];
 
 const FlashCardBeginModal = (props) => {
-	const {isModalOpen, convertChosenStackToData, chosenFlashCardsData} = props;
+	const {isModalOpen, convertChosenStackToData, chosenFlashCardsData, setChosenFlashCardsData} = props;
 	const [chosenStackArr, setChosenStackArr] = useState([]);
 	const [isStep2, setIsStep2] = useState(false);
 
@@ -48,7 +49,12 @@ const FlashCardBeginModal = (props) => {
 			setChosenStackArr(newArr)
 		}
 	}
-	
+	const handleRefresh = () => {
+		setChosenFlashCardsData([]);
+		setChosenStackArr([]);
+		setIsStep2(false);
+	}
+
 	const handleNextStep = (chosenStackArr) => {
 		convertChosenStackToData(chosenStackArr)
 		setIsStep2(true)
@@ -111,6 +117,11 @@ const FlashCardBeginModal = (props) => {
 					</>
 					:
 					<>
+						<Grid justifyContent="flex-end" direction="row" container>
+                <Fab color="extended" id="flashCardModalRefreshButton" aria-label="refresh" size='small' onClick={() => handleRefresh()}>
+                  <RefreshIcon />
+                </Fab>
+              </Grid>
 						<Grid item>
 							<Typography  variant="h6" >
 								You have chosen your stack of Flash Cards!

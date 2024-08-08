@@ -36,6 +36,7 @@ const FlashCardPage = () => {
 				isModalOpen={isModalOpen} 
 				convertChosenStackToData={convertChosenStackToData}
 				chosenFlashCardsData={chosenFlashCardsData}
+				setChosenFlashCardsData={setChosenFlashCardsData}
 				/>
 		</>
 	)
