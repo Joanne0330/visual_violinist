@@ -12,7 +12,7 @@ const AppRoutes = () => {
 	return (
 		<Routes>
 			<Route exact path="/" element={<HomePage/>}/>
-			<Route exact path="/flash_card" element={<FlashCardPage/>}/>
+			<Route exact path="/flash_cards" element={<FlashCardPage/>}/>
 			<Route path="/learn/:id" element={<LearnPage/>}/>
 			<Route path="/practice/:id" element={<PracticePage />} />
 		</Routes>

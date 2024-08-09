@@ -38,7 +38,7 @@ const pageIconButtons = [
   {pageTitle: 'Home', buttonIcon: <HomeOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Home'},
   {pageTitle: 'Learn', buttonIcon: <MenuBookOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Learn'},
   {pageTitle: 'Play & Practice', buttonIcon: <MusicNoteOutlinedIcon style={{color: 'white'}} fontSize='large' />, pageControl: 'Practice'},
-  {pageTitle: 'Flash Card', buttonIcon: <LibraryMusicIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Flash Card'},
+  {pageTitle: 'Flash Cards', buttonIcon: <LibraryMusicIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Flash Cards'},
 ]
 
 function AppHeaderMenu() {
@@ -59,7 +59,7 @@ function AppHeaderMenu() {
       setAnchorEl(event.currentTarget);
       setSelectedMenuButton(pageControl)
     } else {
-      pageControl === "Flash Card" ? handleRedirect('/flash_card') : handleRedirect('')
+      pageControl === "Flash Cards" ? handleRedirect('/flash_cards') : handleRedirect('')
       setMenuList([])
     }
   };
