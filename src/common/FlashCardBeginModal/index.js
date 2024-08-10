@@ -1,4 +1,4 @@
-import { Typography, Modal, Card, Button, Grid, Fab, CardContent, CardMedia, CardActionArea }from '@mui/material';
+import { Typography, Modal, Card, Button, Grid, Fab, CardContent, CardMedia, CardActionArea, Radio }from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import './styles.css';
 import { useState } from 'react';
@@ -30,7 +30,7 @@ const stackOptions = [
 	},
 	{
 		stackName: 'High notes',
-		stackDescription: 'Notes for E string - third to fifth position (A, B, C, D, E, F)',
+		stackDescription: 'High E string notes (A, B, C, D, E, F)',
 		stackPhoto: "/assets/images/flashCards/high_notes_stack.png",
 		stackId: 'e_string_high'
 	}
@@ -87,23 +87,25 @@ const FlashCardBeginModal = (props) => {
 						<Grid item container spacing={2}>
 							<Grid item xs={12} md={6}>
 								<Button 
+									style={{boxShadow: '0 10px 20px 0 #666666', height: '100%', borderRadius:'15px' }}
 									fullWidth 
 									variant="contained" 
 									color={chosenStackArr.length === 5 ? 'secondary' : 'inherit'} 
 									onClick={() => setChosenStackArr(['g_string', 'd_string', 'a_string', 'e_string', 'e_string_high'])}
-								>All notes</Button>
+								>
+									<Radio
+										checked={chosenStackArr.length === 5}
+										onChange={() => setChosenStackArr(['g_string', 'd_string', 'a_string', 'e_string', 'e_string_high'])}
+										color="default" 
+									/>	
+									<Typography variant="h6" style={{color: chosenStackArr.length === 5  ? '#ffffff' : '#000000'}}>
+										All notes
+									</Typography>
+								</Button>
 							</Grid>
 							{stackOptions.map(stack => (
 								<Grid item xs={12} md={6} key={stack.stackId}>
-									{/* <Button 
-										fullWidth 
-										key={stack.stackId} 
-										variant="contained" 
-										color={!!chosenStackArr.includes(stack.stackId) ? 'secondary' : 'inherit'}  
-										onClick={() => handlStackButtonClick(stack.stackId)} 
-									>{stack.stackName}
-									</Button> */}
-									<Card sx={{ maxWidth: 345 }} style={{boxShadow: '0 10px 20px 0 #666666'}}>
+									<Card sx={{ maxWidth: '100%' }} style={{boxShadow: '0 10px 20px 0 #666666', borderRadius:'15px' }}>
 										<CardActionArea onClick={() => handlStackButtonClick(stack.stackId)} >
 											<CardMedia
 												component="img"
@@ -111,11 +113,21 @@ const FlashCardBeginModal = (props) => {
 												image={stack.stackPhoto}
 												alt={stack.stackName}
 											/>
-											<CardContent style={{background: !!chosenStackArr.includes(stack.stackId) ? 'linear-gradient(60deg, #9c27b0, #e6e6e6)' : '#ffffff'}}>		
-											{/* <CardContent style={{backgroundColor: !!chosenStackArr.includes(stack.stackId) ? '#9c27b0' : ''}}>		 */}
-												<Typography variant="h6" style={{color: !!chosenStackArr.includes(stack.stackId) ? '#ffffff' : '#000000'}}>
-													{stack.stackName}
-												</Typography>
+											<CardContent style={{background: !!chosenStackArr.includes(stack.stackId) ? 'linear-gradient(60deg, #9c27b0, #e6e6e6)' : '#ffffff'}}>	
+											<Grid container direction='row' alignItems='center'>
+												<Grid item>
+													<Radio
+														checked={!!chosenStackArr.includes(stack.stackId)}
+														onChange={() => handlStackButtonClick(stack.stackId)}
+														color="default" 
+													/>	
+												</Grid>
+												<Grid item>
+													<Typography variant="h6" style={{color: !!chosenStackArr.includes(stack.stackId) ? '#ffffff' : '#000000'}}>
+														{stack.stackName}
+													</Typography>
+												</Grid>
+											</Grid>
 												<Typography variant="body2" color={!!chosenStackArr.includes(stack.stackId) ? 'text.secondary' : "text.secondary"}>{stack.stackDescription}</Typography>
 											</CardContent>
 										</CardActionArea>
