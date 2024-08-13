@@ -24,7 +24,7 @@ const homePageData = [
 		courseCategory: 'Flash Card',
 		description: 'Not so confident with knowing the name of the notes? You can practice your reading using this Flash Card tool',
 		icon: <LibraryMusicIcon style={{color: 'white'}} fontSize='large'/>,
-		courseList: [{name: 'Go to Flash Card', url: '/flash_card'}]
+		courseList: [{name: 'Go to Flash Card', url: '/flash_cards'}]
 	}
 
 ];

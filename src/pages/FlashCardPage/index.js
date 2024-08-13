@@ -3,10 +3,11 @@ import {useState} from 'react';
 import FlashCardBeginModal from '../../common/FlashCardBeginModal';
 import { flashCardData } from './flashCardData';
 import { shuffleDataArray } from '../../hooks/dataHooks';
+import FlashCardsSession from '../../common/FlashCardsSession';
 
 const FlashCardPage = () => {
 	const [chosenFlashCardsData, setChosenFlashCardsData] = useState([]);
-	const [isModalOpen] = useState(true);
+	const [isBeginModalOpen, setIsBeginModalOpen] = useState(true);
 
 	const convertChosenStackToData = (chosenStackArr) => {
 		//1) map to find the correct data and push into an array
@@ -30,10 +31,15 @@ const FlashCardPage = () => {
 
 	return (
 		<>
-			<h2 className='flashCardPageText'>Flash Card</h2>
-			{/* <h3 className='learnPageText'>{learnData[location.pathname].subText}</h3> */}
+			<h2 className='flashCardPageText'>Flash Cards</h2>
+			{/**TODO: Can move the below into a FlashCardSession Component */}
+			{!!chosenFlashCardsData.length && !isBeginModalOpen &&
+				<FlashCardsSession chosenFlashCardsData={chosenFlashCardsData}/>
+			
+			}
 			<FlashCardBeginModal 
-				isModalOpen={isModalOpen} 
+				isBeginModalOpen={isBeginModalOpen} 
+				setIsBeginModalOpen={setIsBeginModalOpen}
 				convertChosenStackToData={convertChosenStackToData}
 				chosenFlashCardsData={chosenFlashCardsData}
 				setChosenFlashCardsData={setChosenFlashCardsData}

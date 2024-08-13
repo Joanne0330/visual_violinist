@@ -30,14 +30,14 @@ const stackOptions = [
 	},
 	{
 		stackName: 'High notes',
-		stackDescription: 'High E string notes (A, B, C, D, E, F)',
+		stackDescription: 'High E string notes - 3rd to 5th positions (A, B, C, D, E, F)',
 		stackPhoto: "/assets/images/flashCards/high_notes_stack.png",
 		stackId: 'e_string_high'
 	}
 ];
 
 const FlashCardBeginModal = (props) => {
-	const {isModalOpen, convertChosenStackToData, chosenFlashCardsData, setChosenFlashCardsData} = props;
+	const {isBeginModalOpen, convertChosenStackToData, chosenFlashCardsData, setChosenFlashCardsData, setIsBeginModalOpen} = props;
 	const [chosenStackArr, setChosenStackArr] = useState([]);
 	const [isStep2, setIsStep2] = useState(false);
 
@@ -60,13 +60,13 @@ const FlashCardBeginModal = (props) => {
 		setIsStep2(true)
 	}
 	
-	console.log('chosen Stack', chosenStackArr);
-	console.log('2nd step', isStep2);
-	console.log(chosenFlashCardsData)
+	//TODO: reset isStep2 to false when session finishes or refreshes?
+	//TODO: go to home or go back for people want to get out of the Begin modal?
+
 
   return (
 		<Modal
-			open={isModalOpen}
+			open={isBeginModalOpen}
 			// onClose={resetEntireExcercise}
 		>
 			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px', overflowY: 'auto', maxHeight: '80vh'}}>
@@ -177,7 +177,7 @@ const FlashCardBeginModal = (props) => {
 								id="modalButton" 
 								variant="contained" 
 								color="secondary"
-								onClick={() => null}
+								onClick={() => setIsBeginModalOpen(false)}
 							>Start</Button>
 						</Grid>
 					</>
