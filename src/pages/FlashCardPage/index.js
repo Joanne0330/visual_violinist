@@ -8,6 +8,7 @@ import FlashCardsSession from '../../common/FlashCardsSession';
 const FlashCardPage = () => {
 	const [chosenFlashCardsData, setChosenFlashCardsData] = useState([]);
 	const [isBeginModalOpen, setIsBeginModalOpen] = useState(true);
+	const [isEndModalOpen, setIsEndModalOpen] = useState(false);
 
 	const convertChosenStackToData = (chosenStackArr) => {
 		//1) map to find the correct data and push into an array
@@ -29,12 +30,14 @@ const FlashCardPage = () => {
 		setChosenFlashCardsData(shuffledDoubleData);
 	};
 
+	console.log('end modal open?',isEndModalOpen)
+
 	return (
 		<>
 			<h2 className='flashCardPageText'>Flash Cards</h2>
 			{/**TODO: Can move the below into a FlashCardSession Component */}
 			{!!chosenFlashCardsData.length && !isBeginModalOpen &&
-				<FlashCardsSession chosenFlashCardsData={chosenFlashCardsData}/>
+				<FlashCardsSession chosenFlashCardsData={chosenFlashCardsData} setIsEndModalOpen={setIsEndModalOpen}/>
 			
 			}
 			<FlashCardBeginModal 

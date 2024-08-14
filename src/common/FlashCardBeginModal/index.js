@@ -1,7 +1,9 @@
 import { Typography, Modal, Card, Button, Grid, Fab, CardContent, CardMedia, CardActionArea, Radio }from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import './styles.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const stackOptions = [
 	{
@@ -40,6 +42,7 @@ const FlashCardBeginModal = (props) => {
 	const {isBeginModalOpen, convertChosenStackToData, chosenFlashCardsData, setChosenFlashCardsData, setIsBeginModalOpen} = props;
 	const [chosenStackArr, setChosenStackArr] = useState([]);
 	const [isStep2, setIsStep2] = useState(false);
+	let navigate = useNavigate();
 
 	const handlStackButtonClick = (id) => {
 		if(!chosenStackArr.includes(id)) {
@@ -69,16 +72,22 @@ const FlashCardBeginModal = (props) => {
 			open={isBeginModalOpen}
 			// onClose={resetEntireExcercise}
 		>
-			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px', overflowY: 'auto', maxHeight: '80vh'}}>
-				
+			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px', overflowY: 'auto', maxHeight: '80vh'}}>	
 				<Grid container direction="column" spacing={2}>
 				{!isStep2 ? 
 					<>
+						<Grid justifyContent="flex-end" direction="row" container>
+							<Fab color="extended" id="flashCardModalIconButtons" aria-label="refresh" size='small' onClick={() => navigate('/')}>
+								<HomeOutlinedIcon />
+							</Fab>
+            </Grid>
 						<Grid item>
 							<Typography  variant="h6" >
 								Set up your own stack of Flash Cards!
 							</Typography>
+							
 						</Grid>
+						
 						<Grid item>
 							<Typography variant="body1">
 								Please pick what you want to include in your stack of cards. You can choose more than one!
@@ -148,10 +157,10 @@ const FlashCardBeginModal = (props) => {
 					:
 					<>
 						<Grid justifyContent="flex-end" direction="row" container>
-                <Fab color="extended" id="flashCardModalRefreshButton" aria-label="refresh" size='small' onClick={() => handleRefresh()}>
+                <Fab color="extended" id="flashCardModalIconButtons" aria-label="refresh" size='small' onClick={() => handleRefresh()}>
                   <RefreshIcon />
                 </Fab>
-              </Grid>
+            </Grid>
 						<Grid item>
 							<Typography  variant="h6" >
 								You have chosen your stack of Flash Cards!
