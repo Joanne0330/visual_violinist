@@ -60,27 +60,29 @@ const FlashCardsSession = (props) => {
 							<MusicLoader />
 							:
 							<CardMedia
-								sx={{ minHeight: isSmallScreen ? 250 : 450}}
+								sx={{ height: isSmallScreen ? 250 : 450}}
 								image={chosenFlashCardsData[dataIndex].noteImg}
 								title='Note'
 							/>
 						}
 					</Grid>
-					<Grid   xs={12} sm={6} container item spacing={3} justifyContent='space-around'>
-							{['A', 'B', 'C', 'D', 'E', 'F', 'G'].map(note => (
-								<Grid item xs={6} sm={4} key={note}>
-									<Button 
-										fullWidth 
-										size='lg' 
-										color='secondary' 
-										variant='contained' 
-										onClick={() => handleOnClick(note)}
-										// name={note} 
-										// value={note}
-									>{note}</Button>
-								</Grid>
-							))}
-					</Grid>
+					{!isLoading && 
+						<Grid   xs={12} sm={6} container item spacing={3} justifyContent='space-around'>
+								{['A', 'B', 'C', 'D', 'E', 'F', 'G'].map(note => (
+									<Grid item xs={6} sm={4} key={note}>
+										<Button 
+											fullWidth 
+											size='lg' 
+											color='secondary' 
+											variant='contained' 
+											onClick={() => handleOnClick(note)}
+											// name={note} 
+											// value={note}
+										>{note}</Button>
+									</Grid>
+								))}
+						</Grid>
+					}
 				</Grid>
 			</Card>
 		</>
