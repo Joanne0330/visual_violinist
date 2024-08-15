@@ -39,7 +39,6 @@ const FlashCardPage = () => {
 	return (
 		<>
 			<h2 className='flashCardPageText'>Flash Cards</h2>
-			{/**TODO: Can move the below into a FlashCardSession Component */}
 			{!!chosenFlashCardsData.length && !isBeginModalOpen &&
 				<FlashCardsSession 
 					chosenFlashCardsData={chosenFlashCardsData} 

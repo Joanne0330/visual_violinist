@@ -1,5 +1,5 @@
 import './styles.css';
-import {Paper, Grid, Typography, Divider, Card, CardMedia, Button, Fab} from '@mui/material';
+import {Paper, Grid, Typography, Divider, Card, CardMedia, IconButton, Fab} from '@mui/material';
 import {useState} from 'react';
 import { useIsSmallScreen } from '../../hooks/screenSizeHooks';
 import RefreshIcon from '@mui/icons-material/Refresh';
@@ -77,21 +77,19 @@ const FlashCardsSession = (props) => {
 							/>
 						}
 					</Grid>
-					{/* {!isLoading &&  */}
-						<Grid   xs={12} sm={6} container item spacing={3} justifyContent='space-around'>
+
+						<Grid  xs={12} sm={6} container item spacing={3} direction="row" justifyContent='center' alignItems='center'>
 								{['A', 'B', 'C', 'D', 'E', 'F', 'G'].map(note => (
-									<Grid item xs={6} sm={4} key={note}>
-										<Button 
-											fullWidth 
-											size='lg' 
-											color='secondary' 
-											variant='contained' 
+									<Grid item  key={note}>
+										<IconButton
+                  		sx={{ ml: 2 }}
+											size='large' 
+											style={{boxShadow: '0 10px 20px 0 #666666', backgroundColor: '#9c27b0', color: 'white', width: '57px'}}
 											onClick={() => handleOnClick(note)}
-										>{note}</Button>
+										>{note}</IconButton>
 									</Grid>
 								))}
 						</Grid>
-					{/* } */}
 				</Grid>
 			</Card>
 			<FlashCardsEndModal 
