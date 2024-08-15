@@ -1,8 +1,8 @@
 import './styles.css';
 import {useState} from 'react';
-import FlashCardBeginModal from '../../common/FlashCardBeginModal';
 import { flashCardData } from './flashCardData';
 import { shuffleDataArray } from '../../hooks/dataHooks';
+import FlashCardsBeginModal from '../../common/FlashCardsBeginModal';
 import FlashCardsSession from '../../common/FlashCardsSession';
 
 const FlashCardPage = () => {
@@ -30,23 +30,32 @@ const FlashCardPage = () => {
 		setChosenFlashCardsData(shuffledDoubleData);
 	};
 
-	console.log('end modal open?',isEndModalOpen)
+	const aboardSession = () => {
+		setChosenFlashCardsData([]);
+		setIsBeginModalOpen(true);
+		setIsEndModalOpen(false);
+	}
 
 	return (
 		<>
 			<h2 className='flashCardPageText'>Flash Cards</h2>
 			{/**TODO: Can move the below into a FlashCardSession Component */}
 			{!!chosenFlashCardsData.length && !isBeginModalOpen &&
-				<FlashCardsSession chosenFlashCardsData={chosenFlashCardsData} setIsEndModalOpen={setIsEndModalOpen}/>
+				<FlashCardsSession 
+					chosenFlashCardsData={chosenFlashCardsData} 
+					setIsEndModalOpen={setIsEndModalOpen}
+					isEndModalOpen={isEndModalOpen}
+					aboardSession={aboardSession}
+				/>
 			
 			}
-			<FlashCardBeginModal 
+			<FlashCardsBeginModal 
 				isBeginModalOpen={isBeginModalOpen} 
 				setIsBeginModalOpen={setIsBeginModalOpen}
 				convertChosenStackToData={convertChosenStackToData}
 				chosenFlashCardsData={chosenFlashCardsData}
 				setChosenFlashCardsData={setChosenFlashCardsData}
-				/>
+			/>
 		</>
 	)
 }

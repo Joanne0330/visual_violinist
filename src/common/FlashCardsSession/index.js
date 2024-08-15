@@ -1,11 +1,15 @@
 import './styles.css';
-import {Paper, Grid, Typography, Divider, Card, CardMedia, Button} from '@mui/material';
+import {Paper, Grid, Typography, Divider, Card, CardMedia, Button, Fab} from '@mui/material';
 import {useState} from 'react';
 import { useIsSmallScreen } from '../../hooks/screenSizeHooks';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import ClearIcon from '@mui/icons-material/Clear';
+import CheckIcon from '@mui/icons-material/Check';
 import MusicLoader from '../Loading';
+import FlashCardsEndModal from '../../common/FlashCardsEndModal';
 
 const FlashCardsSession = (props) => {
-	const {chosenFlashCardsData, setIsEndModalOpen} = props;
+	const {chosenFlashCardsData, setIsEndModalOpen, aboardSession, isEndModalOpen} = props;
 	const [dataIndex, setDataIndex] = useState(0);
 	const [correctAnswers, setCorrectAnswers] = useState([]);
 	const [incorrectAnswers, setIncorrectAnswers] = useState([]);
@@ -13,33 +17,40 @@ const FlashCardsSession = (props) => {
 	const isSmallScreen = useIsSmallScreen();
 
 	const handleOnClick = (value) => {
+
 		if(value === chosenFlashCardsData[dataIndex].noteBaseName) {
 			setCorrectAnswers([...correctAnswers, chosenFlashCardsData[dataIndex]])
 		} else {
 			setIncorrectAnswers([...incorrectAnswers, chosenFlashCardsData[dataIndex]])
 		}
+
+		// TODO: Will use correct and incorrect loading method to demo to user therefore will move this logic inside the logic above
 		setIsLoading(true)
 		setTimeout(() => 
 			setIsLoading(false)
 		, 200);
+
+
 		if(dataIndex + 1 < chosenFlashCardsData.length) {
 			setDataIndex(dataIndex + 1);
 		} else {
-			console.log('WE FINISHED', dataIndex)
 			setIsEndModalOpen(true);
 		}	
 	}
 
-	console.log(dataIndex + 1)
-
 	return (
 		<>
 			<Paper className='flashCardScoreBar' style={{borderRadius: '10px', background: 'linear-gradient(170deg, #08445e, #d1d1e0)'}}>
+					<Fab color="secondary" id="flashCardModalIconButtons" aria-label="refresh" size='small' onClick={aboardSession}>
+            <RefreshIcon />
+          </Fab>
 					<Grid container direction="row">
 						<Grid item xs={6} style={{ paddingTop: 10}}>
+							<CheckIcon className='scoreTextColor'/>
 							<Typography className="scoreTextColor" variant='body1'>Correct</Typography>
 						</Grid>
 						<Grid item xs={6} style={{ paddingTop: 10}}> 
+							<ClearIcon className='scoreTextColor'/>
 							<Typography variant='body1' className="scoreTextColor">Incorrect</Typography>
 						</Grid>
 					</Grid>
@@ -53,7 +64,7 @@ const FlashCardsSession = (props) => {
 						</Grid>
 					</Grid>
 			</Paper> 
-			<Card className='flashCardSessionCard' style={{borderRadius: '10px', marginTop: 10, marginBotton: 10, background: 'linear-gradient(170deg, #08445e, #d1d1e0)'}}>
+			<Card className='flashCardSessionCard' style={{borderRadius: '10px', marginTop: 15, marginBotton: 10, background: 'linear-gradient(170deg, #08445e, #d1d1e0)'}}>
 				<Grid container>
 					<Grid item xs={12} sm={6}>
 						{isLoading ?
@@ -66,7 +77,7 @@ const FlashCardsSession = (props) => {
 							/>
 						}
 					</Grid>
-					{!isLoading && 
+					{/* {!isLoading &&  */}
 						<Grid   xs={12} sm={6} container item spacing={3} justifyContent='space-around'>
 								{['A', 'B', 'C', 'D', 'E', 'F', 'G'].map(note => (
 									<Grid item xs={6} sm={4} key={note}>
@@ -76,15 +87,20 @@ const FlashCardsSession = (props) => {
 											color='secondary' 
 											variant='contained' 
 											onClick={() => handleOnClick(note)}
-											// name={note} 
-											// value={note}
 										>{note}</Button>
 									</Grid>
 								))}
 						</Grid>
-					}
+					{/* } */}
 				</Grid>
 			</Card>
+			<FlashCardsEndModal 
+				isEndModalOpen={isEndModalOpen} 
+				aboardSession={aboardSession}
+				chosenFlashCardsData={chosenFlashCardsData}
+				correctAnswers={correctAnswers}
+				incorrectAnswers={incorrectAnswers}	
+			/>
 		</>
 	)
 

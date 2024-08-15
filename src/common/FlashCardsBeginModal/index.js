@@ -38,7 +38,7 @@ const stackOptions = [
 	}
 ];
 
-const FlashCardBeginModal = (props) => {
+const FlashCardsBeginModal = (props) => {
 	const {isBeginModalOpen, convertChosenStackToData, chosenFlashCardsData, setChosenFlashCardsData, setIsBeginModalOpen} = props;
 	const [chosenStackArr, setChosenStackArr] = useState([]);
 	const [isStep2, setIsStep2] = useState(false);
@@ -63,9 +63,11 @@ const FlashCardBeginModal = (props) => {
 		setIsStep2(true)
 	}
 	
-	//TODO: reset isStep2 to false when session finishes or refreshes?
-	//TODO: go to home or go back for people want to get out of the Begin modal?
-
+	const handleBeginSession = () => {
+		setIsBeginModalOpen(false)
+		setChosenStackArr([]);
+		setIsStep2(false)
+	}
 
   return (
 		<Modal
@@ -186,7 +188,7 @@ const FlashCardBeginModal = (props) => {
 								id="modalButton" 
 								variant="contained" 
 								color="secondary"
-								onClick={() => setIsBeginModalOpen(false)}
+								onClick={handleBeginSession}
 							>Start</Button>
 						</Grid>
 					</>
@@ -197,4 +199,4 @@ const FlashCardBeginModal = (props) => {
 	)
 }
 
-export default FlashCardBeginModal;
+export default FlashCardsBeginModal;
