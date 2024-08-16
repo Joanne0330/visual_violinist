@@ -13,30 +13,41 @@ const FlashCardsSession = (props) => {
 	const [dataIndex, setDataIndex] = useState(0);
 	const [correctAnswers, setCorrectAnswers] = useState([]);
 	const [incorrectAnswers, setIncorrectAnswers] = useState([]);
-	const [ isLoading, setIsLoading ] = useState(false);
+	const [isLoading, setIsLoading ] = useState(false);
+	const [showCorrection, setShowCorrection] = useState(false);
 	const isSmallScreen = useIsSmallScreen();
 
-	const handleOnClick = (value) => {
-
-		if(value === chosenFlashCardsData[dataIndex].noteBaseName) {
-			setCorrectAnswers([...correctAnswers, chosenFlashCardsData[dataIndex]])
-		} else {
-			setIncorrectAnswers([...incorrectAnswers, chosenFlashCardsData[dataIndex]])
-		}
-
-		// TODO: Will use correct and incorrect loading method to demo to user therefore will move this logic inside the logic above
-		setIsLoading(true)
-		setTimeout(() => 
-			setIsLoading(false)
-		, 200);
-
-
+	const handleNextQuestion = () => {
 		if(dataIndex + 1 < chosenFlashCardsData.length) {
 			setDataIndex(dataIndex + 1);
 		} else {
 			setIsEndModalOpen(true);
 		}	
 	}
+
+	const handleLoadingTime = () => {
+		setIsLoading(true);
+		setTimeout(() => {
+			setIsLoading(false);
+			handleNextQuestion();
+		}
+		, 200);
+	}
+
+	const handleOnClick = (value) => {
+		if(value === chosenFlashCardsData[dataIndex].noteBaseName) {
+			setCorrectAnswers([...correctAnswers, chosenFlashCardsData[dataIndex]])
+			handleLoadingTime();
+		} else {
+			setIncorrectAnswers([...incorrectAnswers, chosenFlashCardsData[dataIndex]])
+			setShowCorrection(true);
+			setTimeout(() => {
+				setShowCorrection(false);
+				handleLoadingTime();
+			}, 200000)
+		}
+	}
+
 
 	return (
 		<>
@@ -68,7 +79,7 @@ const FlashCardsSession = (props) => {
 				<Grid container>
 					<Grid item xs={12} sm={6}>
 						{isLoading ?
-							<MusicLoader />
+							<MusicLoader isSmallScreen={isSmallScreen} isFlashCardsFeature={true}/>
 							:
 							<CardMedia
 								sx={{ height: isSmallScreen ? 250 : 450}}
@@ -79,16 +90,23 @@ const FlashCardsSession = (props) => {
 					</Grid>
 
 						<Grid  xs={12} sm={6} container item spacing={3} direction="row" justifyContent='center' alignItems='center'>
-								{['A', 'B', 'C', 'D', 'E', 'F', 'G'].map(note => (
-									<Grid item  key={note}>
-										<IconButton
-                  		sx={{ ml: 2 }}
-											size='large' 
-											style={{boxShadow: '0 10px 20px 0 #666666', backgroundColor: '#9c27b0', color: 'white', width: '57px'}}
-											onClick={() => handleOnClick(note)}
-										>{note}</IconButton>
-									</Grid>
-								))}
+								{ showCorrection ? 
+									<div style={{height: "auto"}}>
+										<Typography variant="h6"><ClearIcon color="error"/>{` The correct answer is: ${chosenFlashCardsData[dataIndex].noteBaseName}`}</Typography> 
+									</div>
+								:
+	
+									['A', 'B', 'C', 'D', 'E', 'F', 'G'].map(note => (
+										<Grid item  key={note}>
+											<IconButton
+												sx={{ ml: 2 }}
+												size='large' 
+												style={{boxShadow: '0 10px 20px 0 #666666', backgroundColor: '#9c27b0', color: 'white', width: '57px'}}
+												onClick={() => handleOnClick(note)}
+											>{note}</IconButton>
+										</Grid>
+									))
+								}
 						</Grid>
 				</Grid>
 			</Card>
