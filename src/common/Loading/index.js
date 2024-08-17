@@ -13,7 +13,6 @@ export const MusicLoader = (props) => {
 			<img 
 				src={musicLoader}
 				style={{ width: '100%', height: heightFinder(isSmallScreen, isFlashCardsFeature), margin: 'auto', display: 'block', background: 'linear-gradient(75deg, black, #254d74)' }}
-				// style={{ width: '100%', margin: 'auto', display: 'block', background: 'linear-gradient(75deg, black, #254d74)' }}
 				alt='Loading...'
 			/>
 		</Fragment>

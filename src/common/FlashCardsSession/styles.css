@@ -3,6 +3,15 @@
 	margin-left: 10%;
 	margin-right: 10%;
 	text-align: center;
+	background: linear-gradient(170deg, #08445e, #d1d1e0);
+}
+
+.scoreTitleContainer {
+	padding-top: 10px;
+}
+
+.scoreMarkContainer {
+	padding-bottom: 10px;
 }
 
 .scoreTextColor {
@@ -13,5 +22,7 @@
 	width: 80%;
 	margin-left: 10%;
 	margin-right: 10%;
-
+	margin-top: 15px;
+	margin-bottom: 10px;
+	background: linear-gradient(170deg, #08445e, #d1d1e0)
 }

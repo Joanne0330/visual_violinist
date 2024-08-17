@@ -51,31 +51,31 @@ const FlashCardsSession = (props) => {
 
 	return (
 		<>
-			<Paper className='flashCardScoreBar' style={{borderRadius: '10px', background: 'linear-gradient(170deg, #08445e, #d1d1e0)'}}>
+			<Paper className='flashCardScoreBar' style={{borderRadius: '10px'}}>
 					<Fab color="secondary" id="flashCardModalIconButtons" aria-label="refresh" size='small' onClick={aboardSession}>
             <RefreshIcon />
           </Fab>
 					<Grid container direction="row">
-						<Grid item xs={6} style={{ paddingTop: 10}}>
+						<Grid item xs={6} className="scoreTitleContainer">
 							<CheckIcon className='scoreTextColor'/>
 							<Typography className="scoreTextColor" variant='body1'>Correct</Typography>
 						</Grid>
-						<Grid item xs={6} style={{ paddingTop: 10}}> 
+						<Grid item xs={6} className="scoreTitleContainer"> 
 							<ClearIcon className='scoreTextColor'/>
 							<Typography variant='body1' className="scoreTextColor">Incorrect</Typography>
 						</Grid>
 					</Grid>
 					<Divider variant="middle" style={{borderColor: 'white', margin: '10px'}}/>
 					<Grid container direction="row">
-						<Grid item xs={6} style={{ paddingBottom: 10}}>
+						<Grid item xs={6} className="scoreMarkContainer">
 							<Typography variant='body2' className="scoreTextColor">{`${correctAnswers.length} / ${chosenFlashCardsData.length}`}</Typography>
 						</Grid>
-						<Grid item xs={6} style={{ paddingBottom: 10}}> 
+						<Grid item xs={6} className="scoreMarkContainer"> 
 							<Typography variant='body2' className="scoreTextColor">{`${incorrectAnswers.length} / ${chosenFlashCardsData.length}`}</Typography>
 						</Grid>
 					</Grid>
 			</Paper> 
-			<Card className='flashCardSessionCard' style={{borderRadius: '10px', marginTop: 15, marginBotton: 10, background: 'linear-gradient(170deg, #08445e, #d1d1e0)'}}>
+			<Card className='flashCardSessionCard' style={{borderRadius: '10px'}}>
 				<Grid container>
 					<Grid item xs={12} sm={6}>
 						{isLoading ?
