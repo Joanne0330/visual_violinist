@@ -44,7 +44,7 @@ const FlashCardsSession = (props) => {
 			setTimeout(() => {
 				setShowCorrection(false);
 				handleLoadingTime();
-			}, 200000)
+			}, 5000)
 		}
 	}
 
@@ -89,13 +89,13 @@ const FlashCardsSession = (props) => {
 						}
 					</Grid>
 
-						<Grid  xs={12} sm={6} container item spacing={3} direction="row" justifyContent='center' alignItems='center'>
+						<Grid  style={{marginTop: 3}} xs={12} sm={6} container item spacing={2} direction="row" justifyContent='center' alignItems='center'>
 								{ showCorrection ? 
-									<div style={{height: "auto"}}>
+									<div style={{height: isSmallScreen ? 250 : 450, alignContent: 'center'}}>
 										<Typography variant="h6"><ClearIcon color="error"/>{` The correct answer is: ${chosenFlashCardsData[dataIndex].noteBaseName}`}</Typography> 
 									</div>
 								:
-	
+									
 									['A', 'B', 'C', 'D', 'E', 'F', 'G'].map(note => (
 										<Grid item  key={note}>
 											<IconButton
