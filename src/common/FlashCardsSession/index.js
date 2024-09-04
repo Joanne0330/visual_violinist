@@ -55,6 +55,7 @@ const FlashCardsSession = (props) => {
 					<Fab color="secondary" id="flashCardModalIconButtons" aria-label="refresh" size='small' onClick={aboardSession}>
             <RefreshIcon />
           </Fab>
+					<Typography variant='body1' className='scoreTextColor' style={{marginTop: '10px'}}>00:00:00</Typography>
 					<Grid container direction="row">
 						<Grid item xs={6} className="scoreTitleContainer">
 							<CheckIcon className='scoreTextColor'/>
@@ -91,9 +92,12 @@ const FlashCardsSession = (props) => {
 
 						<Grid  style={{marginTop: 3}} xs={12} sm={6} container item spacing={2} direction="row" justifyContent='center' alignItems='center'>
 								{ showCorrection ? 
-									<div style={{height: isSmallScreen ? 250 : 450, alignContent: 'center'}}>
-										<Typography variant="h6"><ClearIcon color="error"/>{` The correct answer is: ${chosenFlashCardsData[dataIndex].noteBaseName}`}</Typography> 
-									</div>
+									<>
+										<ClearIcon color="error" fontSize="large"/>
+										<div style={{height: isSmallScreen ? 250 : 450, alignContent: 'center'}}>
+											<Typography variant="h6">{` The correct answer is: ${chosenFlashCardsData[dataIndex].noteBaseName}`}</Typography> 
+										</div>
+									</>
 								:
 									
 									['A', 'B', 'C', 'D', 'E', 'F', 'G'].map(note => (
