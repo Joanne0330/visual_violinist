@@ -64,7 +64,7 @@ const FlashCardsSession = (props) => {
 					<Fab color="secondary" id="flashCardModalIconButtons" aria-label="refresh" size='small' onClick={aboardSession}>
             <RefreshIcon />
           </Fab>
-					<Typography variant='body1' className='scoreTextColor' style={{marginTop: '10px'}}>{formatTime(timer)}</Typography>
+					<Typography variant='body1' className='scoreTextColor' style={{marginTop: '10px'}}>{formatTime(timer, 'digital')}</Typography>
 					{/* <Typography variant='body1' className='scoreTextColor' style={{marginTop: '10px'}}>00:00:00</Typography> */}
 					<Grid container direction="row">
 						<Grid item xs={6} className="scoreTitleContainer">
