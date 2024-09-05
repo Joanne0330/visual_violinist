@@ -23,7 +23,7 @@ const FlashCardsEndModal = (props) => {
 					{`In this round of flash cards you had total of ${textEditor(chosenFlashCardsData.length)}. You had answered ${textEditor(correctAnswers.length)} correctly and ${textEditor(incorrectAnswers.length)} incorrectly.`}
 				</Typography>
 				<Typography sx={{ mt: 2 }}>
-					{`You took ${formatTime(timer, 'text')} to finish these flash cards. We recommend each question to take 2 seconds to answer therefore you are ${timer <= chosenFlashCardsData.length * 2 ? 'right on' : 'below'} the target!`} 
+					{`You took ${formatTime(timer, 'text')} to finish these flash cards. We recommend each question to take 2 seconds to answer therefore this round was ${timer <= chosenFlashCardsData.length * 2 ? 'right on' : 'below'} the target goal!`} 
 				</Typography>
 				<Grid justifyContent="flex-end" direction="row" container style={{marginTop: '10px'}}>
 					<Button onClick={aboardSession} id='modalButton' variant="contained" color="secondary">New game</Button>
