@@ -1,9 +1,10 @@
 import { Typography, Modal, Card, Button, Grid }from '@mui/material';
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
+import { formatTime } from '../../utils';
 
 const FlashCardsEndModal = (props) => {
-	const {isEndModalOpen, aboardSession, chosenFlashCardsData, correctAnswers, incorrectAnswers} = props;
+	const {isEndModalOpen, aboardSession, chosenFlashCardsData, correctAnswers, incorrectAnswers, timer} = props;
 
 	let navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const FlashCardsEndModal = (props) => {
 					{`In this round of flash cards you had total of ${textEditor(chosenFlashCardsData.length)}. You had answered ${textEditor(correctAnswers.length)} correctly and ${textEditor(incorrectAnswers.length)} incorrectly.`}
 				</Typography>
 				<Typography sx={{ mt: 2 }}>
-					You took xxxxx seconds to finish these flash cards. We recommend each question to take 1 second to answer therefore you are xxxxx the target! 
+					{`You took ${formatTime(timer)} to finish these flash cards. We recommend each question to take 2 seconds to answer therefore you are ${timer <= chosenFlashCardsData.length * 2 ? 'right on' : 'below'} the target!`} 
 				</Typography>
 				<Grid justifyContent="flex-end" direction="row" container style={{marginTop: '10px'}}>
 					<Button onClick={aboardSession} id='modalButton' variant="contained" color="secondary">New game</Button>

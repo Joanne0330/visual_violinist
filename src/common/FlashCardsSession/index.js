@@ -1,15 +1,18 @@
 import './styles.css';
 import {Paper, Grid, Typography, Divider, Card, CardMedia, IconButton, Fab} from '@mui/material';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { useIsSmallScreen } from '../../hooks/screenSizeHooks';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import ClearIcon from '@mui/icons-material/Clear';
 import CheckIcon from '@mui/icons-material/Check';
 import MusicLoader from '../Loading';
 import FlashCardsEndModal from '../../common/FlashCardsEndModal';
+import useTimer from '../../hooks/timerHooks';
+import {formatTime} from '../../utils';
 
 const FlashCardsSession = (props) => {
 	const {chosenFlashCardsData, setIsEndModalOpen, aboardSession, isEndModalOpen} = props;
+	const {timer, isActive, handleStart, handlePause} = useTimer(0)
 	const [dataIndex, setDataIndex] = useState(0);
 	const [correctAnswers, setCorrectAnswers] = useState([]);
 	const [incorrectAnswers, setIncorrectAnswers] = useState([]);
@@ -17,11 +20,18 @@ const FlashCardsSession = (props) => {
 	const [showCorrection, setShowCorrection] = useState(false);
 	const isSmallScreen = useIsSmallScreen();
 
+	useEffect(() => {
+		if(timer === 0 && dataIndex === 0 && !isActive) {
+			handleStart();
+		}
+	}, [timer, dataIndex, isActive, handleStart ])
+
 	const handleNextQuestion = () => {
 		if(dataIndex + 1 < chosenFlashCardsData.length) {
 			setDataIndex(dataIndex + 1);
 		} else {
 			setIsEndModalOpen(true);
+			handlePause();
 		}	
 	}
 
@@ -48,14 +58,14 @@ const FlashCardsSession = (props) => {
 		}
 	}
 
-
 	return (
 		<>
 			<Paper className='flashCardScoreBar' style={{borderRadius: '10px'}}>
 					<Fab color="secondary" id="flashCardModalIconButtons" aria-label="refresh" size='small' onClick={aboardSession}>
             <RefreshIcon />
           </Fab>
-					<Typography variant='body1' className='scoreTextColor' style={{marginTop: '10px'}}>00:00:00</Typography>
+					<Typography variant='body1' className='scoreTextColor' style={{marginTop: '10px'}}>{formatTime(timer)}</Typography>
+					{/* <Typography variant='body1' className='scoreTextColor' style={{marginTop: '10px'}}>00:00:00</Typography> */}
 					<Grid container direction="row">
 						<Grid item xs={6} className="scoreTitleContainer">
 							<CheckIcon className='scoreTextColor'/>
@@ -119,7 +129,8 @@ const FlashCardsSession = (props) => {
 				aboardSession={aboardSession}
 				chosenFlashCardsData={chosenFlashCardsData}
 				correctAnswers={correctAnswers}
-				incorrectAnswers={incorrectAnswers}	
+				incorrectAnswers={incorrectAnswers}
+				timer={timer}	
 			/>
 		</>
 	)
