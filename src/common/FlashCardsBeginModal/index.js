@@ -96,7 +96,7 @@ const FlashCardsBeginModal = (props) => {
 							</Typography>
 						</Grid>
 						<Grid item container spacing={2}>
-							<Grid item xs={12} md={6} >
+							<Grid item xs={12} md={6} xl={4} >
 								<Button 
 									style={{boxShadow: '0 10px 20px 0 #666666', height: '100%', borderRadius:'15px', maxWidth: '350px' }}
 									fullWidth 
@@ -115,7 +115,7 @@ const FlashCardsBeginModal = (props) => {
 								</Button>
 							</Grid>
 							{stackOptions.map(stack => (
-								<Grid item xs={12} md={6} key={stack.stackId}>
+								<Grid item xs={12} md={6} xl={4} key={stack.stackId}>
 									<Card sx={{ maxWidth: '350px' }} style={{boxShadow: '0 10px 20px 0 #666666', borderRadius:'15px' }}>
 										<CardActionArea onClick={() => handlStackButtonClick(stack.stackId)} >
 											<CardMedia
