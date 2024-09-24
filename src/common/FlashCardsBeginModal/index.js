@@ -82,7 +82,7 @@ const FlashCardsBeginModal = (props) => {
 							<Fab color="extended" id="flashCardModalIconButtons" aria-label="refresh" size='small' onClick={() => navigate('/')}>
 								<HomeOutlinedIcon />
 							</Fab>
-            </Grid>
+            			</Grid>
 						<Grid item>
 							<Typography  variant="h6" >
 								Set up your own stack of Flash Cards!
@@ -96,9 +96,9 @@ const FlashCardsBeginModal = (props) => {
 							</Typography>
 						</Grid>
 						<Grid item container spacing={2}>
-							<Grid item xs={12} md={6}>
+							<Grid item xs={12} md={6} >
 								<Button 
-									style={{boxShadow: '0 10px 20px 0 #666666', height: '100%', borderRadius:'15px' }}
+									style={{boxShadow: '0 10px 20px 0 #666666', height: '100%', borderRadius:'15px', maxWidth: '350px' }}
 									fullWidth 
 									variant="contained" 
 									color={chosenStackArr.length === 5 ? 'secondary' : 'inherit'} 
@@ -116,7 +116,7 @@ const FlashCardsBeginModal = (props) => {
 							</Grid>
 							{stackOptions.map(stack => (
 								<Grid item xs={12} md={6} key={stack.stackId}>
-									<Card sx={{ maxWidth: '100%' }} style={{boxShadow: '0 10px 20px 0 #666666', borderRadius:'15px' }}>
+									<Card sx={{ maxWidth: '350px' }} style={{boxShadow: '0 10px 20px 0 #666666', borderRadius:'15px' }}>
 										<CardActionArea onClick={() => handlStackButtonClick(stack.stackId)} >
 											<CardMedia
 												component="img"

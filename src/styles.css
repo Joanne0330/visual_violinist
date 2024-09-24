@@ -1,7 +1,5 @@
 .appHeader {
-	background-color: #ffb3bf;
-	/* background-color: pink; */
-	/* background-color: #9c27b0; */
+	background-color: #6f1c7d;
 }
 
 .appTitle {
@@ -33,9 +31,7 @@
 	justify-content: center;
 	padding: 10px; 
 	margin-bottom: 0;
-	background-color: #ffb3bf; 
-	/* background-color: pink;  */
-	/* background-color: #9c27b0;  */
+	background-color: #6f1c7d;
 	position: fixed; 
 	bottom: 0;
 	width: 100%;
