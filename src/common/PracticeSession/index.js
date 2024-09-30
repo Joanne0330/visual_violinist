@@ -21,6 +21,7 @@ const PracticeSession = (props) => {
   const [isSecondAttemptQuestions, setIsSecondAttemptQuestions] = useState(false);
   const [isReveal, setIsReveal] = useState(false);
   const [incorrectAnswerMessage, setIncorrectAnswerMessage] = useState('');
+  const [correctAnswerMessage, setCorrectAnswerMessage] = useState('');
   const {timer, isActive, handleStart, handlePause, isPaused, setTimer, setIsActive, setIsPaused} = useTimer(0)
 
   const correctAnswersResponse = ["Correct! Well done!", "Hooray!! You've got this!", "Correct answer! You are on a roll!", "Great answers!" ]
@@ -82,6 +83,8 @@ const PracticeSession = (props) => {
     // Step 2 then push the correct and incorrect data in the designated array 
     if(isEverythingCorrect){
       setCorrectAnswers([...correctAnswers, question])
+      const randomisedCheer = correctAnswersResponse[Math.floor(Math.random() * correctAnswersResponse.length)]
+      setCorrectAnswerMessage(randomisedCheer)
     } else {
       setWrongAnswers([...wrongAnswers, question])
       getIncorrectAnswersMessage(noteNameCorrect, fingeringCorrect, positionCorrect)
@@ -164,7 +167,7 @@ const PracticeSession = (props) => {
               sx={{ width: '100%' }}
               style={{borderRadius: '10px'}}
             >
-             {!isQuestionCorrect ? incorrectAnswerMessage : correctAnswersResponse[Math.floor(Math.random() * correctAnswersResponse.length)]} 
+             {!isQuestionCorrect ? incorrectAnswerMessage : correctAnswerMessage} 
             </Alert>
           </Snackbar>
           {!!dataArray.length &&
