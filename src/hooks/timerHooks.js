@@ -3,12 +3,12 @@ import { useState, useRef } from 'react';
 const useTimer = (initialState = 0) => {
   const [timer, setTimer] = useState(initialState)
   const [isActive, setIsActive] = useState(false)
-//   const [isPaused, setIsPaused] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
   const countRef = useRef(null)
 
   const handleStart = () => {
     setIsActive(true)
-    // setIsPaused(true)
+    setIsPaused(false)
     countRef.current = setInterval(() => {
       setTimer((timer) => timer + 1)
     }, 1000)
@@ -16,7 +16,8 @@ const useTimer = (initialState = 0) => {
 
   const handlePause = () => {
     clearInterval(countRef.current)
-    // setIsPaused(false)
+    setIsPaused(true)
+    setIsActive(false)
   }
 
 //   const handleResume = () => {
@@ -38,9 +39,12 @@ const useTimer = (initialState = 0) => {
     isActive, 
     handleStart, 
     handlePause, 
+    setTimer,
+    setIsActive,
+    setIsPaused,
     // handleResume, 
     // handleReset 
-    // isPaused, 
+    isPaused, 
 }
 }
 

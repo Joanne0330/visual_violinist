@@ -1,11 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Grid, Snackbar } from '@material-ui/core';
-import { Alert, Pagination, Card, CardContent, CardMedia } from '@mui/material';
+import { Grid, Snackbar, Typography} from '@material-ui/core';
+import { Alert, Pagination, Card, CardContent, CardMedia, Button } from '@mui/material';
 import AnswerForm from '../AnswerForm';
 import RevealForm from '../RevealForm';
 import EndSessionModal from '../EndSessionModal';
 import './styles.css';
 import { shuffleDataArray } from '../../hooks/dataHooks';
+import useTimer from '../../hooks/timerHooks';
+import {formatTime} from '../../utils';
 
 const PracticeSession = (props) => {
   const {isSmallScreen, selectedData, path, keyName} = props;
@@ -19,6 +21,7 @@ const PracticeSession = (props) => {
   const [isSecondAttemptQuestions, setIsSecondAttemptQuestions] = useState(false);
   const [isReveal, setIsReveal] = useState(false);
   const [incorrectAnswerMessage, setIncorrectAnswerMessage] = useState('');
+  const {timer, isActive, handleStart, handlePause, isPaused, setTimer, setIsActive, setIsPaused} = useTimer(0)
 
   const correctAnswersResponse = ["Correct! Well done!", "Hooray!! You've got this!", "Correct answer! You are on a roll!", "Great answers!" ]
 
@@ -89,6 +92,7 @@ const PracticeSession = (props) => {
     // Step 4 go to next question
     if(dataIndex === dataArray.length -1) {
       setIsModalOpen(true)
+      handlePause();
     } else {
       setDataIndex(dataIndex + 1)
     }
@@ -101,6 +105,9 @@ const PracticeSession = (props) => {
     setIsModalOpen(false);
     setWrongAnswers([]);
     setCorrectAnswers([]);
+    setTimer(0);
+    setIsActive(false);
+    setIsPaused(false);
   }
 
   const handleRevealAnswers = () => {
@@ -119,8 +126,15 @@ const PracticeSession = (props) => {
     setIsModalOpen(false);
     setWrongAnswers([]);
     setCorrectAnswers([]);
-    setIsReveal(false)
-  },[selectedData])
+    setIsReveal(false);
+    setTimer(0);
+    setIsActive(false);
+    setIsPaused(false);
+  },[selectedData, setTimer, setIsActive, setIsPaused])
+
+  // console.log('is ACTIVE?',isActive)
+  // console.log('isPaused?', isPaused)
+  // console.log('TIMER', timer)
 
   return (
     <>
@@ -135,6 +149,7 @@ const PracticeSession = (props) => {
             isSecondAttemptQuestions={isSecondAttemptQuestions}
             handleRevealAnswers={handleRevealAnswers}
             keyName={keyName}
+            timer={timer}
           />
           <Snackbar
             anchorOrigin={{vertical: 'top', horizontal: 'right'}}
@@ -153,21 +168,32 @@ const PracticeSession = (props) => {
             </Alert>
           </Snackbar>
           {!!dataArray.length &&
-            <Grid item xs={12} sm={8} md={5} >
-              <Card raised sx={{ minWidth: '100%',  borderRadius:'15px' }}>
+            <Grid  item xs={12} sm={8} md={5}>
+              <Card raised sx={{ minWidth: '100%', borderRadius:'15px' }}>
+                <CardContent className="optionalTimer" >
+
+                  <Typography className="optionalTimerText" variant="h6">Optional timer</Typography>
+                  <Typography className="optionalTimerText" variant="body1">{formatTime(timer, 'digital')}</Typography>
+
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between'}}>
+                  <Button color='secondary' variant='contained' size="small" disabled={isReveal || isActive} onClick={handleStart}>{isPaused && timer !== 0 ? 'RESUME' : 'START'}</Button>
+                  <Button color='secondary' variant='contained' size="small" disabled={isPaused || !isActive} onClick={handlePause}>PAUSE</Button>
+                </div>
+                </CardContent>
+              </Card>
+              <Card raised sx={{ minWidth: '100%',  borderRadius:'15px', marginTop: '20px' }}>
                 <CardMedia
                   sx={{ minHeight: isSmallScreen ? 350 : 450}}
                   image={dataArray[dataIndex].noteImg}
                   title={`note ${dataArray[dataIndex].noteBaseName}${dataArray[dataIndex].accidental}`}
                 />
                 <CardContent className="notationCardContent" >
-                  <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant="outlined" color="secondary" hidePrevButton hideNextButton/>
+                  <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant='outlined' color="secondary" hidePrevButton hideNextButton/>
                 </CardContent>
               </Card>
             </Grid>
           }
           <Grid item xs={12} sm={8} md={5} lg={6}>
-          {/* <Grid item xs={12} sm={6} md={5}> */}
             {isReveal ?
               <RevealForm 
                 dataArray={dataArray} 

@@ -1,6 +1,8 @@
 import { Typography, Modal, Card, Button, Grid }from '@mui/material';
 import './styles.css';
 import { useLocation, useNavigate } from 'react-router-dom';
+import {formatTime} from '../../utils';
+
 
 const EndSessionModal = (props) => {
 	const { 
@@ -12,7 +14,8 @@ const EndSessionModal = (props) => {
 		resetEntireExcercise,
 		isSecondAttemptQuestions,
 		handleRevealAnswers,
-		keyName
+		keyName,
+		timer
 	} = props;
 
 	let navigate = useNavigate();
@@ -32,6 +35,9 @@ const EndSessionModal = (props) => {
 						<Typography sx={{ mt: 2 }}>
 							{isSecondAttemptQuestions ? 'Practice makes perfect! You got everything correct second time round! Well done!' : 'Congratulation! You answered everything correctly!'}
 						</Typography>
+						{timer !== 0 &&
+							<Typography sx={{ mt: 2 }}>{`And you took ${formatTime(timer, 'text')} to answer these question!`}</Typography>
+						}
 						<Grid justifyContent="flex-end" direction="row" container>
 							<Button onClick={resetEntireExcercise} id='modalButton' variant="contained" color="secondary">Close</Button>
 						</Grid>
@@ -41,6 +47,9 @@ const EndSessionModal = (props) => {
 						<Typography sx={{ mt: 2 }}>
 							{isSecondAttemptQuestions ? `You have answered ${wrongAnswers.length} ${wrongAnswers.length === 1 ? 'question' : 'questions'} incorrectly this time round!` : `Your total score is ${(Math.ceil(correctAnswers.length/totalQuestions * 100))}%!`}
 						</Typography>
+						{timer !== 0 &&
+							<Typography sx={{ mt: 2 }}>{`And you took ${formatTime(timer, 'text')} to answer these question!`}</Typography>
+						}
 						<Typography sx={{ mt: 2 }}>
 							{isSecondAttemptQuestions ? `Would you like to see the answers to those you have answered incorrectly?` : `You have answered ${wrongAnswers.length} ${wrongAnswers.length === 1 ? 'question' : 'questions'} incorrectly, would you like to try ${wrongAnswers.length === 1 ? 'this question' : 'those questions'} again?`}
 						</Typography>
