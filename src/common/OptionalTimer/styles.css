@@ -1,0 +1,9 @@
+.optionalTimer {
+	background-image: linear-gradient(170deg, #08445e, #d1d1e0);
+}
+
+.optionalTimerText {
+	display: flex; 
+	justify-content: center; 
+	color: #ffffff;
+}

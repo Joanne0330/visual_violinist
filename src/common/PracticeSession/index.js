@@ -1,13 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Grid, Snackbar, Typography} from '@material-ui/core';
-import { Alert, Pagination, Card, CardContent, CardMedia, Button } from '@mui/material';
+import { Grid, Snackbar} from '@material-ui/core';
+import { Alert, Pagination, Card, CardContent, CardMedia } from '@mui/material';
 import AnswerForm from '../AnswerForm';
 import RevealForm from '../RevealForm';
 import EndSessionModal from '../EndSessionModal';
+import OptionalTimer from '../OptionalTimer';
 import './styles.css';
 import { shuffleDataArray } from '../../hooks/dataHooks';
 import useTimer from '../../hooks/timerHooks';
-import {formatTime} from '../../utils';
 
 const PracticeSession = (props) => {
   const {isSmallScreen, selectedData, path, keyName} = props;
@@ -135,10 +135,6 @@ const PracticeSession = (props) => {
     setIsPaused(false);
   },[selectedData, setTimer, setIsActive, setIsPaused])
 
-  // console.log('is ACTIVE?',isActive)
-  // console.log('isPaused?', isPaused)
-  // console.log('TIMER', timer)
-
   return (
     <>
         <Grid container direction='row' spacing={3} justifyContent="space-around">
@@ -172,18 +168,15 @@ const PracticeSession = (props) => {
           </Snackbar>
           {!!dataArray.length &&
             <Grid  item xs={12} sm={8} md={5}>
-              <Card raised sx={{ minWidth: '100%', borderRadius:'15px' }}>
-                <CardContent className="optionalTimer" >
 
-                  <Typography className="optionalTimerText" variant="h6">Optional timer</Typography>
-                  <Typography className="optionalTimerText" variant="body1">{formatTime(timer, 'digital')}</Typography>
-
-                <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between'}}>
-                  <Button color='secondary' variant='contained' size="small" disabled={isReveal || isActive} onClick={handleStart}>{isPaused && timer !== 0 ? 'RESUME' : 'START'}</Button>
-                  <Button color='secondary' variant='contained' size="small" disabled={isPaused || !isActive} onClick={handlePause}>PAUSE</Button>
-                </div>
-                </CardContent>
-              </Card>
+              <OptionalTimer 
+                isReveal={isReveal}
+                isActive={isActive}
+                isPaused={isPaused}
+                handlePause={handlePause}
+                handleStart={handleStart}
+                timer={timer}
+              />
               <Card raised sx={{ minWidth: '100%',  borderRadius:'15px', marginTop: '20px' }}>
                 <CardMedia
                   sx={{ minHeight: isSmallScreen ? 350 : 450}}
