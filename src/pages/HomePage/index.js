@@ -21,10 +21,10 @@ const homePageData = [
 		courseList: [...practiseList]
 	},
 	{
-		courseCategory: 'Flash Cards',
-		description: 'Not so confident with knowing the name of the notes? You can practice your reading using this Flash Cards tool',
+		courseCategory: 'Flashcards',
+		description: 'Not so confident with knowing the name of the notes? You can practice your reading using this Flashcards tool',
 		icon: <LibraryMusicIcon style={{color: 'white'}} fontSize='large'/>,
-		courseList: [{name: 'Go to Flash Cards', url: '/flash_cards'}]
+		courseList: [{name: 'Go to Flashcards', url: '/flashcards'}]
 	}
 
 ];

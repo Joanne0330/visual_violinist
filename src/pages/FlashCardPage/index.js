@@ -38,7 +38,7 @@ const FlashCardPage = () => {
 
 	return (
 		<>
-			<h2 className='flashCardPageText'>Flash Cards</h2>
+			<h2 className='flashCardPageText'>Flashcards</h2>
 			{!!chosenFlashCardsData.length && !isBeginModalOpen &&
 				<FlashCardsSession 
 					chosenFlashCardsData={chosenFlashCardsData} 

@@ -85,7 +85,7 @@ const FlashCardsBeginModal = (props) => {
             			</Grid>
 						<Grid item>
 							<Typography  variant="h6" >
-								Set up your own stack of Flash Cards!
+								Set up your own stack of Flashcards!
 							</Typography>
 							
 						</Grid>
@@ -165,7 +165,7 @@ const FlashCardsBeginModal = (props) => {
             </Grid>
 						<Grid item>
 							<Typography  variant="h6" >
-								You have chosen your stack of Flash Cards!
+								You have chosen your stack of Flashcards!
 							</Typography>
 						</Grid>
 						<Grid item>

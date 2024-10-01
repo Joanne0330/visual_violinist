@@ -13,17 +13,16 @@ const FlashCardsEndModal = (props) => {
   return (
 		<Modal
 			open={isEndModalOpen}
-			// onClose={resetEntireExcercise}
 		>
 			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px'}}>
 				<Typography variant="h6" component="h2">
-					End of Flash Cards Session
+					End of Flashcards Session
 				</Typography>
 				<Typography sx={{ mt: 2 }}>
-					{`In this round of flash cards you had total of ${textEditor(chosenFlashCardsData.length)}. You had answered ${textEditor(correctAnswers.length)} correctly and ${textEditor(incorrectAnswers.length)} incorrectly.`}
+					{`In this round of Flashcards you had total of ${textEditor(chosenFlashCardsData.length)}. You had answered ${textEditor(correctAnswers.length)} correctly and ${textEditor(incorrectAnswers.length)} incorrectly.`}
 				</Typography>
 				<Typography sx={{ mt: 2 }}>
-					{`You took ${formatTime(timer, 'text')} to finish these flash cards. We recommend each question to take 2 seconds to answer therefore this round was ${timer <= chosenFlashCardsData.length * 2 ? 'right on' : 'below'} the target goal!`} 
+					{`You took ${formatTime(timer, 'text')} to finish these Flashcards. We recommend each question takes 2 seconds to answer therefore in this round ${timer <= chosenFlashCardsData.length * 2 ? 'you finished with lightening speed! Hooray!' : 'you were a little slow. I would recommend to keep practising these cards!'}`} 
 				</Typography>
 				<Grid justifyContent="flex-end" direction="row" container style={{marginTop: '10px'}}>
 					<Button onClick={aboardSession} id='modalButton' variant="contained" color="secondary">New game</Button>
