@@ -1,9 +1,12 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Tooltip, IconButton } from '@mui/material';
+import HelpIcon from '@mui/icons-material/Help';
 import './styles.css';
+import {useState} from 'react';
 
 
 const FirstPositionFingerboard = (props) => {
 	const {position, setPosition, isSmallScreen, isReveal} = props;
+	const [isToolTipOpen, setIsToolTipOpen] = useState(false);
 
 	const buttonSelected = (num) => {
 		if(num === position) {
@@ -11,9 +14,30 @@ const FirstPositionFingerboard = (props) => {
 		} 
 	}
 
+	const toolTipText = `Below is a representation of your violin fingerboard in the first postion. The top being the furthese away from you and the bottom being closest to you.  
+	${isSmallScreen ? `Line from left to right labled 1st means the usual 1st finger line and the one labled 3rd means the usual 3rd finger line. They are there to give you visual reference.  ` : `The first finger line and the third finger line are there to give you visual reference. `} 
+	If you think a note can be played with a open string, you can choose which open string ( G, D, A or E ) on the top of the fingerboard.  `
+
 	return (
 		<>
-			<Typography id="instructionText">{!isReveal ? 'Step 3: Where is this note on your fingerboard?' : 'You can find this note here on the fingerboard:'}</Typography>
+			<Typography id="instructionText">{!isReveal ? 'Step 3: Where is this note on your fingerboard?' : 'You can find this note here on the fingerboard:'}
+			<Tooltip 
+				arrow
+				title={toolTipText}
+				PopperProps={{
+					disablePortal: true,
+				}}
+				onClose={() => setIsToolTipOpen(false)}
+				open={isToolTipOpen}
+				disableHoverListener
+				disableTouchListener
+			>
+				<IconButton onClick={() => setIsToolTipOpen(!isToolTipOpen)}>
+					<HelpIcon />
+				</IconButton>
+    	</Tooltip>
+			</Typography>
+
 			<Grid container item direction="row">
 					<button className="buttonOpen" style={{backgroundColor: buttonSelected(1)}} onClick={!isReveal ? () => setPosition(1) : null}>G</button>
 					<button className="buttonOpen" style={{backgroundColor: buttonSelected(2)}} onClick={!isReveal ? () => setPosition(2) : null}>D</button>
