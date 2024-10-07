@@ -4,6 +4,7 @@ import { flashCardData } from './flashCardData';
 import { shuffleDataArray } from '../../hooks/dataHooks';
 import FlashCardsBeginModal from '../../common/FlashCardsBeginModal';
 import FlashCardsSession from '../../common/FlashCardsSession';
+import { Typography } from '@mui/material';
 
 const FlashCardPage = () => {
 	const [chosenFlashCardsData, setChosenFlashCardsData] = useState([]);
@@ -38,7 +39,7 @@ const FlashCardPage = () => {
 
 	return (
 		<>
-			<h2 className='flashCardPageText'>Flashcards</h2>
+			<Typography variant='h5' className='flashCardPageText'>Flashcards</Typography>
 			{!!chosenFlashCardsData.length && !isBeginModalOpen &&
 				<FlashCardsSession 
 					chosenFlashCardsData={chosenFlashCardsData} 

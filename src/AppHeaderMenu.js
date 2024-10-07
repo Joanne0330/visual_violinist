@@ -38,7 +38,7 @@ const pageIconButtons = [
   {pageTitle: 'Home', buttonIcon: <HomeOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Home'},
   {pageTitle: 'Learn', buttonIcon: <MenuBookOutlinedIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Learn'},
   {pageTitle: 'Play & Practice', buttonIcon: <MusicNoteOutlinedIcon style={{color: 'white'}} fontSize='large' />, pageControl: 'Practice'},
-  {pageTitle: 'Flashcards', buttonIcon: <LibraryMusicIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Flashcard'},
+  {pageTitle: 'Flashcards', buttonIcon: <LibraryMusicIcon style={{color: 'white'}} fontSize='large'/>, pageControl: 'Flashcards'},
 ]
 
 function AppHeaderMenu() {

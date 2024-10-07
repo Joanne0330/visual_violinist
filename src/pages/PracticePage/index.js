@@ -4,6 +4,7 @@ import {useIsSmallScreen}from '../../hooks/screenSizeHooks';
 import { useLocation } from 'react-router-dom';
 import  practiceData from './practiceData';
 import PageNotFound from '../../common/PageNotFound';
+import { Typography } from '@mui/material';
 
 const PracticePage = () => {
   const isSmallScreen = useIsSmallScreen();
@@ -15,8 +16,9 @@ const PracticePage = () => {
         <PageNotFound />
         :
         <>
-          <h2 className='practicePageText'>{practiceData[location.pathname].practiceTitle}</h2>
-          <h3 className='practicePageText'>{practiceData[location.pathname].subText}</h3>
+          <Typography variant='h5' className='practicePageText'>{practiceData[location.pathname].practiceTitle}</Typography>
+          <Typography variant='subtitle1' className='practicePageText'>{practiceData[location.pathname].subText}</Typography>
+          <br />
           <PracticeSession  
             isSmallScreen={isSmallScreen} 
             selectedData={practiceData[location.pathname].practiceData} 

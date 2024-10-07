@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import {useIsSmallScreen, useIsMediumScreen} from '../../hooks/screenSizeHooks';
 import  learnData from './learnData';
 import PageNotFound from '../../common/PageNotFound';
+import { Typography } from '@mui/material';
 
 const LearnPage = () => {
 	const [dataIndex,setDataIndex ] = useState(0);
@@ -28,8 +29,8 @@ const LearnPage = () => {
 				<PageNotFound />
 				:
 				<>
-					<h2 className='learnPageText'>{learnData[location.pathname].learnTitle}</h2>
-					<h3 className='learnPageText'>{learnData[location.pathname].subText}</h3>
+					<Typography variant="h5" className='learnPageText'>{learnData[location.pathname].learnTitle}</Typography>
+					<Typography variant="subtitle1"  className='learnPageText'>{learnData[location.pathname].subText}</Typography >
 						<LearnSession 
 							dataArray={dataArray}
 							dataIndex={dataIndex}

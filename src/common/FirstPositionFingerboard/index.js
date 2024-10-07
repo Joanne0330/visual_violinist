@@ -14,16 +14,20 @@ const FirstPositionFingerboard = (props) => {
 		} 
 	}
 
-	const toolTipText = `Below is a representation of your violin fingerboard in the first postion. The top being the furthese away from you and the bottom being closest to you.  
-	${isSmallScreen ? `Line from left to right labled 1st means the usual 1st finger line and the one labled 3rd means the usual 3rd finger line. They are there to give you visual reference.  ` : `The first finger line and the third finger line are there to give you visual reference. `} 
-	If you think a note can be played with a open string, you can choose which open string ( G, D, A or E ) on the top of the fingerboard.  `
+	const toolTipText = [
+		`Below is a representation of your violin fingerboard in the first postion where you can click to choose where you think this note can be played on the fingerboard.`,
+		`The top of this fingerboard being the furthese away from you and the bottom being closest to you.`,  
+		`${isSmallScreen ? `The line from left to right labled 1st means the usual 1st finger line and the line labled 3rd means the usual 3rd finger line. They are there to give you visual reference.` : `The first finger line and the third finger line are there to give you visual reference.`}`, 
+		`If you think a note can be played with an open string, you can choose G, D, A or E on the top of the fingerboard.`]
 
 	return (
 		<>
 			<Typography id="instructionText">{!isReveal ? 'Step 3: Where is this note on your fingerboard?' : 'You can find this note here on the fingerboard:'}
 			<Tooltip 
 				arrow
-				title={toolTipText}
+				title={toolTipText.map((line,id) => (
+					<Typography variant="body2" key={id} style={{marginBottom: '10px'}}>{line}</Typography>
+				))}
 				PopperProps={{
 					disablePortal: true,
 				}}
