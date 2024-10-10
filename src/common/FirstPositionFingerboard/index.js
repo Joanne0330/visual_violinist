@@ -23,23 +23,23 @@ const FirstPositionFingerboard = (props) => {
 	return (
 		<>
 			<Typography id="instructionText">{!isReveal ? 'Step 3: Where is this note on your fingerboard?' : 'You can find this note here on the fingerboard:'}
-			<Tooltip 
-				arrow
-				title={toolTipText.map((line,id) => (
-					<Typography variant="body2" key={id} style={{marginBottom: '10px'}}>{line}</Typography>
-				))}
-				PopperProps={{
-					disablePortal: true,
-				}}
-				onClose={() => setIsToolTipOpen(false)}
-				open={isToolTipOpen}
-				disableHoverListener
-				disableTouchListener
-			>
-				<IconButton onClick={() => setIsToolTipOpen(!isToolTipOpen)}>
-					<HelpIcon />
-				</IconButton>
-    	</Tooltip>
+				<Tooltip 
+					arrow
+					title={toolTipText.map((line,id) => (
+						<Typography variant="body2" key={id} style={{marginBottom: '10px'}}>{line}</Typography>
+					))}
+					PopperProps={{
+						disablePortal: true,
+					}}
+					onClose={() => setIsToolTipOpen(false)}
+					open={isToolTipOpen}
+					disableHoverListener
+					disableTouchListener
+				>
+					<IconButton onClick={() => setIsToolTipOpen(!isToolTipOpen)}>
+						<HelpIcon />
+					</IconButton>
+				</Tooltip>
 			</Typography>
 
 			<Grid container item direction="row">

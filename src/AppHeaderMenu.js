@@ -5,7 +5,7 @@ import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { useState, Fragment} from 'react';
-import {useIsSmallScreen} from './hooks/screenSizeHooks';
+import { useIsMobileScreen} from './hooks/screenSizeHooks';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 
@@ -42,7 +42,7 @@ const pageIconButtons = [
 ]
 
 function AppHeaderMenu() {
-  const isSmallScreen = useIsSmallScreen();
+  const isMobileScreen = useIsMobileScreen();
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedMenuButton, setSelectedMenuButton] = useState('')
   const [menuList, setMenuList] = useState([])
@@ -71,14 +71,14 @@ function AppHeaderMenu() {
   return(
     <div className="appHeader" > 
       <Grid container direction='row' justifyContent='space-between'>
-        <Grid item>
-          {isSmallScreen ?
+        <Grid item style={{maxWidth: isMobileScreen? '120px': ''}}>
+          {isMobileScreen ?
             <h3 className='appTitle' style={{marginTop: 5}}>The Visual Violinist</h3>
             :
             <h1 className='appTitle'>The Visual Violinist</h1>
           }
         </Grid>
-        <Grid item >
+        <Grid item>
           {pageIconButtons.map((item, i) => (
             <span key={i}>
               <Tooltip 
@@ -89,7 +89,7 @@ function AppHeaderMenu() {
                 <IconButton
                   // tabIndex={i}
                   key={`menu-button-${i}`}
-                  style={{backgroundColor: selectedMenuButton === item.pageControl ? '#812092': '', margin: isSmallScreen ? 0 : 5,}}
+                  style={{backgroundColor: selectedMenuButton === item.pageControl ? '#812092': '', margin: isMobileScreen? 0 : 5,}}
                   onClick={ e => handleClick(e, item.pageControl)}
                   size="medium"
                   sx={{ ml: 2 }}
