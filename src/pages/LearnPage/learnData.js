@@ -2,20 +2,57 @@ const learnData = {
 	"/learn/introduction": {
 		isPractice: false,
 		learnTitle: "Introduction to finger placement",
-		subText: "Let's take a look at what makes a whole tone and semitone and how that affects our finger placement!",
+		subText: "Let's take a look at what makes a semitone and whole tone and how they affect your finger placement!",
 		learnData: [
+      {
+        learnImg: '', 
+				imgTitle: '',
+				texts: [
+					"Do you know why sometimes on the same string, you have to play your first and second finger right next to each other without any space in between them, and why sometimes you have some space in between your first and second finger, but no space between your second and third finger?",
+				]
+      },
+      {
+        learnImg: '', 
+				imgTitle: '',
+				texts: [
+          "Well, let's look at the two fingers WITHOUT space first:",
+					"Sometimes the distance between the two fingers is VERY SMALL, so small that you can't fit any other note in between them. This is why you have to put those two fingers tightly together, so tightly what the skin of these fingers are touching each other.",
+          "We call this small distance, or interval, SEMITONE!" 
+				]
+      },
+      {
+        learnImg: '', 
+				imgTitle: '',
+				texts: [
+          "Now let's talk about the two fingers WITH some space in between: ",
+					"If there is some space in between your two fingers, just enough space to possibly fit another finger in between them, it is a SLIGHTLY BIGGER distance, big enough to fit another note in between these two fingers.",
+          "We call this slightly bigger distance, or interval, WHOLE TONE!" 
+				]
+      },
 			{
 				learnImg: '/assets/images/learn/piano_keyboard_even_more_space.png', 
 				imgTitle: 'Piano keyboard showing whole-tones and semitones',
 				texts: [
-					'To learn about spacing or distance between 2 fingers on a violin, we must first learn about whole-tone and semitone intervals.',
-					'If you observe this piano keyboard carefully, you will notice that most 2 adjacent white keys have a black key in between them. Take D and E for example, there is a black key between them and that black key is D# or Eb.',
-					'When 2 notes have another note in between them, this interval is called whole-tone. D and E together form a whole-tone.',
+					"Let's compare what we have just learned with a piano keyboard:",
+					'If you look this piano keyboard carefully, you will see that most two white keys next to each other have a black key in between them.', 
+          'Take D and E for example, there is a black key between them and that black key plays a note called D# (D sharp) or Eb (E flat).',
+					'Since there is a note in between D and E, the distance between D and E is a WHOLE TONE.',
 					'However, E and F do not have a black key in between them, nor do B and C!',
-					'When 2 notes do not have another note in between them, this interval is called semitone (or half-step). Semitone is the smallest interval possible in music in our western world!',
-					'Therefore we must remember, E and F naturally form a semitone, so do B and C!'
+					"Does this mean that the distance between E and F is a SEMITONE? What about the distance between B and C, do they also form a SEMITONE?",
+          "The answer for both is: YES!"
 				]
 			},
+      {
+        learnImg: '', 
+				imgTitle: '',
+				texts: [
+          "So, E and F naturally form a SEMITONE, so do B and C...",
+          "But how do we remember?",
+          "Well, I try to remember them this way:",
+          "Eat Fudge and Banana Cake! (E F and B C)",
+          "You can never go wrong with good desserts...."
+				]
+      },
 			{
 				learnImg: '/assets/images/learn/D_string_example_natural.png', 
 				imgTitle: 'D string example - all natural',
