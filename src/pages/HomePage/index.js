@@ -15,14 +15,14 @@ const homePageData = [
 		courseList: [...learnList]
 	},
 	{
-		courseCategory: 'Practice',
+		courseCategory: 'Play & Practice',
 		description: 'Practice finding notes on your violin by playing these interactive games, so that you get better at knowing the name of the notes, their fingerings and where they are on your fingerboard!',
 		icon: <MusicNoteOutlinedIcon style={{color: 'white'}} fontSize='large'/>,
 		courseList: [...practiseList]
 	},
 	{
 		courseCategory: 'Flashcards',
-		description: "Not so confident reading musical notes and knowing their names? Let's get better and faster at it by using this Flashcard tool!",
+		description: "Not so confident reading musical notes and knowing their names? Let's get better and faster at reading by using this Flashcard tool!",
 		icon: <LibraryMusicIcon style={{color: 'white'}} fontSize='large'/>,
 		courseList: [{name: 'Go to Flashcards', url: '/flashcards'}]
 	}
