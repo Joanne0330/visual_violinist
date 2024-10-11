@@ -10,19 +10,19 @@ import './styles.css';
 const homePageData = [
 	{
 		courseCategory: 'Learn',
-		description: 'Learn and understand where the notes are on the violin, their spatial relationship with each other to form different patterns for different keys',
+		description: 'Understand why some notes are closer and some are further away from one another by learning about semitones and whole tones. Learning to play in different keys have never been easier!',
 		icon: <MenuBookOutlinedIcon style={{color: 'white'}} fontSize='large'/>,
 		courseList: [...learnList]
 	},
 	{
 		courseCategory: 'Practice',
-		description: 'Practice reading musical notes by playing games, and get better at knowing their names and finding them on the violin',
+		description: 'Practice finding notes on your violin by playing these interactive games, so that you get better at knowing the name of the notes, their fingerings and where they are on your fingerboard!',
 		icon: <MusicNoteOutlinedIcon style={{color: 'white'}} fontSize='large'/>,
 		courseList: [...practiseList]
 	},
 	{
 		courseCategory: 'Flashcards',
-		description: 'Not so confident with knowing the name of the notes? You can practice your reading using this Flashcards tool',
+		description: "Not so confident reading musical notes and knowing their names? Let's get better and faster at it by using this Flashcard tool!",
 		icon: <LibraryMusicIcon style={{color: 'white'}} fontSize='large'/>,
 		courseList: [{name: 'Go to Flashcards', url: '/flashcards'}]
 	}
@@ -34,11 +34,10 @@ const HomePage = () => {
 
 	return (
 		<div style={{marginTop: '25px', marginBottom: '25px'} }>
-			<Grid container direction="row" spacing={4} justifyContent='space-around'>
+			<Grid container direction="row" spacing={7} justifyContent='space-around'>
 			{homePageData.map(course => (
 				<Grid item xs={12} sm={10} md={6} lg={5} key={course.courseCategory}>
-					<Paper className="homePageWidgetPaper" style={{borderRadius: 10, backgroundImage:'linear-gradient(170deg, #08445e, #d1d1e0)', padding: 10}}>
-					{/* <Paper className="homePageWidgetPaper" style={{borderRadius: 10, background: 'rgba(33,38,43,0.8)', padding: 10}}> */}
+					<Paper className="homePageWidgetPaper" style={{borderRadius: 10, backgroundImage:'linear-gradient(170deg, #08445e, #d1d1e0)', padding: 10, height: '100%'}}>
 					<IconButton
 						size="medium"
 						sx={{ ml: 2 }}

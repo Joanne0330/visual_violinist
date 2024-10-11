@@ -70,10 +70,7 @@ const FlashCardsBeginModal = (props) => {
 	}
 
   return (
-		<Modal
-			open={isBeginModalOpen}
-			// onClose={resetEntireExcercise}
-		>
+		<Modal open={isBeginModalOpen}>
 			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px', overflowY: 'auto', maxHeight: '80vh'}}>	
 				<Grid container direction="column" spacing={2}>
 				{!isStep2 ? 
@@ -92,7 +89,7 @@ const FlashCardsBeginModal = (props) => {
 						
 						<Grid item>
 							<Typography variant="body1">
-								Please pick what you want to include in your stack of cards. You can choose more than one!
+								Please pick what you want to include in your stack of cards. You can choose more than one option!
 							</Typography>
 						</Grid>
 						<Grid item container spacing={2}>
@@ -170,7 +167,7 @@ const FlashCardsBeginModal = (props) => {
 						</Grid>
 						<Grid item>
 							<Typography variant="body1">
-								{`Your stack has ${chosenFlashCardsData.length/2} notes which will appear twice, that makes up total of ${chosenFlashCardsData.length} questions. Please try to answer them as quickly as possible as you will be timed.`}
+								{`Your chosen stack has ${chosenFlashCardsData.length/2} notes and each will appear twice, which makes up total of ${chosenFlashCardsData.length} questions. Please try to answer them as quickly as possible as you will be timed.`}
 							</Typography>
 						</Grid>
 						<Grid item>
