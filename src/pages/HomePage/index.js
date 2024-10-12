@@ -34,7 +34,7 @@ const HomePage = () => {
 
 	return (
 		<div style={{marginTop: '25px', marginBottom: '25px'} }>
-			<Grid container direction="row" spacing={7} justifyContent='space-around'>
+			<Grid container direction="row" spacing={6} justifyContent='space-around'>
 			{homePageData.map(course => (
 				<Grid item xs={12} sm={10} md={6} lg={5} key={course.courseCategory}>
 					<Paper className="homePageWidgetPaper" style={{borderRadius: 10, backgroundImage:'linear-gradient(170deg, #08445e, #d1d1e0)', padding: 10, height: '100%'}}>
