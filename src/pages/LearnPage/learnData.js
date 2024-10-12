@@ -58,68 +58,76 @@ const learnData = {
 				learnImg: '/assets/images/learn/D_string_example_natural.png', 
 				imgTitle: 'D string example - all natural',
 				texts: [
-					'This is the reason why on the violin, sometimes there is a space between the two adjacent fingers, and sometimes there is no space and those fingers are positioned right next to each other without any gap!', 
-					'Look at this example above - they are notes on the D string. Take a look at the 2nd finger F and the 3rd finger G, there is a gap between them and that is because F and G form a whole-tone.', 
-					'However, if you look at the 1st finger E and the 2nd finger F, they are right next to each other without any gap. This is because they form a semitone.'
+          "Ok, ok, let's go back to the violin....",
+          "We are now looking at the 5 notes on the D string:",
+          "D (open D string), E (1st finger), F (2nd finger), G (3rd finger) and A (4th finger).",
+          "Since E and F (Eat Fudge) makes a SEMITONE interval, you can see that E and F are placed together WITHOUT any gap in between them from the finger placements drawing.",
+					"The rest of the notes make WHOLE TONE intervals with their next door neighbours, therefore they have a gap in between them."
 				]
 			},
 			{
 				learnImg: '/assets/images/learn/D_string_example_F_sharp.png', 
 				imgTitle: 'D string example - F#',
 				texts: [
-					"But now look at the F on the same string, it has now become sharp (#)! When a note is sharp it means it is a semitone higher than its natural self, therefore we have to move it closer to G!", 
-					'So now the distance between the first, second and third fingers have changed!', 
-					'The 1st finger E is now whole-tone to F# and has a space in between them, and there is no space between the 2nd finger F# and the 3rd finger G!'
+					"But now look at the F on the same string, it has now become sharp (#)!", 
+          "When a note is sharp it means it is a SEMITONE higher than its natural self. In order to play F# we have to move it closer to G!", 
+					'So now the distance between the 1st, 2nd and 3rd fingers have changed!', 
+					'The 1st finger E is now WHOLE TONE to F#, and there is no space between the 2nd finger F# and the 3rd finger G because they make a SEMITONE interval!'
 				]
 			},
 			{
 				learnImg: '/assets/images/learn/G_string_example_natural.png', 
 				imgTitle: 'G string example - all natural',
 				texts: [
-					"Let's take a look at another example! We are nowing having a look at the notes on our lowest string - the G string.", 
-					'The 2nd finger B is a semitone to the 3rd finger C therefore they do not have a gap between them. The rest of the notes however, are all whole-tones to their next door neighbours so we must leave a gap betwween.'
+					"Let's take a look at another example! We are nowing looking at notes on our lowest string - the G string:", 
+          "We have G (open G string), A (1st finger), B (2nd finger), C (3rd finger) and D (4th finger).",
+					'Since B and C (Banana Cake) makes a SEMITONE interval, therefore the 2nd and 3rd finger do not have a gap between them.',
+          "The rest of the notes make WHOLE TONE intervals with their next door neighbours therefore they do have a gap in between them."
 				]
 			},
 			{
 				learnImg: '/assets/images/learn/G_string_example_B_flat.png', 
 				imgTitle: 'G string example - Bb',
 				texts: [
-					"But now we are making the B flat (b) therefore we will have to move it a semitone lower. It is now right next to the 1st finger A and together they form a semitone instead of a whole-tone!", 
-					'The spacing of the 2nd finger to the 3rd finger is also changed. B flat forms a whole-tone interval with the 3rd finger C. They now have a space between them.', 
+          "But now look at the B on this string, it has now become flat (b)!",
+					"When a note is flat it means it is a SEMITONE lower than its natural self. In order to play Bb we have to move it closer to A!",
+          "Bb forms a SEMITONE interval to A therefore the 1st and 2nd finger now has no gap, and Bb now forms a WHOLE TONE interval to C therefore we now have a gap between the 2nd and 3rd finger!",  
 				]
 			},
 			{
 				learnImg: '/assets/images/learn/E_string_example_natural.png', 
 				imgTitle: 'E string example - all natural',
 				texts: [
-					"However, we have a different situation here on the E string! The semitone lies between open E and the 1st finger F!", 
-					"So there is no space between the open string and the 1st finger? How do we do that?",
-					'You can simply move the first finger lower (away from you)!',
-					'If you go back and compare the previous example on G string, you will notice the placement of the 1st finger note on the G string is different. There is a gap between the open G and the 1st finger A, unlike this E string example!' 
+					"However, we have a different situation here on the E string, your highest string!",
+          "The SEMITONE lies between open the E string and the 1st finger F!", 
+					"So there is NO SPACE in between the open string and the 1st finger note? How do we do that?",
+					'You can do this by moving your 1st finger lower (away from you)!',
+					"If you go back and compare the previous examples on G or D string, you will notice the placement of the 1st finger note on the E string is different from the 1st finger note on D and G strings:",
+          "For D string and G string, they both have a gap in between the open string and the 1st finger note. The E string, however, does not!"
 				]
 			},
 			{
 				learnImg: '/assets/images/learn/E_string_example_F_sharp.png', 
 				imgTitle: 'E string example - F#',
 				texts: [
-					"And if F is sharp, the position of the 1st finger would then be at the usual place", 
-					"It would also form a semitone with the 2nd finger G!"
+					"And if F is sharp (#), the position of the 1st finger would then be at the usual place, with some space in between the open E and itself.", 
+					"F# would also form a SEMITONE interval with the 2nd finger G!"
 				]
 			},
 			{
 				learnImg: '/assets/images/learn/C_major_all_strings.png', 
 				imgTitle: 'C Major notes and finger pattern',
 				texts: [
-					"In short, when there is no sharp nor flat in your music, this shows all the notes across all your strings in the first position in relations to where the semitones are, and what the finger pattern looks like!", 
+					"In short, when there is no sharp (#) nor flat (b) in your music, this is where all the notes are on the fingerboard in the First Position!", 
 				]
 			},
 			{
 				learnImg: '', 
 				imgTitle: '',
 				texts: [
-					"Lastly, you can find more notes and finger patterns grouped by keys up to 4 sharps and 4 flats in the Learn section from the Main Menu.",
-					"But please remember, it is far more beneficial to always know what notes you are playing and where to find them on the fingerboard, and their spatial relationship to each other instead of just memorising patterns. This will help learning new music in different variation of keys, sightread, and play better in tune.", 
-					"You can also practice this in the Play & Practice section! Check them out in the Main Menu"
+					"Lastly, you can learn more notes with sharps and flats and where they are on the fingerboard in the LEARN section from the Main Menu. They are grouped by keys up to 4 sharps and 4 flats.",
+					"But please remember, do not just memorise patterns by the key. It is far more beneficial to always know what notes you are playing and where to find them on the fingerboard as it will help you sightread, play better in tune, and learn new music!", 
+					"You can also practice your knowledge by playing the interactive games in the PLAY & PRACTICE section! Check them out from the Main Menu!"
 				]
 			},
 		]
@@ -134,7 +142,7 @@ const learnData = {
         imgTitle: 'C Major notes and finger pattern',
         texts: [
           'C Major is the key where there is no sharp nor flat on any note!',
-          'This this case, we must remember where the semitones are! They are between E and F, and also B and C!',
+          'We must remember where the semitones are! They are between E and F, and also B and C!',
           'To play these intervals, you must put those fingers together!'
         ]
       },
