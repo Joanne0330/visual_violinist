@@ -32,7 +32,7 @@ const LearnSession = (props) => {
 
 	return (
 		<div style={{padding: 20, display: 'flex', justifyContent: 'center'}}>
-			<Card sx={{ width: isSmallScreen && !isMediumScreen ? '100%' : isMediumScreen ? '80%' : '60%',  borderRadius:'15px' }}>
+			<Card sx={{ width: isSmallScreen && !isMediumScreen ? '100%' : isMediumScreen ? '80%' : '60%', maxWidth: '800px',  borderRadius:'15px' }}>
 				{isLoading ? 
 					<MusicLoader /> 
 				:
