@@ -8,6 +8,11 @@ import OptionalTimer from '../OptionalTimer';
 import './styles.css';
 import { shuffleDataArray } from '../../hooks/dataHooks';
 import useTimer from '../../hooks/timerHooks';
+import MIDISounds from 'midi-sounds-react';
+
+const MIDI_LENGTH = 2;
+const MIDI_CORRECT_SOUND_CHOICE = 1366;
+const MIDI_INCORRECT_SOUND_CHOICE = 1357;
 
 const PracticeSession = (props) => {
   const {isSmallScreen, selectedData, path, keyName} = props;
@@ -68,6 +73,10 @@ const PracticeSession = (props) => {
     }
     setIncorrectAnswerMessage(message)
   }
+  const playSound = (octave, number, midiSoundChoice) => {
+		MIDISounds.midiSounds.playChordNow(midiSoundChoice, [octave * 12 + number], MIDI_LENGTH);
+
+	}
 
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
     // Step 1 first compare if the data is correct
@@ -85,9 +94,11 @@ const PracticeSession = (props) => {
       setCorrectAnswers([...correctAnswers, question])
       const randomisedCheer = correctAnswersResponse[Math.floor(Math.random() * correctAnswersResponse.length)]
       setCorrectAnswerMessage(randomisedCheer)
+      playSound(4,8, MIDI_CORRECT_SOUND_CHOICE)
     } else {
       setWrongAnswers([...wrongAnswers, question])
       getIncorrectAnswersMessage(noteNameCorrect, fingeringCorrect, positionCorrect)
+      playSound(4,8, MIDI_INCORRECT_SOUND_CHOICE)
     }
     // Step 3 Snackbar that tells the user whether it's correct
     setShowSnackbar(true)
@@ -137,73 +148,76 @@ const PracticeSession = (props) => {
 
   return (
     <>
-        <Grid container direction='row' spacing={3} justifyContent="space-around">
-          <EndSessionModal 
-            isModalOpen={isModalOpen}
-            correctAnswers={correctAnswers}
-            wrongAnswers={wrongAnswers}
-            totalQuestions={dataArray.length}
-            handleUseWrongAnswersData={handleUseWrongAnswersData}
-            resetEntireExcercise={resetEntireExcercise}
-            isSecondAttemptQuestions={isSecondAttemptQuestions}
-            handleRevealAnswers={handleRevealAnswers}
-            keyName={keyName}
-            timer={timer}
-          />
-          <Snackbar
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
-            open={showSnackbar}
-            autoHideDuration={isQuestionCorrect ? 3000 : 4000}
-            onClose={()=> setShowSnackbar(false)}
-            
-            >
-            <Alert
-              severity={isQuestionCorrect ? 'success' : 'error'}
-              variant="filled"
-              sx={{ width: '100%' }}
-              style={{borderRadius: '10px'}}
-            >
-             {!isQuestionCorrect ? incorrectAnswerMessage : correctAnswerMessage} 
-            </Alert>
-          </Snackbar>
-          {!!dataArray.length &&
-            <Grid  item xs={12} sm={8} md={5}>
+      <div style={{  visibility: 'hidden', width: 0,  height: 0}}>
+			 <MIDISounds style={{ visibility: 'hidden' }} ref={(ref) => (MIDISounds.midiSounds = ref)} appElementName="root"  />
+			</div>
+      <Grid container direction='row' spacing={3} justifyContent="space-around">
+        <EndSessionModal 
+          isModalOpen={isModalOpen}
+          correctAnswers={correctAnswers}
+          wrongAnswers={wrongAnswers}
+          totalQuestions={dataArray.length}
+          handleUseWrongAnswersData={handleUseWrongAnswersData}
+          resetEntireExcercise={resetEntireExcercise}
+          isSecondAttemptQuestions={isSecondAttemptQuestions}
+          handleRevealAnswers={handleRevealAnswers}
+          keyName={keyName}
+          timer={timer}
+        />
+        <Snackbar
+          anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+          open={showSnackbar}
+          autoHideDuration={isQuestionCorrect ? 3000 : 4000}
+          onClose={()=> setShowSnackbar(false)}
+          
+          >
+          <Alert
+            severity={isQuestionCorrect ? 'success' : 'error'}
+            variant="filled"
+            sx={{ width: '100%' }}
+            style={{borderRadius: '10px'}}
+          >
+            {!isQuestionCorrect ? incorrectAnswerMessage : correctAnswerMessage} 
+          </Alert>
+        </Snackbar>
+        {!!dataArray.length &&
+          <Grid  item xs={12} sm={8} md={5}>
 
-              <OptionalTimer 
-                isReveal={isReveal}
-                isActive={isActive}
-                isPaused={isPaused}
-                handlePause={handlePause}
-                handleStart={handleStart}
-                timer={timer}
+            <OptionalTimer 
+              isReveal={isReveal}
+              isActive={isActive}
+              isPaused={isPaused}
+              handlePause={handlePause}
+              handleStart={handleStart}
+              timer={timer}
+            />
+            <Card raised sx={{ minWidth: '100%',  borderRadius:'15px', marginTop: '20px' }}>
+              <CardMedia
+                sx={{ minHeight: isSmallScreen ? 350 : 450}}
+                image={dataArray[dataIndex].noteImg}
+                title={`note ${dataArray[dataIndex].noteBaseName}${dataArray[dataIndex].accidental}`}
               />
-              <Card raised sx={{ minWidth: '100%',  borderRadius:'15px', marginTop: '20px' }}>
-                <CardMedia
-                  sx={{ minHeight: isSmallScreen ? 350 : 450}}
-                  image={dataArray[dataIndex].noteImg}
-                  title={`note ${dataArray[dataIndex].noteBaseName}${dataArray[dataIndex].accidental}`}
-                />
-                <CardContent className="notationCardContent" >
-                  <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant='outlined' color="secondary" hidePrevButton hideNextButton/>
-                </CardContent>
-              </Card>
-            </Grid>
-          }
-          <Grid item xs={12} sm={8} md={5} lg={6}>
-            {isReveal ?
-              <RevealForm 
-                dataArray={dataArray} 
-                dataIndex={dataIndex} 
-                revealNextAnswer={revealNextAnswer}
-                revealPreviousAnswer={revealPreviousAnswer}
-                resetEntireExcercise={resetEntireExcercise}
-                isSmallScreen={isSmallScreen}
-              /> 
-              :
-              <AnswerForm onSubmit={onSubmit} isSmallScreen={isSmallScreen}/>
-            }
+              <CardContent className="notationCardContent" >
+                <Pagination size="small" count={dataArray.length} page={dataIndex + 1} variant='outlined' color="secondary" hidePrevButton hideNextButton/>
+              </CardContent>
+            </Card>
           </Grid>
+        }
+        <Grid item xs={12} sm={8} md={5} lg={6}>
+          {isReveal ?
+            <RevealForm 
+              dataArray={dataArray} 
+              dataIndex={dataIndex} 
+              revealNextAnswer={revealNextAnswer}
+              revealPreviousAnswer={revealPreviousAnswer}
+              resetEntireExcercise={resetEntireExcercise}
+              isSmallScreen={isSmallScreen}
+            /> 
+            :
+            <AnswerForm onSubmit={onSubmit} isSmallScreen={isSmallScreen}/>
+          }
         </Grid>
+      </Grid>
     </>
   )
 
