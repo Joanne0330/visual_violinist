@@ -2,10 +2,11 @@ import { Grid, Typography, Tooltip, IconButton } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import './styles.css';
 import {useState} from 'react';
-import MIDISounds from 'midi-sounds-react';
+import InvisibleMidiSound from '../InvisibleMidiSound';
+import { midiPlaySound } from '../../hooks/midiPlaySound';
+import { MIDI_VIOLIN_SOUND_CHOICE } from '../../utils';
 
 const MIDI_LENGTH = 0.5
-const MIDI_SOUND_CHOICE = 456
 
 const FirstPositionFingerboard = (props) => {
 	const {position, setPosition, isSmallScreen, isReveal} = props;
@@ -23,21 +24,15 @@ const FirstPositionFingerboard = (props) => {
 		`${isSmallScreen ? `The line from left to right labled 1st means the usual 1st finger line and the line labled 3rd means the usual 3rd finger line. They are there to give you visual reference.` : `The first finger line and the third finger line are there to give you visual reference.`}`, 
 		`If you think a note can be played with an open string, you can choose G, D, A or E on the top of the fingerboard.`]
 
-	const playSound = (octave, number) => {
-		MIDISounds.midiSounds.playChordNow(MIDI_SOUND_CHOICE, [octave * 12 + number], MIDI_LENGTH);
-
-	}
 
 	const onFingerboardClick = (position, octave, number) => {
 		setPosition(position);
-		playSound(octave, number)
+		midiPlaySound(octave, number, MIDI_VIOLIN_SOUND_CHOICE, MIDI_LENGTH)
 	}
 
 	return (
 		<>
-			<div style={{  visibility: 'hidden', width: 0,  height: 0}}>
-			 <MIDISounds style={{ visibility: 'hidden' }} ref={(ref) => (MIDISounds.midiSounds = ref)} appElementName="root" instruments={[MIDI_SOUND_CHOICE]} />
-			</div>
+			<InvisibleMidiSound />
 			<Typography id="instructionText">{!isReveal ? 'Step 3: Where is this note on your fingerboard?' : 'You can find this note here on the fingerboard:'}
 				<Tooltip 
 					arrow

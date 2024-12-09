@@ -8,11 +8,11 @@ import OptionalTimer from '../OptionalTimer';
 import './styles.css';
 import { shuffleDataArray } from '../../hooks/dataHooks';
 import useTimer from '../../hooks/timerHooks';
-import MIDISounds from 'midi-sounds-react';
+import { midiPlaySound } from '../../hooks/midiPlaySound';
+import InvisibleMidiSound from '../InvisibleMidiSound';
+import { MIDI_CORRECT_SOUND_CHOICE, MIDI_INCORRECT_SOUND_CHOICE } from '../../utils';
 
 const MIDI_LENGTH = 2;
-const MIDI_CORRECT_SOUND_CHOICE = 1366;
-const MIDI_INCORRECT_SOUND_CHOICE = 1357;
 
 const PracticeSession = (props) => {
   const {isSmallScreen, selectedData, path, keyName} = props;
@@ -73,10 +73,6 @@ const PracticeSession = (props) => {
     }
     setIncorrectAnswerMessage(message)
   }
-  const playSound = (octave, number, midiSoundChoice) => {
-		MIDISounds.midiSounds.playChordNow(midiSoundChoice, [octave * 12 + number], MIDI_LENGTH);
-
-	}
 
   const onSubmit = (noteBaseName, accidental, chosenString, fingering, position) => {
     // Step 1 first compare if the data is correct
@@ -94,11 +90,11 @@ const PracticeSession = (props) => {
       setCorrectAnswers([...correctAnswers, question])
       const randomisedCheer = correctAnswersResponse[Math.floor(Math.random() * correctAnswersResponse.length)]
       setCorrectAnswerMessage(randomisedCheer)
-      playSound(4,8, MIDI_CORRECT_SOUND_CHOICE)
+      midiPlaySound(4, 8, MIDI_CORRECT_SOUND_CHOICE, MIDI_LENGTH)
     } else {
       setWrongAnswers([...wrongAnswers, question])
       getIncorrectAnswersMessage(noteNameCorrect, fingeringCorrect, positionCorrect)
-      playSound(4,8, MIDI_INCORRECT_SOUND_CHOICE)
+      midiPlaySound(4, 8, MIDI_INCORRECT_SOUND_CHOICE, MIDI_LENGTH)
     }
     // Step 3 Snackbar that tells the user whether it's correct
     setShowSnackbar(true)
@@ -148,9 +144,7 @@ const PracticeSession = (props) => {
 
   return (
     <>
-      <div style={{  visibility: 'hidden', width: 0,  height: 0}}>
-			 <MIDISounds style={{ visibility: 'hidden' }} ref={(ref) => (MIDISounds.midiSounds = ref)} appElementName="root"  />
-			</div>
+      <InvisibleMidiSound />
       <Grid container direction='row' spacing={3} justifyContent="space-around">
         <EndSessionModal 
           isModalOpen={isModalOpen}
