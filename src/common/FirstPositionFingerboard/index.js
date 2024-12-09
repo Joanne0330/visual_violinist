@@ -2,7 +2,10 @@ import { Grid, Typography, Tooltip, IconButton } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import './styles.css';
 import {useState} from 'react';
+import MIDISounds from 'midi-sounds-react';
 
+const MIDI_LENGTH = 0.5
+const MIDI_SOUND_CHOICE = 456
 
 const FirstPositionFingerboard = (props) => {
 	const {position, setPosition, isSmallScreen, isReveal} = props;
@@ -20,8 +23,21 @@ const FirstPositionFingerboard = (props) => {
 		`${isSmallScreen ? `The line from left to right labled 1st means the usual 1st finger line and the line labled 3rd means the usual 3rd finger line. They are there to give you visual reference.` : `The first finger line and the third finger line are there to give you visual reference.`}`, 
 		`If you think a note can be played with an open string, you can choose G, D, A or E on the top of the fingerboard.`]
 
+	const playSound = (octave, number) => {
+		MIDISounds.midiSounds.playChordNow(MIDI_SOUND_CHOICE, [octave * 12 + number], MIDI_LENGTH);
+
+	}
+
+	const onFingerboardClick = (position, octave, number) => {
+		setPosition(position);
+		playSound(octave, number)
+	}
+
 	return (
 		<>
+			<div style={{  visibility: 'hidden', width: 0,  height: 0}}>
+			 <MIDISounds style={{ visibility: 'hidden' }} ref={(ref) => (MIDISounds.midiSounds = ref)} appElementName="root" instruments={[MIDI_SOUND_CHOICE]} />
+			</div>
 			<Typography id="instructionText">{!isReveal ? 'Step 3: Where is this note on your fingerboard?' : 'You can find this note here on the fingerboard:'}
 				<Tooltip 
 					arrow
@@ -43,58 +59,58 @@ const FirstPositionFingerboard = (props) => {
 			</Typography>
 
 			<Grid container item direction="row">
-					<button className="buttonOpen" style={{backgroundColor: buttonSelected(1)}} onClick={!isReveal ? () => setPosition(1) : null}>G</button>
-					<button className="buttonOpen" style={{backgroundColor: buttonSelected(2)}} onClick={!isReveal ? () => setPosition(2) : null}>D</button>
-					<button className="buttonOpen" style={{backgroundColor: buttonSelected(3)}} onClick={!isReveal ? () => setPosition(3) : null}>A</button>
-					<button className="buttonOpen" style={{backgroundColor: buttonSelected(4)}} onClick={!isReveal ? () => setPosition(4) : null}>E</button>
+					<button className="buttonOpen" style={{backgroundColor: buttonSelected(1)}} onClick={!isReveal ? () => onFingerboardClick(1, 4, 7) : null}>G</button>
+					<button className="buttonOpen" style={{backgroundColor: buttonSelected(2)}} onClick={!isReveal ? () => onFingerboardClick(2, 4, 14) : null}>D</button>
+					<button className="buttonOpen" style={{backgroundColor: buttonSelected(3)}} onClick={!isReveal ? () => onFingerboardClick(3, 5, 9) : null}>A</button>
+					<button className="buttonOpen" style={{backgroundColor: buttonSelected(4)}} onClick={!isReveal ? () => onFingerboardClick(4, 5, 16) : null}>E</button>
 			
 			</Grid>
 			<Grid container item direction="row">
-					<button className="button" style={{backgroundColor: buttonSelected(5)}} onClick={!isReveal ? () => setPosition(5) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(6)}} onClick={!isReveal ? () => setPosition(6) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(7)}} onClick={!isReveal ? () => setPosition(7) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(8)}} onClick={!isReveal ? () => setPosition(8) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(5)}} onClick={!isReveal ? () => onFingerboardClick(5, 4, 8) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(6)}} onClick={!isReveal ? () => onFingerboardClick(6, 4, 15) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(7)}} onClick={!isReveal ? () => onFingerboardClick(7, 5, 10) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(8)}} onClick={!isReveal ? () => onFingerboardClick(8, 5, 17) : null}><div className='verticalLine'></div></button>
 			
 			</Grid>
 			<Grid container item direction="row">
-					<button className="button" style={{backgroundColor: buttonSelected(9)}} onClick={!isReveal ? () => setPosition(9) : null}><div className='cross'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(10)}} onClick={!isReveal ? () => setPosition(10) : null}><div className='cross'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(11)}} onClick={!isReveal ? () => setPosition(11) : null}><div className='cross'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(12)}} onClick={!isReveal ? () => setPosition(12) : null}><div className='cross'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(9)}} onClick={!isReveal ? () => onFingerboardClick(9, 4, 9) : null}><div className='cross'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(10)}} onClick={!isReveal ? () => onFingerboardClick(10, 4, 16) : null}><div className='cross'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(11)}} onClick={!isReveal ? () => onFingerboardClick(11, 5, 11) : null}><div className='cross'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(12)}} onClick={!isReveal ? () => onFingerboardClick(12, 5, 18) : null}><div className='cross'></div></button>
 					{!isSmallScreen ? <Typography> First finger line</Typography> : <Typography style={{wordBreak: 'break-all'}}> 1st </Typography> }
 
 			</Grid>
 			<Grid container item direction="row">
-					<button className="button" style={{backgroundColor: buttonSelected(13)}} onClick={!isReveal ? () => setPosition(13) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(14)}} onClick={!isReveal ? () => setPosition(14) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(15)}} onClick={!isReveal ? () => setPosition(15) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(16)}} onClick={!isReveal ? () => setPosition(16) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(13)}} onClick={!isReveal ? () => onFingerboardClick(13, 4, 10) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(14)}} onClick={!isReveal ? () => onFingerboardClick(14, 4, 17) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(15)}} onClick={!isReveal ? () => onFingerboardClick(15, 5, 12) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(16)}} onClick={!isReveal ? () => onFingerboardClick(16, 6, 7) : null}><div className='verticalLine'></div></button>
 			</Grid>           
 			<Grid container item direction="row">
-					<button className="button" style={{backgroundColor: buttonSelected(17)}} onClick={!isReveal ? () => setPosition(17) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(18)}} onClick={!isReveal ? () => setPosition(18) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(19)}} onClick={!isReveal ? () => setPosition(19) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(20)}} onClick={!isReveal ? () => setPosition(20) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(17)}} onClick={!isReveal ? () => onFingerboardClick(17, 4, 11) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(18)}} onClick={!isReveal ? () => onFingerboardClick(18, 4, 18) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(19)}} onClick={!isReveal ? () => onFingerboardClick(19, 5, 13) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(20)}} onClick={!isReveal ? () => onFingerboardClick(20, 6, 8) : null}><div className='verticalLine'></div></button>
 			</Grid>
 			<Grid container item direction="row">
-					<button className="button" style={{backgroundColor: buttonSelected(21)}} onClick={!isReveal ? () => setPosition(21) : null}><div className='cross'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(22)}} onClick={!isReveal ? () => setPosition(22) : null}><div className='cross'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(23)}} onClick={!isReveal ? () => setPosition(23) : null}><div className='cross'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(24)}} onClick={!isReveal ? () => setPosition(24) : null}><div className='cross'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(21)}} onClick={!isReveal ? () => onFingerboardClick(21, 4, 12) : null}><div className='cross'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(22)}} onClick={!isReveal ? () => onFingerboardClick(22, 5, 7) : null}><div className='cross'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(23)}} onClick={!isReveal ? () => onFingerboardClick(23, 5, 14) : null}><div className='cross'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(24)}} onClick={!isReveal ? () => onFingerboardClick(24, 6, 9) : null}><div className='cross'></div></button>
 					{!isSmallScreen ? <Typography> Third finger line</Typography> : <Typography> 3rd </Typography>}
 
 			</Grid>
 			<Grid container item direction="row">
-					<button className="button" style={{backgroundColor: buttonSelected(25)}} onClick={!isReveal ? () => setPosition(25) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(26)}} onClick={!isReveal ? () => setPosition(26) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(27)}} onClick={!isReveal ? () => setPosition(27) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(28)}} onClick={!isReveal ? () => setPosition(28) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(25)}} onClick={!isReveal ? () => onFingerboardClick(25, 4, 13) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(26)}} onClick={!isReveal ? () => onFingerboardClick(26, 5, 8) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(27)}} onClick={!isReveal ? () => onFingerboardClick(27, 5, 15) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(28)}} onClick={!isReveal ? () => onFingerboardClick(28, 6, 10) : null}><div className='verticalLine'></div></button>
 			</Grid>
 			<Grid container item direction="row">
-					<button className="button" style={{backgroundColor: buttonSelected(29)}} onClick={!isReveal ? () => setPosition(29) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(30)}} onClick={!isReveal ? () => setPosition(30) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(31)}} onClick={!isReveal ? () => setPosition(31) : null}><div className='verticalLine'></div></button>
-					<button className="button" style={{backgroundColor: buttonSelected(32)}} onClick={!isReveal ? () => setPosition(32) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(29)}} onClick={!isReveal ? () => onFingerboardClick(29, 4, 14) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(30)}} onClick={!isReveal ? () => onFingerboardClick(30, 5, 9) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(31)}} onClick={!isReveal ? () => onFingerboardClick(31, 5, 16) : null}><div className='verticalLine'></div></button>
+					<button className="button" style={{backgroundColor: buttonSelected(32)}} onClick={!isReveal ? () => onFingerboardClick(32, 6, 11) : null}><div className='verticalLine'></div></button>
 			</Grid>
 		</>	
 	);
