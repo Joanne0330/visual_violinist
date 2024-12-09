@@ -90,11 +90,11 @@ const PracticeSession = (props) => {
       setCorrectAnswers([...correctAnswers, question])
       const randomisedCheer = correctAnswersResponse[Math.floor(Math.random() * correctAnswersResponse.length)]
       setCorrectAnswerMessage(randomisedCheer)
-      midiPlaySound(4, 8, MIDI_CORRECT_SOUND_CHOICE, MIDI_LENGTH)
+      midiPlaySound(4, 4, MIDI_CORRECT_SOUND_CHOICE, MIDI_LENGTH)
     } else {
       setWrongAnswers([...wrongAnswers, question])
       getIncorrectAnswersMessage(noteNameCorrect, fingeringCorrect, positionCorrect)
-      midiPlaySound(4, 8, MIDI_INCORRECT_SOUND_CHOICE, MIDI_LENGTH)
+      midiPlaySound(4, 4, MIDI_INCORRECT_SOUND_CHOICE, MIDI_LENGTH)
     }
     // Step 3 Snackbar that tells the user whether it's correct
     setShowSnackbar(true)

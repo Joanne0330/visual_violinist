@@ -9,6 +9,12 @@ import MusicLoader from '../Loading';
 import FlashCardsEndModal from '../../common/FlashCardsEndModal';
 import useTimer from '../../hooks/timerHooks';
 import {formatTime} from '../../utils';
+import { midiPlaySound } from '../../hooks/midiPlaySound';
+import { MIDI_VIOLIN_SOUND_CHOICE, MIDI_INCORRECT_SOUND_CHOICE } from '../../utils';
+import InvisibleMidiSound from '../InvisibleMidiSound';
+
+const MIDI_LENGTH_CORRECT = 0.2;
+const MIDI_LENGTH_INCORRECT = 5;
 
 const FlashCardsSession = (props) => {
 	const {chosenFlashCardsData, setIsEndModalOpen, aboardSession, isEndModalOpen} = props;
@@ -47,9 +53,11 @@ const FlashCardsSession = (props) => {
 	const handleOnClick = (value) => {
 		if(value === chosenFlashCardsData[dataIndex].noteBaseName) {
 			setCorrectAnswers([...correctAnswers, chosenFlashCardsData[dataIndex]])
+			midiPlaySound(chosenFlashCardsData[dataIndex].midiOctave, chosenFlashCardsData[dataIndex].midiNumber, MIDI_VIOLIN_SOUND_CHOICE, MIDI_LENGTH_CORRECT )
 			handleLoadingTime();
 		} else {
 			setIncorrectAnswers([...incorrectAnswers, chosenFlashCardsData[dataIndex]])
+			midiPlaySound(4, 4, MIDI_INCORRECT_SOUND_CHOICE, MIDI_LENGTH_INCORRECT )
 			setShowCorrection(true);
 			setTimeout(() => {
 				setShowCorrection(false);
@@ -60,6 +68,7 @@ const FlashCardsSession = (props) => {
 
 	return (
 		<>
+		<InvisibleMidiSound />
 			<Paper className='flashCardScoreBar' style={{borderRadius: '10px'}}>
 					<Fab color="secondary" id="flashCardModalIconButtons" aria-label="refresh" size='small' onClick={aboardSession}>
             <RefreshIcon />
