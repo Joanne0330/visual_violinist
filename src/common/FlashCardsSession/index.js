@@ -96,7 +96,7 @@ const FlashCardsSession = (props) => {
 					</Grid>
 			</Paper> 
 			<Card className='flashCardSessionCard' style={{borderRadius: '10px'}}>
-				<Grid container style={{marginBottom: 5}}>
+				<Grid container>
 					<Grid item xs={12} sm={6}>
 						{isLoading ?
 							<MusicLoader isSmallScreen={isSmallScreen} isFlashCardsFeature={true}/>

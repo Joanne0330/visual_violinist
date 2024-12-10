@@ -26,7 +26,7 @@ const EndSessionModal = (props) => {
 			open={isModalOpen}
 			onClose={resetEntireExcercise}
 		>
-			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px'}}>
+			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px', backgroundImage: correctAnswers.length / totalQuestions > 0.8  ? 'url("/assets/images/celebrate.gif")' : '', backgroundSize: '100%'}}>
 				<Typography id="modal-modal-title" variant="h6" component="h2">
 					End of study session
 				</Typography>

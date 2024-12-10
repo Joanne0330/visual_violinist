@@ -14,7 +14,7 @@ const FlashCardsEndModal = (props) => {
 		<Modal
 			open={isEndModalOpen}
 		>
-			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px'}}>
+			<Card className='modalCard' style={{borderRadius: '15px', minWidth: '250px', backgroundImage: timer <= chosenFlashCardsData.length * 2 ? 'url("/assets/images/celebrate.gif")' : '', backgroundSize: '100%'}}>
 				<Typography variant="h6" component="h2">
 					End of Flashcards Session
 				</Typography>
