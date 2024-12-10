@@ -76,7 +76,11 @@ function AppHeaderMenu() {
             <h3 className='appTitle' style={{marginTop: 5}}>The Visual Violinist</h3>
           :
             <Grid container direction="row" justifyContent='center'>
-              <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmx5ZzN6dnI4dDh5bGp0Z3ppMThiOWloY2p0aG11NnFsOTV0NmJtaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SYQfgTam3ZeagUqfgk/giphy.gif" style={{maxHeight: '70px'}}/>
+              <img 
+                src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmx5ZzN6dnI4dDh5bGp0Z3ppMThiOWloY2p0aG11NnFsOTV0NmJtaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SYQfgTam3ZeagUqfgk/giphy.gif" 
+                style={{maxHeight: '70px'}}
+                alt="Visual Violinist Gif"
+              />
               <h1 className='appTitle'>The Visual Violinist</h1>
             </Grid>
           }
