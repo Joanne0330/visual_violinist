@@ -144,7 +144,7 @@ const PracticeSession = (props) => {
 
   return (
     <>
-      <InvisibleMidiSound />
+      <InvisibleMidiSound soundChoices={[MIDI_CORRECT_SOUND_CHOICE, MIDI_INCORRECT_SOUND_CHOICE]} />
       <Grid container direction='row' spacing={3} justifyContent="space-around">
         <EndSessionModal 
           isModalOpen={isModalOpen}

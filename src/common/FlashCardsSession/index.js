@@ -68,7 +68,7 @@ const FlashCardsSession = (props) => {
 
 	return (
 		<>
-		<InvisibleMidiSound />
+		<InvisibleMidiSound soundChoices={[MIDI_INCORRECT_SOUND_CHOICE, MIDI_VIOLIN_SOUND_CHOICE]}/>
 			<Paper className='flashCardScoreBar' style={{borderRadius: '10px'}}>
 					<Fab color="secondary" id="flashCardModalIconButtons" aria-label="refresh" size='small' onClick={aboardSession}>
             <RefreshIcon />
@@ -96,7 +96,7 @@ const FlashCardsSession = (props) => {
 					</Grid>
 			</Paper> 
 			<Card className='flashCardSessionCard' style={{borderRadius: '10px'}}>
-				<Grid container>
+				<Grid container style={{marginBottom: 5}}>
 					<Grid item xs={12} sm={6}>
 						{isLoading ?
 							<MusicLoader isSmallScreen={isSmallScreen} isFlashCardsFeature={true}/>

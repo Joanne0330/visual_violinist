@@ -32,7 +32,7 @@ const FirstPositionFingerboard = (props) => {
 
 	return (
 		<>
-			<InvisibleMidiSound />
+			<InvisibleMidiSound soundChoices={[MIDI_VIOLIN_SOUND_CHOICE]}/>
 			<Typography id="instructionText">{!isReveal ? 'Step 3: Where is this note on your fingerboard?' : 'You can find this note here on the fingerboard:'}
 				<Tooltip 
 					arrow
